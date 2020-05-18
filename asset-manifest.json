@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/DiceRollerz/static/css/main.5f361e03.chunk.css",
+    "main.js": "/DiceRollerz/static/js/main.1dd6d7ce.chunk.js",
+    "main.js.map": "/DiceRollerz/static/js/main.1dd6d7ce.chunk.js.map",
+    "runtime-main.js": "/DiceRollerz/static/js/runtime-main.67ea03ec.js",
+    "runtime-main.js.map": "/DiceRollerz/static/js/runtime-main.67ea03ec.js.map",
+    "static/js/2.bf6a35d7.chunk.js": "/DiceRollerz/static/js/2.bf6a35d7.chunk.js",
+    "static/js/2.bf6a35d7.chunk.js.map": "/DiceRollerz/static/js/2.bf6a35d7.chunk.js.map",
+    "index.html": "/DiceRollerz/index.html",
+    "precache-manifest.4e5b0ece8d822f79be78a0a5c77319ff.js": "/DiceRollerz/precache-manifest.4e5b0ece8d822f79be78a0a5c77319ff.js",
+    "service-worker.js": "/DiceRollerz/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/DiceRollerz/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.bf6a35d7.chunk.js.LICENSE.txt": "/DiceRollerz/static/js/2.bf6a35d7.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/DiceRollerz/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.67ea03ec.js",
+    "static/js/2.bf6a35d7.chunk.js",
+    "static/css/main.5f361e03.chunk.css",
+    "static/js/main.1dd6d7ce.chunk.js"
+  ]
+}
