@@ -9,11 +9,14 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  findById: function(req, res) {
-    db.Chatroom
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  findById: async function(req, res) {
+    try{
+      const chatroom = await db.Chatroom .findById(req.params.id);
+      const posts = await db.Post.find({"room":chatroom._id})
+      res.json({chatroom, posts})
+    }catch (err){
+      res.status(422).json(err)
+    };
   },
   create: function(req, res) {
     db.Chatroom

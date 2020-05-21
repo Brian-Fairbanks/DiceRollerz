@@ -13,7 +13,7 @@ const chatroomSchema = new Schema({
       role: {type:String}
     }
   ],
-  gameMode: {type: Boolean, default: false},
+  gameMode: {type: Boolean, default: false}
 });
 
 const Chatroom = mongoose.model("Chatroom", chatroomSchema);
