@@ -32,7 +32,7 @@ function Chatrooms(){
     // console.log(data.data);
     setCurrentChatroom(data.data);
     // set the current room in your new message state!
-    setNewMessage( {...newMessage, sender: user._id, room: data.data.chatroom._id})
+    setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
   }
 
 
@@ -41,12 +41,17 @@ function Chatrooms(){
     if (newMessage.sender && newMessage.room && newMessage.body) {
       try{
         await API.sendPost(newMessage)
+        setNewMessage({...newMessage, body:""});
         getChatLogs(currentChatroom.chatroom._id)
       }
       catch (err){ console.log(err);}
     }
   };
 
+  function handleInputChange(event) {
+    const {value} = event.target;
+    setNewMessage({...newMessage, body: value})
+  };
 
 
 
@@ -80,8 +85,8 @@ function Chatrooms(){
         <form className="col s12">
           <div className="row">
             <div className="input-field col s10">
-              <textarea id="textarea1" onChange={(event)=>{setNewMessage({...newMessage, body:event.currentTarget.value})}} className="materialize-textarea"></textarea>
-              <label htmlFor="textarea1">New Message</label>
+              <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea" ></textarea>
+              <label htmlFor="message">New Message</label>
             </div>
             <div className="col s2">
               <button onClick={handleFormSubmit}>Submit</button>
