@@ -15,7 +15,7 @@ function App() {
   // this here is only temporary !!! -------------
   useEffect(() => {
     API.getUsers()
-    .then( data => {setUser(data.data[1])})
+    .then( data => {setUser(data.data[0])})
   }, [])
   //  this here is only temporary !!! -------------
 

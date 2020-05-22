@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import UserContext from "../utils/userContext";
+import Message from "../components/Message";
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
@@ -33,12 +34,20 @@ function Chatrooms(){
         )
       })}
 
-
-      {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
-        return (
-          <div>{post.deleted?"Message has been deleted":post.body}</div>
-        )
-      }):"No Messages"}
+      <div className="row m-auto">
+        {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
+          return (
+            <Message
+              key={post._id}
+              deleted={post.deleted}
+              updated={post.updated}
+              body={post.body}
+              sender={post.sender}
+              yours={post.sender == user._id}
+            />
+          )
+        }):"No Messages"}        
+      </div>
 
     </div>
   )
