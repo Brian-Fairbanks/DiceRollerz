@@ -1,9 +1,14 @@
-$primaryColor:#C32828;
-$brightRed:#FC000A;
-$secondaryColor:#707070;
-$tertiaryColor:#EBECF0
-$darkColor:#070606;
+$primaryColor: red darken-4;
+$darkRed:red darken-4;
+$accentRed:red accent-4;
+$accentBlue: #607d8b;
+$secondaryColor: rgb(223, 219, 219) lighten-5;
+$tertiaryColor:rgb(153, 149, 149) darken-2;
+$darkColor:#050404;
 $whiteColor:#ffff;
+$blueGrey:#90a4ae;
+$darkblueGrey: #37474f;
+$darkestblueGrey:#263238;
 
 nav {
     background-color: $primaryColor;
