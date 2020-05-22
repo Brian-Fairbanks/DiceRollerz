@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import { Avatar, AvatarWPic } from './components/Avatar';
 
 function App() {
   return (
@@ -10,3 +11,17 @@ function App() {
 }
 
 export default App;
+
+
+// import React from 'react';
+// import './App.css';
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <h1>Dice Rollers FTW!</h1>
+//     </div>
+//   );
+// }
+
+// export default App;
