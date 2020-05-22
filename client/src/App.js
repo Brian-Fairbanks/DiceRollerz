@@ -1,23 +1,18 @@
 import React from 'react';
 import {Switch, BrowserRouter, Route} from "react-router-dom";
 import './App.css';
-<<<<<<< HEAD
 import { Textarea, TextareaWIcon } from './components/TextArea';
-=======
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
->>>>>>> master
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
       <h1>Dice Rollers FTW!</h1>
 
       
       
-=======
 
       <div className="teal lighten-2">
         <h1>Header - Dice Rollers FTW!</h1>
@@ -37,7 +32,6 @@ function App() {
           
         </Switch>
       </BrowserRouter>
->>>>>>> master
     </div>
   );
 }
