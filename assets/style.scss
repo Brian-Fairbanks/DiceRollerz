@@ -1,5 +1,5 @@
 $primaryColor: red darken-4;
-$darkRed:red darken-4;
+$darkRed:red darken-1;
 $accentRed:red accent-4;
 $accentBlue: #607d8b;
 $secondaryColor: rgb(223, 219, 219) lighten-5;
@@ -17,7 +17,7 @@ nav {
 }
 
 body {
-    background-color:$tertiaryColor;
+    background-color: $secondaryColor;
     color:$primaryColor;
     font-family: Arial, Helvetica, sans-serif;
     align-items: center;
