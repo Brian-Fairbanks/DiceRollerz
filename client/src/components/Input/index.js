@@ -14,7 +14,7 @@ export default function Input(propz) {
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
             />
-            <label for={id}>{label}</label>
+            <label htmlFor={id}>{label}</label>
         </div>
     );
 }
@@ -23,18 +23,18 @@ export default function Input(propz) {
  * Text Input control
  * @param {Object} propz id, colSize, placeholder, icon, label, type ("text" by default), inputClass ("validate" by default)
  */
-export default function InputWIcon(propz) {
+export function InputWIcon(propz) {
     const { id, colSize, placeholder, label, type, inputClass, icon } = propz
     return (
         <div className={"input-field col " + colSize}>
-            <i class="material-icons prefix">{icon}</i>
+            <i className="material-icons prefix">{icon}</i>
             <input 
                 id={id} 
                 className={!inputClass ? "validate" : inputClass}
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
             />
-            <label for={id}>{label}</label>
+            <label htmlFor={id}>{label}</label>
         </div>
     );
 }

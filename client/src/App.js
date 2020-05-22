@@ -1,7 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Avatar, AvatarWPic } from './components/Avatar';
-import Input from './components/Input';
+// import { Avatar, AvatarWPic } from './components/Avatar';
+// import { Input, InputWIcon } from './components/Input';
+import { Textarea, TextareaWIcon } from './components/TextArea';
 
 function App() {
   return (
@@ -41,3 +42,27 @@ export default App;
     label="Test"
   />
 </div> */}
+
+{/* <InputWIcon
+id="test"
+// type=""
+icon="sms"
+colSize="s12"
+placeholder="Hello World!"
+label="Test"
+/> */}
+
+{/* <Textarea
+id="test"
+icon="sms"
+colSize="s12"
+placeholder="Hello World!"
+label="Test"
+/> */}
+
+{/* <Textarea
+  id="test"
+  colSize="s12"
+  placeholder="Hello World!"
+  label="Test"
+/> */}
