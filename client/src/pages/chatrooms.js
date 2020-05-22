@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
+import UserContext from "../utils/userContext";
+import Message from "../components/Message";
 
 function Chatrooms(){
-
+  const { user } = useContext(UserContext);
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
   const [currentChatroom, setCurrentChatroom] = useState({posts:[{body:"No Messages"}]});
 
@@ -14,7 +16,7 @@ function Chatrooms(){
 
   async function getChatLogs(id){
     const data = await API.getChatroom(id);
-    console.log(data.data);
+    // console.log(data.data);
     setCurrentChatroom(data.data);
   }
 
@@ -23,7 +25,8 @@ function Chatrooms(){
 
   return (
     <div>
-      list the chatrooms here!
+
+  list the chatrooms for {user.userName}!
       <br/>
       {allChatrooms.map(room => {
         return (
@@ -31,12 +34,20 @@ function Chatrooms(){
         )
       })}
 
-
-      {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
-        return (
-          <div>{post.deleted?"Message has been deleted":post.body}</div>
-        )
-      }):"No Messages"}
+      <div className="row m-auto">
+        {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
+          return (
+            <Message
+              key={post._id}
+              deleted={post.deleted}
+              updated={post.updated}
+              body={post.body}
+              sender={post.sender}
+              yours={post.sender == user._id}
+            />
+          )
+        }):"No Messages"}        
+      </div>
 
     </div>
   )

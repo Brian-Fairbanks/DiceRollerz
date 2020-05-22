@@ -7,5 +7,9 @@ export default {
 
   getChatroom: function(id){
     return axios.get("/api/chat/"+id);
+  },
+
+  getUsers: function(){
+    return axios.get("/api/user");
   }
 };
