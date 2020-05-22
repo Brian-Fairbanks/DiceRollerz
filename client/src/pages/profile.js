@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './profile.css';
 import { Avatar, AvatarWPic } from '../components/Avatar';
 
 function App() {

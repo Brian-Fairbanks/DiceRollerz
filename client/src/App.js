@@ -3,6 +3,7 @@ import {Switch, BrowserRouter, Route} from "react-router-dom";
 import './App.css';
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
+import Profile from "./pages/profile";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path={"/chat"}>
             <Chat/>
+          </Route>
+          <Route exact path={"/profile"}>
+            <Profile/>
           </Route>
           
         </Switch>
