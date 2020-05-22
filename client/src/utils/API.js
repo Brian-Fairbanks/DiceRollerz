@@ -11,5 +11,9 @@ export default {
 
   getUsers: function(){
     return axios.get("/api/user");
-  }
+  },
+
+  sendPost: function(post){
+    return axios.post("/api/post", post);
+  },
 };

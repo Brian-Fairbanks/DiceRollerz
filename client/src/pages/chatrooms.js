@@ -36,9 +36,16 @@ function Chatrooms(){
   }
 
 
-  async function submitMessage(){
-
-  }
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+    if (newMessage.sender && newMessage.room && newMessage.body) {
+      try{
+        await API.sendPost(newMessage)
+        getChatLogs(currentChatroom.chatroom._id)
+      }
+      catch (err){ console.log(err);}
+    }
+  };
 
 
 
@@ -77,7 +84,7 @@ function Chatrooms(){
               <label htmlFor="textarea1">New Message</label>
             </div>
             <div className="col s2">
-              <button>Submit</button>
+              <button onClick={handleFormSubmit}>Submit</button>
             </div>
           </div>
         </form>
