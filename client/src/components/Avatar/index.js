@@ -1,15 +1,15 @@
 import React from "react";
 
-export function Avatar (props) {
+export function Avatar (propz) {
     return (
         <ul className="collection">
-            {props.children}
+            {propz.children}
         </ul>
     );
 }
 
-export function AvatarWPic(props) {
-    const {imagePath, imageHeight, altText, title, text, hRef, key} = props
+export function AvatarWPic(propz) {
+    const {imagePath, imageHeight, altText, title, text, hRef, key} = propz
 
     return (
         <li className="collection-item avatar" key={key}>

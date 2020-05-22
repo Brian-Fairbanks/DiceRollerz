@@ -2,18 +2,19 @@ import React from "react";
 
 /**
  * Text Input control
- * @param {Object} props id, colSize, placeholder, label, type ("text" by default)
+ * @param {Object} propz id, colSize, placeholder, label, type ("text" by default)
  */
-export default function Input(props) {
+export default function Input(propz) {
+    const { id, colSize, placeholder, label, type } = propz
     return (
-        <div className={"input-field col " + props.colSize}>
+        <div className={"input-field col " + colSize}>
             <input 
-                id={props.id} 
+                id={id} 
                 className="validate" 
-                placeholder={props.placeholder} 
-                type={!props.type ? "text" : props.type} 
+                placeholder={placeholder} 
+                type={!type ? "text" : type} 
             />
-            <label for={props.id}>{props.label}</label>
+            <label for={id}>{label}</label>
         </div>
     );
   }
