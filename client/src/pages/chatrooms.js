@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
+import UserContext from "../utils/userContext";
 
 function Chatrooms(){
-
+  const { user } = useContext(UserContext);
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
   const [currentChatroom, setCurrentChatroom] = useState({posts:[{body:"No Messages"}]});
 
@@ -14,7 +15,7 @@ function Chatrooms(){
 
   async function getChatLogs(id){
     const data = await API.getChatroom(id);
-    console.log(data.data);
+    // console.log(data.data);
     setCurrentChatroom(data.data);
   }
 
@@ -23,7 +24,8 @@ function Chatrooms(){
 
   return (
     <div>
-      list the chatrooms here!
+
+  list the chatrooms for {user.userName}!
       <br/>
       {allChatrooms.map(room => {
         return (

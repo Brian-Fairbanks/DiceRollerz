@@ -26,9 +26,9 @@ function App() {
 
         <div className="teal lighten-2">
           <h1>Header - Dice Rollers FTW!</h1>
+          <div>Hello, {user.userName}</div>
         </div>
 
-  <div>Hello, {user.userName}</div>
 
         <BrowserRouter>
           <Switch>
@@ -50,17 +50,3 @@ function App() {
 }
 
 export default App;
-
-
-// import React from 'react';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>Dice Rollers FTW!</h1>
-//     </div>
-//   );
-// }
-
-// export default App;
