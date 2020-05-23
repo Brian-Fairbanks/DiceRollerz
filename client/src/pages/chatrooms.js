@@ -6,7 +6,7 @@ import Message from "../components/Message";
 function Chatrooms(){
   const { user } = useContext(UserContext);
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
-  const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{body:"No Messages"}]});
+  const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
   const [clientMsg, setClientMsg] = useState("")
   const [newMessage, setNewMessage] = useState({
     sender:user.userName,
@@ -14,6 +14,51 @@ function Chatrooms(){
     body:""
   });
 
+/*  ###############################################################
+    Helper Functions 
+################################################################### */
+
+    // function to get information for an individual chat room.  Called when chat room name is clicked
+    async function getChatLogs(id){
+      const data = await API.getChatroom(id);
+      // console.log(data.data);
+      setCurrentChatroom(data.data);
+      // set the current room in your new message state!
+      setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
+    }
+  
+  
+    async function updateMessages(id){
+      if(id === currentChatroom.chatroom._id){
+        const data = await API.getChatroom(id);
+        setCurrentChatroom(data.data);
+      }
+      else{
+        console.log("New message in "+id);
+      }
+    }
+  
+  
+    async function handleFormSubmit(event) {
+      event.preventDefault();
+      if (newMessage.sender && newMessage.room && newMessage.body) {
+        try{
+          await API.sendPost(newMessage)
+          setNewMessage({...newMessage, body:""});
+          updateMessages(currentChatroom.chatroom._id)
+        }
+        catch (err){ console.log(err);}
+      }
+    };
+  
+    function handleInputChange(event) {
+      const {value} = event.target;
+      setNewMessage({...newMessage, body: value})
+    };
+
+/*  ###############################################################
+    Use Effects 
+################################################################### */
   // Run once when loading the page
   useEffect(() => {
     // set up socket listener
@@ -32,47 +77,12 @@ function Chatrooms(){
     setNewMessage( {sender: user._id})
   }, [user])
 
+  // Update messages when socket.io callback changes this state
   useEffect(() => {
-    updateMessages(clientMsg.room)
+    if(clientMsg){
+      updateMessages(clientMsg.room)
+    }
   }, [clientMsg])
-
-  // function to get information for an individual chat room.  Called when chat room name is clicked
-  async function getChatLogs(id){
-    const data = await API.getChatroom(id);
-    // console.log(data.data);
-    setCurrentChatroom(data.data);
-    // set the current room in your new message state!
-    setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
-  }
-
-  async function updateMessages(id){
-    console.log(currentChatroom.chatroom._id);
-    if(id === currentChatroom.chatroom._id){
-      const data = await API.getChatroom(id);
-      setCurrentChatroom(data.data);
-    }
-    else{
-      console.log("New message in "+id);
-    }
-  }
-
-
-  async function handleFormSubmit(event) {
-    event.preventDefault();
-    if (newMessage.sender && newMessage.room && newMessage.body) {
-      try{
-        await API.sendPost(newMessage)
-        setNewMessage({...newMessage, body:""});
-        updateMessages(currentChatroom.chatroom._id)
-      }
-      catch (err){ console.log(err);}
-    }
-  };
-
-  function handleInputChange(event) {
-    const {value} = event.target;
-    setNewMessage({...newMessage, body: value})
-  };
 
 
 
@@ -84,7 +94,7 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button onClick={()=> {getChatLogs(room._id)}}>{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id)}}>{room.name}</button>
         )
       })}
 
@@ -97,7 +107,7 @@ function Chatrooms(){
               updated={post.updated}
               body={post.body}
               sender={post.sender}
-              yours={post.sender == user._id}
+              yours={post.sender === user._id}
             />
           )
         }):"No Messages"}        
