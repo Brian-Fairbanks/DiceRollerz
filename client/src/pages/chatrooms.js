@@ -8,25 +8,57 @@ function Chatrooms(){
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
   const [currentChatroom, setCurrentChatroom] = useState({posts:[{body:"No Messages"}]});
 
+  const [newMessage, setNewMessage] = useState({
+    sender:user.userName,
+    room:"",
+    body:""
+  });
+
+  // Run once when loading the page
   useEffect(() => {
     API.getChatrooms()
     .then( data => {setAllChatrooms(data.data)})
   }, [])
 
+  //set sender for new message form once user context is loaded.
+  useEffect(() => {
+    setNewMessage( {...newMessage, sender: user._id})
+  }, [user])
 
+
+  // function to get information for an individual chat room.  Called when chat room name is clicked
   async function getChatLogs(id){
     const data = await API.getChatroom(id);
     // console.log(data.data);
     setCurrentChatroom(data.data);
+    // set the current room in your new message state!
+    setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
   }
 
+
+  async function handleFormSubmit(event) {
+    event.preventDefault();
+    if (newMessage.sender && newMessage.room && newMessage.body) {
+      try{
+        await API.sendPost(newMessage)
+        setNewMessage({...newMessage, body:""});
+        getChatLogs(currentChatroom.chatroom._id)
+      }
+      catch (err){ console.log(err);}
+    }
+  };
+
+  function handleInputChange(event) {
+    const {value} = event.target;
+    setNewMessage({...newMessage, body: value})
+  };
 
 
 
   return (
     <div>
 
-  list the chatrooms for {user.userName}!
+  list the chatrooms for {user._id}!
       <br/>
       {allChatrooms.map(room => {
         return (
@@ -48,6 +80,21 @@ function Chatrooms(){
           )
         }):"No Messages"}        
       </div>
+
+      {currentChatroom.chatroom? 
+        <form className="col s12">
+          <div className="row">
+            <div className="input-field col s10">
+              <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea" ></textarea>
+              <label htmlFor="message">New Message</label>
+            </div>
+            <div className="col s2">
+              <button onClick={handleFormSubmit}>Submit</button>
+            </div>
+          </div>
+        </form>
+        :""
+      }
 
     </div>
   )
