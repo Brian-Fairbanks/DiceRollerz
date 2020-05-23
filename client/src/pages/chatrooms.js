@@ -98,6 +98,8 @@ function Chatrooms(){
         )
       })}
 
+      <i className="fas fa-comment-medical"></i>
+
       <div className="row m-auto">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
