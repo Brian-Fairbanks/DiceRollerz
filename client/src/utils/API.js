@@ -1,4 +1,7 @@
 import axios from "axios";
+// set up socket info 
+import openSocket from 'socket.io-client';
+const socket = openSocket('http://localhost:3001');
 
 export default {
   getChatrooms: function(query) {
@@ -14,6 +17,14 @@ export default {
   },
 
   sendPost: function(post){
+    this.socketMsg();
     return axios.post("/api/post", post);
   },
+
+
+
+  socketMsg(){
+    console.log("Should emit to socket")
+    socket.emit('chatMessage', ("Testing"));
+  }
 };
