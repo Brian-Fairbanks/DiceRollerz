@@ -16,15 +16,18 @@ export default {
     return axios.get("/api/user");
   },
 
-  sendPost: function(post){
-    this.socketMsg();
-    return axios.post("/api/post", post);
+  sendPost: async function(post){
+    const data = await axios.post("/api/post", post);
+    this.socketMsg(post);
+    return data;
   },
 
 
-
-  socketMsg(){
-    console.log("Should emit to socket")
-    socket.emit('chatMessage', ("Testing"));
+  // Socket Send
+  socketMsg(msg){
+    socket.emit('chatMessage', (msg));
+  },
+  socketListen(cb){
+    socket.on("newMessage", (msg) => {cb(msg)});
   }
 };

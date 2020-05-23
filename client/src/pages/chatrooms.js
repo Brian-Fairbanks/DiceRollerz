@@ -6,8 +6,8 @@ import Message from "../components/Message";
 function Chatrooms(){
   const { user } = useContext(UserContext);
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
-  const [currentChatroom, setCurrentChatroom] = useState({posts:[{body:"No Messages"}]});
-
+  const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{body:"No Messages"}]});
+  const [clientMsg, setClientMsg] = useState("")
   const [newMessage, setNewMessage] = useState({
     sender:user.userName,
     room:"",
@@ -16,15 +16,25 @@ function Chatrooms(){
 
   // Run once when loading the page
   useEffect(() => {
+    // set up socket listener
+    API.socketListen( function (msg){
+      console.log(msg);
+      setClientMsg(msg);
+    })
+
+    // get and print all chatrooms
     API.getChatrooms()
     .then( data => {setAllChatrooms(data.data)})
   }, [])
 
   //set sender for new message form once user context is loaded.
   useEffect(() => {
-    setNewMessage( {...newMessage, sender: user._id})
+    setNewMessage( {sender: user._id})
   }, [user])
 
+  useEffect(() => {
+    updateMessages(clientMsg.room)
+  }, [clientMsg])
 
   // function to get information for an individual chat room.  Called when chat room name is clicked
   async function getChatLogs(id){
@@ -35,6 +45,17 @@ function Chatrooms(){
     setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
   }
 
+  async function updateMessages(id){
+    console.log(currentChatroom.chatroom._id);
+    if(id === currentChatroom.chatroom._id){
+      const data = await API.getChatroom(id);
+      setCurrentChatroom(data.data);
+    }
+    else{
+      console.log("New message in "+id);
+    }
+  }
+
 
   async function handleFormSubmit(event) {
     event.preventDefault();
@@ -42,7 +63,7 @@ function Chatrooms(){
       try{
         await API.sendPost(newMessage)
         setNewMessage({...newMessage, body:""});
-        getChatLogs(currentChatroom.chatroom._id)
+        updateMessages(currentChatroom.chatroom._id)
       }
       catch (err){ console.log(err);}
     }
@@ -58,7 +79,8 @@ function Chatrooms(){
   return (
     <div>
 
-  list the chatrooms for {user._id}!
+      list the chatrooms for {user.userName}
+      <div>{currentChatroom.chatroom.name}</div>
       <br/>
       {allChatrooms.map(room => {
         return (

@@ -36,8 +36,9 @@ io.on('connection', (socket) => {
   });
 
   // chat message
-  socket.on('chat message', (msg) => {
+  socket.on('chatMessage', (msg) => {
     console.log('message: ' + msg);
+    socket.broadcast.emit("newMessage", msg);
   });
 });
 
