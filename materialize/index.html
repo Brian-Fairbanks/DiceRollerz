@@ -6,16 +6,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:image"
-    content="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2FArtboard%20Copy.png?v=1561585034236">
+    content="#">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@materialdesign">
   <meta name="twitter:title" content="Material Design 101 — Web">
   <meta name="twitter:description" content="Learn how to design and build digital products with Material Design">
   <meta name="twitter:creator" content="@materialdesign">
   <meta name="twitter:image"
-    content="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2FArtboard%20Copy.png?v=1561585034236">
+    content="h##">
   <!-- import Material Icons from Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="material/css/ripples.min.css" rel="stylesheet">
+<link href="material/css/material-wfont.min.css" rel="stylesheet">
+
+<link href="css/flipper.css" rel="stylesheet">
   <!-- import the Material stylesheet -->
   <link rel="stylesheet" href="bundle.css">
   <!-- Add favicons -->
@@ -263,7 +268,48 @@
     </main>
   </div>
 
+  <div class="row" id="example-row">
+  <!-- Note the "full-card" class which stands for only one card. Add multiple "full-card" for more cards.  -->
+  <div class="col-xs-12 col-md-4 full-card">
+    <!-- This will be the card that is active. Note that there should only be one card active. -->
+    <div class="flip-card active-card">
+      <div class="card label-info">
+        <!-- The <h6> can also be a <img> which will be centered. -->
+        <h6>1</h6>
+      </div>
+      <!-- This will be the button to trigger an animation. You will have to hook it yourself! -->
+      <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised icon-material-replay" id="first"></a>
+      <div class="well">
+        <h1>Card 1</h1>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="card" style="background-color: #F1BF26;color: white;">
+        <h6>2</h6>
+      </div>
+      <div class="well">
+        <h1>Card 2</h1>
+      </div>
+    </div>
+    <div class="flip-card">
+      <div class="card alert-success">
+        <h6>3</h6>
+      </div>
+      <div class="well">
+        <h1>Card 3</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- Import the pre-compiled JavaScript for Material components -->
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+<script src="material/js/ripples.min.js"></script>
+<script src="material/js/material.min.js"></script>
+
+<script src="js/flipper.js"></script>
   <script src="components.dll.js"></script>
   <!-- Import the bundled JavaScript from app.js -->
   <script src="bundle.js" async></script>

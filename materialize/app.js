@@ -22,9 +22,10 @@ import {
 } from './components';
 
 // Import my theme variables
-import themeName from './my-theme';
+import themeName from './theme';
 
-import Prism from 'prismjs';
+
+// import Prism from 'prismjs';
 
 
 // Select DOM elements
@@ -36,7 +37,18 @@ const mainContentEl = document.querySelector('.main-content');
 
 // Theme name
 materialLessonsDrawerEl.querySelector('.theme-name').textContent = themeName;
+//  Be sure to make a Flipper object first.
+var flipper = new Flipper(document.getElementById("example-row"));
 
+$('#first').click(function(e) {
+  // make sure you put logical href links for people without javascript
+  e.preventDefault();
+  flipper.setCards([{
+    // there is only one column for this example. add more full cards and then add here dictionaries to switch them.
+    cardIndex: "0",
+    activeIndex: "1"
+  }]);
+});
 // Initalize drawer and list
 
 let modalDrawer = null;
@@ -101,16 +113,16 @@ if (liveProto && liveDemoTopAppBarEl && liveDemoDrawerEl) {
 }
 
 
-// Portfolio Template
-if (document.querySelector('.portfolio-template')) {
-  const portfolioPages = [
+// Profile Page Template
+if (document.querySelector('.profilePages-template')) {
+  const profilePages = [
     'portfolio-work',
     'portfolio-about',
     'portfolio-contact',
     'portfolio-project'
   ];
   const switchToPortfolioPage = (pageName) => {
-    portfolioPages.forEach((page) => {
+    profilePages.forEach((page) => {
       if (page === pageName) {
         document.querySelector('.' + page).style.display = 'block';
       } else {
@@ -119,28 +131,28 @@ if (document.querySelector('.portfolio-template')) {
     });
   }
 
-  document.querySelector('.portfolio-work-button').addEventListener('click', () => switchToPortfolioPage('portfolio-work'));
-  document.querySelector('.portfolio-about-button').addEventListener('click', () => switchToPortfolioPage('portfolio-about'));
-  document.querySelector('.portfolio-contact-button').addEventListener('click', () => switchToPortfolioPage('portfolio-contact'));
-  const portfolioCards = Array.from(document.querySelectorAll('.portfolio-work .mdc-card'));
-  portfolioCards.forEach((card) => card.addEventListener('click', () => switchToPortfolioPage('portfolio-project')));
+  document.querySelector('.profile-work-button').addEventListener('click', () => switchToPortfolioPage('profile-work'));
+  document.querySelector('.profile-about-button').addEventListener('click', () => switchToPortfolioPage('profile-about'));
+  document.querySelector('.profile-contact-button').addEventListener('click', () => switchToPortfolioPage('profile-contact'));
+  const portfolioCards = Array.from(document.querySelectorAll('.profile-work .mdc-card'));
+  portfolioCards.forEach((card) => card.addEventListener('click', () => switchToPortfolioPage('profile-project')));
 
-  const portfolioTemplateResizeHandler = () => {
-    const portfolioTopAppBarEl = document.querySelector('.portfolio-top-app-bar');
+  const profilePages = () => {
+    const profileTopAppBarEl = document.querySelector('.profile-top-app-bar');
     if (window.matchMedia("(max-width: 1450px)").matches) {
-      portfolioTopAppBarEl.querySelector('.mdc-top-app-bar__navigation-icon').style.display = 'block';
-      initModalDrawer(portfolioTopAppBarEl);
+      profileTopAppBarEl.querySelector('.mdc-top-app-bar__navigation-icon').style.display = 'block';
+      initModalDrawer(profileTopAppBarEl);
     } else {
-      portfolioTopAppBarEl.querySelector('.mdc-top-app-bar__navigation-icon').style.display = 'none';
+      profileTopAppBarEl.querySelector('.mdc-top-app-bar__navigation-icon').style.display = 'none';
       destroyModalDrawer();
     }
   }
 
-  switchToPortfolioPage('portfolio-work');
+  switchToProfilePage('profile-work');
   materialLessonsTopAppBarEl.style.display = 'none';
   window.removeEventListener('resize', resizeHandler);
-  window.addEventListener('resize', portfolioTemplateResizeHandler);
-  portfolioTemplateResizeHandler();
+  window.addEventListener('resize', profileTemplateResizeHandler);
+  profileTemplateResizeHandler();
 }
 
 
@@ -166,31 +178,33 @@ if (document.querySelector('.media-template')) {
 
 
 // Color Variable Visualizer
-if (document.querySelector('.color-page')) {
+if (document.querySelector('.chat-page')) {
   const rgbToHex = (col) => {
-    if(col.charAt(0)=='r') {
-      col=col.replace('rgb(','').replace(')','').split(',');
-      var r=parseInt(col[0], 10).toString(16);
-      var g=parseInt(col[1], 10).toString(16);
-      var b=parseInt(col[2], 10).toString(16);
-      r=r.length==1?'0'+r:r; g=g.length==1?'0'+g:g; b=b.length==1?'0'+b:b;
-      var colHex='#'+r+g+b;
-      return colHex;
+    if (col.charAt(0) == 'r') {
+      // col = col.replace('rgb(', '').replace(')', '').split(',');
+      // var r = parseInt(col[0], 10).toString(16);
+      // var g = parseInt(col[1], 10).toString(16);
+      // var b = parseInt(col[2], 10).toString(16);
+      // r = r.length == 1 ? '0' + r : r;
+      // g = g.length == 1 ? '0' + g : g;
+      // b = b.length == 1 ? '0' + b : b;
+      // var colHex = '#' + r + g + b;
+      // return colHex;
     }
   }
 
-  const visualizeColorVar = (elem) => {
-    // Get background value of color component and sanitize
-    const bgColor = rgbToHex(getComputedStyle(elem).backgroundColor) || '';
-    const colorHex = elem.querySelector('.color-hex');
-    const textnode = document.createTextNode(`${bgColor}`);
-    colorHex.appendChild(textnode); 
-  }
+  // const visualizeColorVar = (elem) => {
+  //   // Get background value of color component and sanitize
+  //   const bgColor = rgbToHex(getComputedStyle(elem).backgroundColor) || '';
+  //   const colorHex = elem.querySelector('.color-hex');
+  //   const textnode = document.createTextNode(`${bgColor}`);
+  //   colorHex.appendChild(textnode);
+  // }
 
-  [...document.querySelectorAll('.color-square')].forEach(visualizeColorVar);
-  [...document.querySelectorAll('.color-square-desc--text')].forEach(visualizeColorVar);
-  [...document.querySelectorAll('.grey-tone')].forEach(visualizeColorVar);
-}
+//   [...document.querySelectorAll('.color-square')].forEach(visualizeColorVar);
+//   [...document.querySelectorAll('.color-square-desc--text')].forEach(visualizeColorVar);
+//   [...document.querySelectorAll('.grey-tone')].forEach(visualizeColorVar);
+// }
 
 
 // Initialize all other components
