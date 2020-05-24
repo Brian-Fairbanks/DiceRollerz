@@ -24,9 +24,11 @@
   },
   "homepage": "https://github.com/Brian-Fairbanks/DiceRollerz#readme",
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
+    "material-ui": "^0.20.2",
     "mongoose": "^5.9.15",
     "react-router-dom": "^5.2.0",
     "socket.io": "^2.3.0"
