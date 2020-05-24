@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import M from "materialize-css";
 
+import NewChatForm from "../NewChatForm";
+
+
 class NewChatModal extends Component {
+
   componentDidMount() {
     const options = {
       onOpenStart: () => {
@@ -52,20 +56,9 @@ class NewChatModal extends Component {
                         bottom-sheet class to the "modal" div
                         If you want Fixed Footer Modal then add
                         modal-fixed-footer to the "modal" div*/}
-          <div className="modal-content">
-            <h4>New Chatroom</h4>
-            <p>Name</p>
-          </div>
-          <div className="modal-footer">
-            <a className="modal-close waves-effect waves-red btn">
-              Cancel
-            </a>
-            <a className="modal-close waves-effect waves-green btn">
-              Create
-            </a>
+            <NewChatForm />
           </div>
         </div>
-      </div>
     );
   }
 }
