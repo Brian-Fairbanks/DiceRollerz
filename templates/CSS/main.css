@@ -1,0 +1,76 @@
+nav {
+  background-color: color("materialize red", "darken-4");
+  color: color("materialize #ffff");
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: color("materialize grey", "lighten-5");
+  color: color("materialize red", "darken-4");
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 75vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+article [role="main"] {
+  width: 90vw;
+  height: 25vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+aside[role="complementary"] {
+  float: left;
+  width: 25vw;
+  height: 25vh;
+}
+
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  background-color: color("materialize grey", "lighten-5");
+  color: colo("materialize red", "accent-4");
+}
+
+.element {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: color("materialize grey", "darken-2");
+  border-radius: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 200px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 4rem;
+  width: 200px;
+}
+
+.brightText {
+  color: colo("materialize red", "accent-4");
+}
+
+.drop-shadow {
+  -webkit-box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+          box-shadow: 12px 12px 16px 0 rgba(0, 0, 0, 0.25), -8px -8px 12px 0 rgba(255, 255, 255, 0.3);
+}
+
+.inset-shadow {
+  -webkit-box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset, -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+          box-shadow: 12px 12px 16px 0 rgba(255, 255, 255, 0.3) inset, -8px -8px 12px 0 rgba(0, 0, 0, 0.25) inset;
+}
+/*# sourceMappingURL=main.css.map */
