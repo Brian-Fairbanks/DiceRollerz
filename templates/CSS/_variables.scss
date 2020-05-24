@@ -1,14 +1,14 @@
-$primaryColor: red darken-4;
-$darkRed: red darken-1;
-$accentRed: red accent-4;
-$accentBlue: #607d8b;
-$secondaryColor: rgb(223, 219, 219) lighten-5;
-$tertiaryColor: rgb(153, 149, 149) darken-2;
-$darkColor: #050404;
-$whiteColor: #ffff;
-$blueGrey: #90a4ae;
-$darkblueGrey: #37474f;
-$darkestblueGrey: #263238;
+$primaryColor: color("materialize red", "darken-4") !default;
+$darkRed: color("materialize-red", "darken-1") false !default;
+$accentRed: colo("materialize red", "accent-4");
+$accentBlue: color("materialize #607d8b");
+$secondaryColor: color("materialize grey", "lighten-5");
+$tertiaryColor: color("materialize grey", "darken-2");
+$darkColor: color("materialize #050404");
+$whiteColor: color("materialize #ffff");
+$blueGrey: color("materialize #90a4ae");
+$darkblueGrey: color("materialize #37474f");
+$darkestblueGrey: color("materialize #263238");
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto+Slab:wght@700;900&family=Roboto:wght@500&display=swap");
 $primaryFont: "Roboto", sans-serif;
@@ -16,3 +16,19 @@ $mainHeadingFont: "Roboto Slab", serif;
 
 $margin: 15px;
 $padding: 15px;
+
+@media #{$small-and-down} {
+	// styles for small screens and down
+}
+@media #{$medium-and-up} {
+	// styles for medium screens and larger
+}
+@media #{$medium-and-down} {
+	// styles for medium screens and down
+}
+@media #{$large-and-up} {
+	// styles for large screens and up
+}
+@media #{$extra-large-and-up} {
+	// styles for extra large screens and up
+}
