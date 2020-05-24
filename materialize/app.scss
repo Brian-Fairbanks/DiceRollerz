@@ -50,3 +50,14 @@
 @import "login-template"; // Login Screen Template
 @import "media-template"; // Media Template
 @import "components-sheet"; // Components + Theme
+
+.container{
+   span{
+      margin-right: 40px;
+      font-size: 16px;
+      a{
+         color: #fff;
+         text-decoration: none;
+      }
+   }
+}

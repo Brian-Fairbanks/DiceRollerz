@@ -1,318 +1,120 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Dice RollerZ</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta property="og:image"
-    content="#">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@materialdesign">
-  <meta name="twitter:title" content="Material Design 101 — Web">
-  <meta name="twitter:description" content="Learn how to design and build digital products with Material Design">
-  <meta name="twitter:creator" content="@materialdesign">
-  <meta name="twitter:image"
-    content="h##">
-  <!-- import Material Icons from Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-<link href="material/css/ripples.min.css" rel="stylesheet">
-<link href="material/css/material-wfont.min.css" rel="stylesheet">
 
-<link href="css/flipper.css" rel="stylesheet">
-  <!-- import the Material stylesheet -->
-  <link rel="stylesheet" href="bundle.css">
-  <!-- Add favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="#">
-  <link rel="icon" type="image/png" sizes="96x96" href="#">
-  <link rel="icon" type="image/png" sizes="16x16" href="#">
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="./main.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+<body>
+  <nav class="red" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Dice RollerZ</a></li>
+      </ul>
 
-<body class="mdc-typography language-css">
-  <aside class="mdc-drawer material-lessons-drawer">
-    <div class="mdc-drawer__content">
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Dice RollerZ</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">home</i></a>
+    </div>
+  </nav>
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <h1 class="header center red-text">Dice RollerZ</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">A chat and gaming app for D&D fans and their friends</h5>
+      </div>
+      <div class="row center">
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light red">Log In: </a>
+        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light red">Sign Up: </a>
+      </div>
+      <br>
+    </div>
+  </div>
 
-      <div class="mdc-drawer__header">
-        <h1 class="mdc-drawer__title mdc-typography--headline5">
-          <svg width="24px" height="24px" viewbox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink">
-            <defs>
-              <path
-                d="M23.8461538,12 C23.8461538,5.46307692 18.5369231,0.153846154 12,0.153846154 C5.46307692,0.153846154 0.153846154,5.46307692
-                0.153846154,12 C0.153846154,18.5369231 5.46307692,23.8461538 12,23.8461538 C18.5369231,23.8461538 23.8461538,18.5369231 23.8461538,12
-                Z M4.46153846,18.0738462 C3.11538462,16.4153846 2.30769231,14.3046154 2.30769231,12 C2.30769231,9.70615385 3.12615385,7.60615385
-                4.46153846,5.93692308 L4.46153846,18.0738462 Z M18.0738462,4.46153846 L5.92615385,4.46153846 C7.58461538,3.11538462 9.69538462,2.30769231
-                12,2.30769231 C14.3046154,2.30769231 16.4153846,3.11538462 18.0738462,4.46153846 Z M12,14.7246154 L7.95076923,6.61538462 L16.06,6.61538462
-                L12,14.7246154 Z M17.3846154,8.76923077 L17.3846154,17.3846154 L13.0769231,17.3846154 L17.3846154,8.76923077 Z M10.9230769,17.3846154
-                L6.61538462,17.3846154 L6.61538462,8.76923077 L10.9230769,17.3846154 Z M18.0738462,19.5384615 C16.4046154,20.8846154 14.2938462,21.6923077
-                12,21.6923077 C9.70615385,21.6923077 7.58461538,20.8846154 5.92615385,19.5384615 L18.0738462,19.5384615 Z M21.6923077,12 C21.6923077,14.3046154
-                20.8846154,16.4153846 19.5384615,18.0738462 L19.5384615,5.93692308 C20.8738462,7.60615385 21.6923077,9.70615385 21.6923077,12 Z"
-                id="mdc-logo-path"></path>
-            </defs>
-            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-              <g transform="translate(-29.000000, -48.000000)">
-                <g>
-                  <g transform="translate(0.000000, 44.000000)">
-                    <g transform="translate(29.000000, 0.000000)">
-                      <g transform="translate(0.000000, 4.000000)">
-                        <mask fill="white">
-                          <use xlink:href="#mdc-logo-path"></use>
-                        </mask>
-                        <use fill="#5F6367" fill-rule="nonzero" xlink:href="#mdc-logo-path"></use>
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </svg>
-          Material 101
-          <div class="android-chip mdc-chip mdc-chip-set--choice">
-            <div class="mdc-chip__text">WEB</div>
+
+  <div class="container cards">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+                  <div class="card">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Fast development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
           </div>
-        </h1>
-        <h2 class="theme-name mdc-typography--headline5" placeholder="Theme name..."></h2>
-        <a class="glitch-url mdc-typography--overline" href="#"">Dice RollerZ</a>
+          </div>
         </div>
-        <hr class=" mdc-list-divider">
 
-          <nav class="mdc-list">
-            <a href="/" class="mdc-list-item mdc-list-item--selected" aria-selected="true" role="option" tabindex="0">
-              <i class="material-icons mdc-list-item__graphic">About Dice RollerZ</i>
-              <span class="mdc-list-item__text">Game</span>
-            </a>
-            <hr class="mdc-list-divider">
+        <div class="col s12 m4">
+                  <div class="card">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">Sign In</i></h2>
+            <h5 class="center">Welcome back. Please sign in below: </h5>
 
-            <h3 class="mdc-list-group__subheader">Chat</h3>
-            <a href="color.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">Contact Us</i>
-              <span class="mdc-list-item__text">FAQ</span>
-            </a>
-            <a href="typography.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">More</i>
-              <span class="mdc-list-item__text">Unsure?</span>
-            </a>
-            <a href="shape.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">border_style</i>
-              <span class="mdc-list-item__text">?</span>
-            </a>
-            <a href="layout.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic">?</i>
-              <span class="mdc-list-item__text">Layout</span>
-            </a>
-
-            <hr class="mdc-list-divider">
-
-            <h3 class="mdc-list-group__subheader">?</h3>
-            <a href="portfolio-template.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-              <span class="mdc-list-item__text">Design Portfolio Template</span>
-            </a>
-            <a href="login-template.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-              <span class="mdc-list-item__text">Login Screen Template</span>
-            </a>
-            <a href="media-article.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-              <span class="mdc-list-item__text">Article Template</span>
-            </a>
-            <a href="components-sheet.html" class="mdc-list-item" role="option">
-              <i class="material-icons mdc-list-item__graphic" aria-hidden="true">category</i>
-              <span class="mdc-list-item__text">Components</span>
-            </a>
-
-            <div class="nav-footer">
-              <hr class="mdc-list-divider">
-              <div class="footer-button-wrapper">
-                <a class="mdc-button mdc-button--dense footer-mdc-button" href="https://material-101-android.glitch.me/"
-                  target="_blank">
-                  <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_new</i>
-                  <span class="mdc-button__label">Dice RollerZ</span>
-                </a>
-              </div>
-            </div>
-          </nav>
-
-      </div>
-  </aside>
-
-  <div class="mdc-drawer-scrim"></div>
-  <div class="mdc-drawer-app-content">
-    <header
-      class="material-lessons-top-app-bar mdc-top-app-bar mdc-top-app-bar--short mdc-top-app-bar--short-collapsed">
-      <div class="mdc-top-app-bar__row">
-        <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-          <a class="material-icons mdc-top-app-bar__navigation-icon">Home</a>
-        </section>
-      </div>
-    </header>
-
-    <main class="main-content">
-      <!-- Building with Material -->
-      <section class="about-page">
-        <h2 class="mdc-typography--headline5">
-          <i class="material-icons">favorite</i>
-          Dice RollerZ
-        </h2>
-        <p>
-          Chat and play with your friends or make new ones in this D&D...?
-        </p>
-        <h3 class="mdc-typography--overline">Sign Up</h3>
-        <p>
-          Sign up or log-in before [some D&D joke?]
-        </p>
-        <div class="button-wrapper">
-          <a class="mdc-button mdc-button--outlined" href="https://glitch.com/edit/#!/remix/material-101"
-            target="_blank">
-            <i class="material-icons mdc-button__icon" aria-hidden="true">open_in_new</i>
-            <span class="mdc-button__label">Game</span>
-          </a>
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+          </div>
         </div>
-        <hr class="mdc-list-divider">
 
-        <h3 class="mdc-typography--overline">Chat</h3>
-        <p>
-          Dice RollerZ is an app that draws inspiration from Dungeons and Dragons...etc
-        </p>
-        <h4 class="mdc-typography--headline6">1. An overview</h4>
-        <p>
-          Why did we develop this app? Read more here
-        </p>
-        <img src="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2Foverview-feature.png?1559088779919">
-        <h4 class="mdc-typography--headline6">2. What makes our app stand out?</h4>
-        <p>
-          Description
-        </p>
-        <img src="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2Factivity-feature.png?1559088781913">
-        <h4 class="mdc-typography--headline6">3. Chat</h4>
-        <p>
-          And what makes our app different from other social media platforms? Etc
-        </p>
-        <img src="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2Fpreset-feature.png?1559088781409">
-        <hr class="mdc-list-divider">
+        <div class="col s12 m4">
+                  <div class="card">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy workflow</h5>
 
-        <h3 class="mdc-typography--overline">Instructions</h3>
-        <p>These will help you learn and build [something from D&D] even faster.</p>
-        <h4 class="mdc-typography--headline6">Game Center</h4>
-        <p>See your score.. </p>
-        <img src="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2Fphone-feature.png?v=1561584408696">
-        <section class="subsystem-live-proto">
-          <aside class="mdc-drawer live-proto-material-lessons-drawer mdc-drawer--modal">
-            <div class="mdc-drawer__content">
-              <nav class="mdc-list">
-                <a href="index.html" class="mdc-list-item mdc-list-item--selected" aria-selected="true" role="option"
-                  tabindex="0">
-                  <i class="material-icons mdc-list-item__graphic">Chatrooms</i>
-                  <span class="mdc-list-item__text">More</span>
-                </a>
-                <a href="layout.html" class="mdc-list-item">
-                  <i class="material-icons mdc-list-item__graphic">Contact</i>
-                  <span class="mdc-list-item__text">Lost username or password?</span>
-                </a>
-                <a href="color.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">?</span>
-                </a>
-                <a href="typography.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">?</span>
-                </a>
-                <a href="shape.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">Shape</span>
-                </a>
-                <a href="portfolio-template.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">?</span>
-                </a>
-                <a href="login-template.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">Login to Your Account</span>
-                </a>
-                <a href="media-article.html" class="mdc-list-item" role="option">
-                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">?</i>
-                  <span class="mdc-list-item__text">Sign Up for an Account</span>
-                </a>
-              </nav>
-            </div>
-          </aside>
-          <div class="mdc-drawer-scrim"></div>
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+          </div>
+        </div>
+      </div>
 
-          <header class="mdc-top-app-bar live-proto-top-app-bar">
-            <div class="mdc-top-app-bar__row">
-              <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-                <a class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
-                <span class="mdc-top-app-bar__title mdc-typography--headline6">Dice RollerZ</span>
-              </section>
-            </div>
-          </header>
-          <section class="live-proto-main">
-            <img src="#" />
-            <p class="mdc-typography--subtitle1">Dice RollerZ</p>
-            <p class="mdc-typography--subtitle1">Game</p>
-          </section>
-        </section>
-        <h4 class="mdc-typography--headline6">Chat</h4>
-        <p>
-          About us...
-        </p>
-        <img src="#">
-        <h4 class="mdc-typography--headline6">Components</h4>
-        <p>
-          Description...
-        </p>
-        <img src="https://cdn.glitch.com/17f6eaf0-3413-4607-9190-d8da5f737643%2Ftheme-builder.png?1558739130870">
-        <hr class="mdc-list-divider">
-      </section>
-    </main>
+    </div>
+    <br><br>
   </div>
 
-  <div class="row" id="example-row">
-  <!-- Note the "full-card" class which stands for only one card. Add multiple "full-card" for more cards.  -->
-  <div class="col-xs-12 col-md-4 full-card">
-    <!-- This will be the card that is active. Note that there should only be one card active. -->
-    <div class="flip-card active-card">
-      <div class="card label-info">
-        <!-- The <h6> can also be a <img> which will be centered. -->
-        <h6>1</h6>
-      </div>
-      <!-- This will be the button to trigger an animation. You will have to hook it yourself! -->
-      <a href="javascript:void(0)" class="btn btn-primary btn-fab btn-raised icon-material-replay" id="first"></a>
-      <div class="well">
-        <h1>Card 1</h1>
+  <footer class="page-footer orange">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Connect</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="flip-card">
-      <div class="card" style="background-color: #F1BF26;color: white;">
-        <h6>2</h6>
-      </div>
-      <div class="well">
-        <h1>Card 2</h1>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
       </div>
     </div>
-    <div class="flip-card">
-      <div class="card alert-success">
-        <h6>3</h6>
-      </div>
-      <div class="well">
-        <h1>Card 3</h1>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Import the pre-compiled JavaScript for Material components -->
-  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-<script src="material/js/ripples.min.js"></script>
-<script src="material/js/material.min.js"></script>
-
-<script src="js/flipper.js"></script>
-  <script src="components.dll.js"></script>
-  <!-- Import the bundled JavaScript from app.js -->
-  <script src="bundle.js" async></script>
-</body>
-
+  </footer>
+  </body>
 </html>

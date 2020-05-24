@@ -36,8 +36,8 @@ body {
       @include mdc-typography(caption);
       font-weight: 600;
       letter-spacing: 1.2px;
-      @include mdc-chip-fill-color(#ECE0FD);
-      @include mdc-chip-ink-color(#6200EE);
+      @include mdc-chip-fill-color(#90a4ae);
+      @include mdc-chip-ink-color(#090b0c);
       pointer-events: none;
         
     }
@@ -201,7 +201,7 @@ body {
 
     p {
       font-family: 'Roboto', sans-serif;
-      color: #6200ee;
+      color: #101416;
       margin: 0;
     }
   }
