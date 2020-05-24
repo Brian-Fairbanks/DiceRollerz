@@ -17,7 +17,7 @@ function NewChatform(){
   }
 
   function submitNewChat(){
-    alert( JSON.stringify(newChatroom));
+    API.createNewChatroom(newChatroom);
   }
 
 
@@ -35,9 +35,9 @@ function NewChatform(){
       <h4>New Chatroom</h4>
       <form>
         
-        <div class="input-field col s6">
-          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" class="validate" />
-            <label class="active" for="chatName">Chatroom Name</label>
+        <div className="input-field col s6">
+          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate" />
+            <label className="active" htmlFor="chatName">Chatroom Name</label>
         </div>
         
       </form>

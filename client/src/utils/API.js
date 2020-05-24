@@ -22,6 +22,11 @@ export default {
     return data;
   },
 
+  createNewChatroom: async function(chatOptions){
+    const data = await axios.post("/api/chat", chatOptions);
+    return data;
+  },
+
 
   // Socket Send
   socketMsg(msg){
