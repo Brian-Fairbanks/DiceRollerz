@@ -14,6 +14,25 @@ body {
 	justify-content: center;
 }
 
+article [role="main"] {
+	width: 90vw;
+	height: 25vh;
+	display: flex;
+}
+
+aside[role="complementary"] {
+	float: left;
+	width: 25vw;
+	height: 25vh;
+}
+
+.container {
+	display: flex;
+	width: 100%;
+	background-color: $secondaryColor;
+	color: $accentRed;
+}
+
 .element {
 	align-items: center;
 	background-color: $tertiaryColor;
