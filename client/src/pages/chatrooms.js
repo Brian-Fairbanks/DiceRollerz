@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import UserContext from "../utils/userContext";
 import Message from "../components/Message";
+import NewChatModal from "../components/Modal";
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
@@ -94,11 +95,12 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id)}}>{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="waves-effect waves-light btn" >{room.name}</button>
         )
       })}
 
-      <i className="fas fa-comment-medical"></i>
+      {/*Adding a new chatroom button */}
+      <NewChatModal/>
 
       <div className="row m-auto">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
