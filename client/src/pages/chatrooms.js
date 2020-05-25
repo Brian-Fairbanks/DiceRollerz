@@ -2,11 +2,14 @@ import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import UserContext from "../utils/userContext";
 import Message from "../components/Message";
+import NewChatModal from "../components/Modal";
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
+
   const [allChatrooms, setAllChatrooms] = useState(["test"]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
+
   const [clientMsg, setClientMsg] = useState("")
   const [newMessage, setNewMessage] = useState({
     sender:user.userName,
@@ -39,7 +42,7 @@ function Chatrooms(){
     }
   
   
-    async function handleFormSubmit(event) {
+    async function handleMsgSubmit(event) {
       event.preventDefault();
       if (newMessage.sender && newMessage.room && newMessage.body) {
         try{
@@ -52,9 +55,10 @@ function Chatrooms(){
     };
   
     function handleInputChange(event) {
-      const {value} = event.target;
+      const {value} = event.currentTarget;
       setNewMessage({...newMessage, body: value})
     };
+
 
 /*  ###############################################################
     Use Effects 
@@ -94,9 +98,14 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id)}}>{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="waves-effect waves-light btn" >{room.name}</button>
         )
       })}
+
+      {/*Adding a new chatroom button */}
+      <NewChatModal
+        //value={"Testing Values"}
+      />
 
       <div className="row m-auto">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
@@ -121,7 +130,7 @@ function Chatrooms(){
               <label htmlFor="message">New Message</label>
             </div>
             <div className="col s2">
-              <button onClick={handleFormSubmit}>Submit</button>
+              <button onClick={handleMsgSubmit}>Submit</button>
             </div>
           </div>
         </form>
