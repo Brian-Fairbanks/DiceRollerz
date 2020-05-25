@@ -5,9 +5,9 @@ import React from "react";
  * @param {Object} propz id, colSize, label, text
  */
 export function Textarea (propz) {
-    const { id, colSize, text, label } = propz;
+    const { id, colSize, text, label , wrapperClass } = propz;
     return (
-        <div className={"input-field col " + colSize}>
+        <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
           <textarea id={id} className="materialize-textarea">{text}</textarea>
           <label htmlFor={id}>{label}</label>
         </div>
@@ -19,9 +19,9 @@ export function Textarea (propz) {
  * @param {Object} propz id, colSize, icon, label, text
  */
 export function TextareaWIcon (propz) {
-    const {id, colSize, text, label, icon } = propz;
+    const {id, colSize, text, label, icon, wrapperClass } = propz;
     return (
-        <div className={"input-field col " + colSize}>
+        <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
           <i className="material-icons prefix">{icon}</i>
           <textarea id={id} className="materialize-textarea">{text}</textarea>
           <label htmlFor={id}>{label}</label>
