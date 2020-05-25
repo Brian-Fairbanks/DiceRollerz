@@ -1,7 +1,7 @@
 import axios from "axios";
 // set up socket info 
 import openSocket from 'socket.io-client';
-const socket = openSocket('http://localhost:3001');
+const socket = openSocket.connect();//openSocket('http://localhost:3001');
 
 export default {
   getChatrooms: function(query) {
