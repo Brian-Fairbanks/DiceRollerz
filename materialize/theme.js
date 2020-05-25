@@ -158,4 +158,57 @@ class ReactForm extends React.Component {
   }
 }
 
+const { Component } = React;
+const { render } = ReactDOM;
+
+const App = (props) => {
+  console.clear();
+  return (
+    <div className="view">
+      {props.children}
+    </div>
+  )
+}
+
+const Auth = (props) => {
+  return (
+    <Card>
+      <h2 className="header secondary">{ props.title }</h2>
+      <Input name="Email" inputRef="user email" />
+      <Input name="Password" inputRef="user password" />
+    </Card>
+  )
+}
+
+const Card = (props) => {
+  return (
+    <div className="card">
+      { props.children }
+    </div>
+  )
+}
+
+const Input = (props) => {
+  let formattedName = props.name;
+  let inputRef = props.inputRef
+  .toLowerCase()
+  .split(" ")
+  .join("_");
+  
+  return (
+    <div className="custom-input input">      
+      <input type="text" id={inputRef} />
+      <label htmlFor={inputRef}>{formattedName}</label>
+    </div>
+  )
+}
+
+
+render(
+  <App>
+    <Auth title="Login" />
+  </App>,
+  document.getElementById("root")
+)
+
 ReactDOM.render(<ReactForm />, reactFormContainer);

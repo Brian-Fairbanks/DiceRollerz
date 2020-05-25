@@ -30,3 +30,56 @@ You now have own Material theme that you can use in your [Material Components fo
 We’ve made it easy to visualize your theme with our [Build a Material Theme](https://glitch.com/~material-starter-kit) project, just copy your theming variables from ```my-theme.scss``` into the Theme Builder's ```my-theme.scss``` and start building.
 
 *Built with [Material Starter Kit](https://glitch.com/~material-starter-kit) a file template to get you up and running with Material Components for the Web. Remix it and start theming.*
+
+const { Component } = React;
+const { render } = ReactDOM;
+
+const App = (props) => {
+  console.clear();
+  return (
+    <div className="view">
+      {props.children}
+    </div>
+  )
+}
+
+const Auth = (props) => {
+  return (
+    <Card>
+      <h2 className="header secondary">{ props.title }</h2>
+      <Input name="Email" inputRef="user email" />
+      <Input name="Password" inputRef="user password" />
+    </Card>
+  )
+}
+
+const Card = (props) => {
+  return (
+    <div className="card">
+      { props.children }
+    </div>
+  )
+}
+
+const Input = (props) => {
+  let formattedName = props.name;
+  let inputRef = props.inputRef
+  .toLowerCase()
+  .split(" ")
+  .join("_");
+  
+  return (
+    <div className="custom-input input">      
+      <input type="text" id={inputRef} />
+      <label htmlFor={inputRef}>{formattedName}</label>
+    </div>
+  )
+}
+
+
+render(
+  <App>
+    <Auth title="Login" />
+  </App>,
+  document.getElementById("root")
+)
