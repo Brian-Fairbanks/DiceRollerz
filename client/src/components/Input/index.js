@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, label, type ("text" by default), inputClass ("validate" by default)
+ * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass
  */
 export function Input(propz) {
     const { id, colSize, placeholder, label, type, inputClass, wrapperClass } = propz
@@ -21,7 +21,7 @@ export function Input(propz) {
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, icon, label, type ("text" by default), inputClass ("validate" by default)
+ * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass
  */
 export function InputWIcon(propz) {
     const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon } = propz

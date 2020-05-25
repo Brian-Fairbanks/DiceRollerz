@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * Textarea component
- * @param {Object} propz id, colSize, label, text
+ * @param {Object} propz id, colSize, label, text, wrapperClass
  */
 export function Textarea (propz) {
     const { id, colSize, text, label , wrapperClass } = propz;
@@ -16,7 +16,7 @@ export function Textarea (propz) {
 
 /**
  * Textarea component with icon prefix
- * @param {Object} propz id, colSize, icon, label, text
+ * @param {Object} propz id, colSize, icon, label, text, wrapperClass
  */
 export function TextareaWIcon (propz) {
     const {id, colSize, text, label, icon, wrapperClass } = propz;
