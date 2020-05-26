@@ -1,14 +1,13 @@
-<<<<<<< HEAD
-import React from 'react'
-import './Navbar.css'
+import React from "react";
+import "./Navbar.css";
 
-export default function NavBar () {
-  return (
-    <div className='nav'>
-      <h1>Test</h1>
-    </div>
-  )
-};
+export default function NavBar() {
+    return (
+        <div className="nav">
+            <h1>Test</h1>
+        </div>
+    );
+}
 
 // import React, { Component } from 'react'
 // import { Button, Card, Row, Col } from 'react-materialize';
@@ -26,11 +25,11 @@ export default function NavBar () {
 // }
 
 // import React, {
-//   Fragment,
-//   Children,
-//   cloneElement,
-//   useRef,
-//   useEffect
+// Fragment,
+// Children,
+// cloneElement,
+// useRef,
+// useEffect
 // } from 'react';
 // import PropTypes from 'prop-types';
 // import cx from 'classnames';
@@ -38,46 +37,46 @@ export default function NavBar () {
 // import SearchForm from './SearchForm';
 
 // const Navbar = ({
-//   id,
-//   children,
-//   brand,
-//   className,
-//   extendWith,
-//   fixed,
-//   alignLinks,
-//   centerLogo,
-//   search,
-//   menuIcon,
-//   sidenav,
-//   options,
-//   centerChildren,
-//   ...props
+// id,
+// children,
+// brand,
+// className,
+// extendWith,
+// fixed,
+// alignLinks,
+// centerLogo,
+// search,
+// menuIcon,
+// sidenav,
+// options,
+// centerChildren,
+// ...props
 // }) => {
-//   const _sidenav = useRef(null);
+// const _sidenav = useRef(null);
 
-//   useEffect(() => {
+// useEffect(() => {
 //     const instance = M.Sidenav.init(_sidenav.current, options);
 
 //     return () => {
 //       instance && instance.destroy();
 //     };
-//   }, [options, children]);
+// }, [options, children]);
 
-//   const brandClasses = cx({
+// const brandClasses = cx({
 //     'brand-logo': true,
 //     right: alignLinks === 'left',
 //     center: centerLogo
-//   });
+// });
 
-//   const navCSS = cx({ 'nav-extended': extendWith }, className);
+// const navCSS = cx({ 'nav-extended': extendWith }, className);
 
-//   const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
+// const navMobileCSS = cx('hide-on-med-and-down', [alignLinks]);
 
-//   const links = Children.map(children, (link, index) => (
+// const links = Children.map(children, (link, index) => (
 //     <li key={index}>{link}</li>
-//   ));
+// ));
 
-//   const sidenavLinks = sidenav
+// const sidenavLinks = sidenav
 //     ? sidenav
 //     : Children.map(children, (link, index) => {
 //         const clonedLink =
@@ -90,7 +89,7 @@ export default function NavBar () {
 //         return <li key={index}>{clonedLink}</li>;
 //       });
 
-//   let navbar = (
+// let navbar = (
 //     <nav className={navCSS} {...props}>
 //       <div className={cx({ container: centerChildren }, 'nav-wrapper')}>
 //         {search ? (
@@ -110,13 +109,13 @@ export default function NavBar () {
 //       </div>
 //       {extendWith && <div className="nav-content">{extendWith}</div>}
 //     </nav>
-//   );
+// );
 
-//   if (fixed) {
+// if (fixed) {
 //     navbar = <div className="navbar-fixed">{navbar}</div>;
-//   }
+// }
 
-//   return (
+// return (
 //     <Fragment>
 //       {navbar}
 
@@ -124,26 +123,6 @@ export default function NavBar () {
 //         {sidenavLinks}
 //       </ul>
 //     </Fragment>
-//   );
+// );
 // }
 // export default Navbar;
-=======
-import React from "react";
-
-
-function Nav() {
-    return(<nav class="red" role="navigation">
-    <div className="nav-wrapper container"><a id="logo-container" href="#" className="brand-logo">Logo</a>
-      <ul className="right hide-on-med-and-down">
-        <li><a href="#">Dice RollerZ</a></li>
-      </ul>
-
-      <ul id="nav-mobile" className="sidenav">
-        <li><a href="#">Dice RollerZ</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" className="sidenav-trigger"><i className="material-icons">home</i></a>
-    </div>
-  </nav>
-  );
-}
->>>>>>> master

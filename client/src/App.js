@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
-import { Avatar, AvatarWPic } from './components/Avatar';
+// import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from './pages/chatrooms';
 import Profile from './pages/profile';
 import API from './utils/API';
