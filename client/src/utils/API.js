@@ -16,22 +16,22 @@ export default {
     return axios.get("/api/user");
   },
 
-  sendPost: async function(id, post){
-    const data = await axios.post("/api/post"+id, post);
+  sendPost: async function(post){
+    const data = await axios.post("/api/post", post);
     this.socketMsg(post);
     return data;
   },
 
-  editPost: async function(post){
-    const data = await axios.put("/api/post", post);
-    this.socketMsg(post);
+  editPost: async function(id){
+    console.log( "deleting "+id);
+    const data = await axios.put("/api/post/"+id, {deleted:true});
+    this.socketMsg(data.data);
     return data;
   },
 
   deletePost: async function(id){
-    console.log( "deleting "+id);
     const data = await axios.put("/api/post/"+id, {deleted:true});
-    this.socketMsg(data.data);
+    this.socketMsg({...data.data});
     return data;
   },
 
@@ -44,6 +44,7 @@ export default {
 
   // Socket Send
   socketMsg(msg){
+    console.log(msg);
     socket.emit('chatMessage', (msg));
   },
   socketListen(cb){

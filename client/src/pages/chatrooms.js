@@ -33,7 +33,6 @@ function Chatrooms(){
   
   
     async function updateMessages(id){
-      console.log("Received Callback From Socket!")
       if(id === currentChatroom.chatroom._id){
         const data = await API.getChatroom(id);
         setCurrentChatroom(data.data);
@@ -48,7 +47,6 @@ function Chatrooms(){
       event.preventDefault();
       if (newMessage.sender && newMessage.room && newMessage.body) {
         try{
-          console.log(newMessage);
           await API.sendPost(newMessage)
           setNewMessage({...newMessage, body:""});
           updateMessages(currentChatroom.chatroom._id)
@@ -92,6 +90,7 @@ function Chatrooms(){
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {
+    console.log(clientMsg)
     if(clientMsg){
       updateMessages(clientMsg.room)
     }
