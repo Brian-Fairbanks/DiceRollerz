@@ -12,10 +12,19 @@ export default {
     return axios.get("/api/chat/"+id);
   },
 
+  getUser: function(id){
+    return axios.get("/api/user/"+id);
+  },
+
   getUsers: function(){
     return axios.get("/api/user");
   },
 
+  updateUser: async function(user){
+    const data = await axios.put("/api/user/"+user._id, user);
+    this.socketMsg(user);
+    return data;
+  },
   sendPost: async function(post){
     const data = await axios.post("/api/post", post);
     this.socketMsg(post);
