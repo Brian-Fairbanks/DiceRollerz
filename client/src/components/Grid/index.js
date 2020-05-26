@@ -25,4 +25,8 @@ export function Col({ size, children }) {
       {children}
     </div>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> master
