@@ -9,6 +9,7 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 import Login from "./pages/Login/login";
+import SignUp from './pages/SignUp/signup';
 
 
 function App () {
@@ -53,6 +54,9 @@ function App () {
             </Route>
             <Route exact path='/profile'>
               <Profile />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
             </Route>
           </Switch>
         </BrowserRouter>

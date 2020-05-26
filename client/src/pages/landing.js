@@ -6,24 +6,19 @@ import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
 function Landing(){
 return(
 <div>
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> master
 
     <Row>
     {/* <div className="col s12 m7"> */}
     <Col size= "s12 m6">
       <div className="card">
         <div className="card-image">
-          <img src={Dungeon} height="100%"/>
+          <img src={Dungeon} height="450"/>
         </div>
         <div className="card-content">
           <p>Sign up adventurer! Be ready to join our vast community on epic journeys! </p>
         </div>
         <div className="card-action">
-        <a className="waves-effect waves-light btn" href="#">Sign Up</a>
+        <a className="waves-effect waves-light btn" href="/signup">Sign Up</a>
         </div>
       </div>
       </Col>
@@ -35,7 +30,7 @@ return(
     <Col size= "s12 m6">
       <div className="card">
         <div className="card-image">
-          <img src= {Creepy} height= "410"/>
+          <img src= {Creepy} height= "450"/>
         </div>
         <div className="card-content">
           <p>Welcome Back traveler! Ready to continue your heroes story?</p>
