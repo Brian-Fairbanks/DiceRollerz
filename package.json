@@ -27,6 +27,8 @@
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
+    "materialize": "^1.0.0",
+    "materialize-css": "^1.0.0",
     "mongoose": "^5.9.15",
     "react-router-dom": "^5.2.0",
     "socket.io": "^2.3.0"
