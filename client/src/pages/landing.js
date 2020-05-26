@@ -7,8 +7,6 @@ import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
 function Landing(){
 return(
 <div>
-    
-    <Nav />
 
     <Row>
     {/* <div className="col s12 m7"> */}
