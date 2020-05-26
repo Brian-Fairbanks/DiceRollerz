@@ -1,9 +1,11 @@
 import React from "react";
+import Logo from "./DRZ.png";
 
 
 function Nav() {
-    return(<nav class="red" role="navigation">
-    <div className="nav-wrapper container"><a id="logo-container" href="#" className="brand-logo">Logo</a>
+  return (<nav className="red" role="navigation">
+    <div className="nav-wrapper container"><a id="logo-container" href="#" className="brand-logo">
+      <img src={Logo} alt="DRZ Logo" height="55"/></a>
       <ul className="right hide-on-med-and-down">
         <li><a href="#">Dice RollerZ</a></li>
       </ul>
@@ -16,3 +18,5 @@ function Nav() {
   </nav>
   );
 }
+
+export default Nav

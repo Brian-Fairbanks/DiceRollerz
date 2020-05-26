@@ -6,6 +6,7 @@ import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
+import Landing from "./pages/landing"
 
 function App() {
 
@@ -22,18 +23,18 @@ function App() {
   return (
     <UserContext.Provider value={{ user}}>
 
-      <div className="App">
+      {/* <div className="App">
 
         <div className="teal lighten-2">
           <h1>Header - Dice Rollers FTW!</h1>
           <div>Hello, {user.userName}</div>
-        </div>
+        </div> */}
 
 
         <BrowserRouter>
           <Switch>
             <Route exact path={["/","/login"]}>
-              <div>Must add login page here!</div>
+              <Landing />
             </Route>
             <Route exact path={"/chat"}>
               <Chat/>
@@ -44,7 +45,7 @@ function App() {
             
           </Switch>
         </BrowserRouter>
-      </div>
+      {/* </div> */}
     </UserContext.Provider>
   );
 }
