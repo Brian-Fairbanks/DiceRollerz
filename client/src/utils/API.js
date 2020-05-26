@@ -12,6 +12,10 @@ export default {
     return axios.get("/api/chat/"+id);
   },
 
+  getUser: function(id){
+    return axios.get("/api/user/"+id);
+  },
+
   getUsers: function(){
     return axios.get("/api/user");
   },
