@@ -6,7 +6,7 @@ import Chat from './pages/chatrooms';
 import Profile from './pages/profile';
 import API from './utils/API';
 import UserContext from './utils/userContext';
-import NavBar from './components/Navbar/Navbar';
+import NavBar from './components/Navbar';
 import Footer from './components/Footer/Footer';
 // import AppBar from '@material-ui/core/AppBar';
 // import Toolbar from '@material-ui/core/Toolbar';
