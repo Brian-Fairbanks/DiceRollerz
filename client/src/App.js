@@ -59,7 +59,6 @@ function App () {
           </main>
         </BrowserRouter>
         <Footer />
-      {/* </div> */}
     </UserContext.Provider>
   )
 }
