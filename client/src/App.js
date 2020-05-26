@@ -41,6 +41,7 @@ function App () {
         </div> */}
         <BrowserRouter>
           <NavBar />
+          <main>
           <Switch>
             <Route exact path={"/"}>
               <Landing />
@@ -55,6 +56,7 @@ function App () {
               <Profile />
             </Route>
           </Switch>
+          </main>
         </BrowserRouter>
         <Footer />
       {/* </div> */}
