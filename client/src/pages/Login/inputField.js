@@ -5,7 +5,7 @@ class inputField extends Component {
         return (
             <div className="inputField">
                 <input
-                className='input'
+                className='input white-text'
                 type={this.props.type}
                 placeholder={this.props.placeholder}
                 value={this.props.value}

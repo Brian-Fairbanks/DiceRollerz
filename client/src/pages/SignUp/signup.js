@@ -10,12 +10,12 @@ return(
     <div class="col s12 m7 xl10">
       <div class="card blue-grey darken-1">
         <div class="card-content white-text">
-          <p>I am a very simple card. I am good at containing small bits of information.
-          I am convenient because I require little markup to use effectively.</p>
+          <input placeholder="Username" id="username" type="text" className="white-text"></input>
+          <input placeholder="Password" id="password" type="text" className="white-text"></input>
         </div>
         <div class="card-action">
-        <a class="waves-effect waves-light btn" href="/chat">Sign Up</a>
-        <a class="waves-effect waves-light btn" href="/login">Log In</a>
+        <a className="waves-effect waves-light btn red accent" href="/chat">Sign Up</a>
+        <a className="waves-effect waves-light btn red accent" href="/login">Log In</a>
         </div>
       </div>
     </div>
