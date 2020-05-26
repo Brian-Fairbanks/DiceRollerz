@@ -4,6 +4,7 @@ import './App.css';
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
+import Login from "./pages/Login/login";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path={["/","/login"]}>
-            <div>Must add login page here!</div>
+            <Login></Login>
           </Route>
           <Route exact path={"/chat"}>
             <Chat/>
