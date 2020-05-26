@@ -2,10 +2,10 @@ import React from "react";
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass
+ * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange
  */
 export function Input(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, value } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, value, onChange } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <input 
@@ -14,6 +14,7 @@ export function Input(propz) {
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
                 value={value}
+                onChange={onChange}
             />
             <label htmlFor={id}>{label}</label>
         </div>
@@ -22,10 +23,10 @@ export function Input(propz) {
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass
+ * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange
  */
 export function InputWIcon(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value, onChange } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <i className="material-icons prefix">{icon}</i>
@@ -35,6 +36,7 @@ export function InputWIcon(propz) {
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
                 value={value}
+                onChange={onChange}
             />
             <label htmlFor={id}>{label}</label>
         </div>

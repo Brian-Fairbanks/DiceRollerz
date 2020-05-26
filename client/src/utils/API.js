@@ -20,6 +20,11 @@ export default {
     return axios.get("/api/user");
   },
 
+  updateUser: async function(user){
+    const data = await axios.put("/api/user/"+user._id, user);
+    this.socketMsg(user);
+    return data;
+  },
   sendPost: async function(post){
     const data = await axios.post("/api/post", post);
     this.socketMsg(post);
