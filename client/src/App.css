@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+body, #root{
+  background-color: #282c34;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}

@@ -11,6 +11,7 @@ function Chatrooms(){
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
 
   const [clientMsg, setClientMsg] = useState("")
+  const [editMsg, setEditMsg] = useState({id:"", body:""})
   const [newMessage, setNewMessage] = useState({
     sender:user.userName,
     room:"",
@@ -59,6 +60,12 @@ function Chatrooms(){
       setNewMessage({...newMessage, body: value})
     };
 
+    function getEditMessage(post, id){
+      //alert(`Clicked ${JSON.stringify(post)}!`);
+      setEditMsg({post, id})
+      
+    }
+
 
 /*  ###############################################################
     Use Effects 
@@ -83,6 +90,7 @@ function Chatrooms(){
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {
+    console.log(clientMsg)
     if(clientMsg){
       updateMessages(clientMsg.room)
     }
@@ -117,6 +125,8 @@ function Chatrooms(){
               body={post.body}
               sender={post.sender}
               yours={post.sender === user._id}
+              id = {post._id}
+              getMsg={getEditMessage}
             />
           )
         }):"No Messages"}        
@@ -135,6 +145,17 @@ function Chatrooms(){
           </div>
         </form>
         :""
+      }
+      {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality*/}
+      {editMsg.id?(
+        <div>
+          <button onClick={() => setEditMsg({id:"", body:""})}>Cancel</button>
+          <button onClick={()=>{API.deletePost(editMsg.id); setEditMsg({id:"", body:""})}}>Delete</button>
+          <button>Edit</button>
+        </div>
+        )
+        :
+        ""
       }
 
     </div>

@@ -24,13 +24,21 @@
   },
   "homepage": "https://github.com/Brian-Fairbanks/DiceRollerz#readme",
   "dependencies": {
+    "@material-ui/core": "^4.10.0",
+    "@material/top-app-bar": "^6.0.0",
     "axios": "^0.19.2",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
+    "material-components-web": "^6.0.0",
+    "material-ui": "^0.20.2",
     "materialize": "^1.0.0",
-    "materialize-css": "^1.0.0",
+    "materialize-css": "^1.0.0-rc.2",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.2.2",
     "mongoose": "^5.9.15",
+    "react-materialize": "^3.9.2",
     "react-router-dom": "^5.2.0",
+    "react-tap-event-plugin": "^3.0.3",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
