@@ -35,6 +35,7 @@ function App() {
           <Switch>
             <Route exact path={["/","/login"]}>
               <div>Must add login page here!</div>
+              <Login></Login>
             </Route>
             <Route exact path={"/chat"}>
               <Chat/>
