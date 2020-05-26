@@ -3,7 +3,6 @@ import Nav from "../components/Navbar"
 
 function SignUp() {
 return(
-    <Nav />
     
     <div class="row">
     <div class="col s12 m6">
