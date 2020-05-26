@@ -19,7 +19,6 @@ function App() {
                     title="HAL 9000"
                     text={["I'm sorry, Dave", "I'm afraid I can't do that."]}
                     href="#"
-                    key="1"
                 />
             </Avatar>
               
@@ -61,10 +60,6 @@ function App() {
                 icon=""
                 label="About Me"
               />
-              
-
-
-
 
           </form>
         </div>
