@@ -39,7 +39,7 @@ return(
           <p>Welcome Back traveler! Ready to continue your heroes story?</p>
         </div>
         <div className="card-action">
-          <a className="waves-effect waves-light btn" href="#">Log In</a>
+          <a className="waves-effect waves-light btn" href="/login">Log In</a>
         </div>
       </div>
       </Col>

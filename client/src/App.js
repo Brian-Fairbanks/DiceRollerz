@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import {Switch, BrowserRouter, Route} from "react-router-dom";
 import './App.css';
+import { Textarea, TextareaWIcon } from './components/TextArea';
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
 import Landing from "./pages/landing"
+import Login from "./pages/Login/login";
 
 function App() {
 
@@ -33,8 +35,11 @@ function App() {
 
         <BrowserRouter>
           <Switch>
-            <Route exact path={["/","/login"]}>
+            <Route exact path={"/"}>
               <Landing />
+            </Route>
+            <Route exact path= {"/login"}>
+            <Login />
             </Route>
             <Route exact path={"/chat"}>
               <Chat/>
