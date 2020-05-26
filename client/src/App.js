@@ -1,89 +1,53 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Switch, BrowserRouter, Route} from "react-router-dom";
 import './App.css';
 import { Textarea, TextareaWIcon } from './components/TextArea';
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
+import API from './utils/API';
+import UserContext from "./utils/userContext";
 
 function App() {
+
+  const [user, setUser ] = useState({_id:"", firstName:"", lastName:"", userName:"", email:""})
+  // handle setting user after login or signup!
+  
+  // this here is only temporary !!! -------------
+  useEffect(() => {
+    API.getUsers()
+    .then( data => {setUser(data.data[0])})
+  }, [])
+  //  this here is only temporary !!! -------------
+
   return (
-    <div className="App">
-      <h1>Dice Rollers FTW!</h1>
+    <UserContext.Provider value={{ user}}>
 
-      
-      
+      <div className="App">
 
-      <div className="teal lighten-2">
-        <h1>Header - Dice Rollers FTW!</h1>
+        <div className="teal lighten-2">
+          <h1>Header - Dice Rollers FTW!</h1>
+          <div>Hello, {user.userName}</div>
+        </div>
+
+
+        <BrowserRouter>
+          <Switch>
+            <Route exact path={["/","/login"]}>
+              <div>Must add login page here!</div>
+            </Route>
+            <Route exact path={"/chat"}>
+              <Chat/>
+            </Route>
+            <Route exact path={"/profile"}>
+              <Profile/>
+            </Route>
+            
+          </Switch>
+        </BrowserRouter>
       </div>
-
-      <BrowserRouter>
-        <Switch>
-          <Route exact path={["/","/login"]}>
-            <div>Must add login page here!</div>
-          </Route>
-          <Route exact path={"/chat"}>
-            <Chat/>
-          </Route>
-          <Route exact path={"/profile"}>
-            <Profile/>
-          </Route>
-          
-        </Switch>
-      </BrowserRouter>
-    </div>
+    </UserContext.Provider>
   );
 }
 
 export default App;
-
-
-
-        // <Avatar>
-        //   <AvatarWPic
-        //     imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
-        //     imageHeight="50px"
-        //     altText="Red Dot"
-        //     title="HAL 9000"
-        //     text={["I'm sorry, Dave", "I'm afraid I can't do that."]}
-        //     href="#"
-        //     key="1"
-        //   />
-        // </Avatar>
-        
-
-
-{/* <div className="container">
-  <Input 
-    // id=""
-    // type=""
-    colSize="s12"
-    placeholder="Hello World!"
-    label="Test"
-  />
-</div> */}
-
-{/* <InputWIcon
-id="test"
-// type=""
-icon="sms"
-colSize="s12"
-placeholder="Hello World!"
-label="Test"
-/> */}
-
-{/* <Textarea
-id="test"
-icon="sms"
-colSize="s12"
-placeholder="Hello World!"
-label="Test"
-/> */}
-
-{/* <Textarea
-  id="test"
-  colSize="s12"
-  placeholder="Hello World!"
-  label="Test"
-/> */}
