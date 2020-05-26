@@ -7,6 +7,7 @@ import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
+import Login from "./pages/Login/login";
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Switch>
             <Route exact path={["/","/login"]}>
               <div>Must add login page here!</div>
+              <Login></Login>
             </Route>
             <Route exact path={"/chat"}>
               <Chat/>
