@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import './profile.css';
+import UserContext from "../utils/userContext";
+
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { Input, InputWIcon } from '../components/Input';
 import { Textarea, TextareaWIcon } from '../components/TextArea';
 
 function App() {
+  const { user } = useContext(UserContext);
+  console.log("profile.user:", user);
+
   return (
     <div className="App">
       <div className="row">
@@ -29,6 +34,7 @@ function App() {
                 label="User Name"
                 placeholder="User Name"
                 type="text"
+                value={user.userName}
               />
               <InputWIcon
                 id="first-name"
@@ -37,6 +43,7 @@ function App() {
                 label="First Name"
                 placeholder="First Name"
                 type="text"
+                value={user.firstName}
               />
               <InputWIcon
                 id="last-name"
@@ -45,6 +52,7 @@ function App() {
                 label="Last Name"
                 placeholder="Last Name"
                 type="text"
+                value={user.lastName}
               />
               <InputWIcon
                 id="email"
@@ -53,12 +61,14 @@ function App() {
                 label="Email"
                 placeholder="Email"
                 type="text"
+                value={user.email}
               />
               <TextareaWIcon
                 id="description"
                 name="desc"
                 icon=""
                 label="About Me"
+                value={user.description}
               />
 
           </form>

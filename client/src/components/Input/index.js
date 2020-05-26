@@ -5,7 +5,7 @@ import React from "react";
  * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass
  */
 export function Input(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, value } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <input 
@@ -13,6 +13,7 @@ export function Input(propz) {
                 className={!inputClass ? "validate" : inputClass}
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
+                value={value}
             />
             <label htmlFor={id}>{label}</label>
         </div>
@@ -24,7 +25,7 @@ export function Input(propz) {
  * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass
  */
 export function InputWIcon(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <i className="material-icons prefix">{icon}</i>
@@ -33,6 +34,7 @@ export function InputWIcon(propz) {
                 className={!inputClass ? "validate" : inputClass}
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
+                value={value}
             />
             <label htmlFor={id}>{label}</label>
         </div>
