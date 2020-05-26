@@ -48,8 +48,8 @@ function Appfxn () {
 
   return (
     <UserContext.Provider value={{ user }}>
-      <div className='App'>
-        <div className='red darken-4'>
+      {/* <div className='App'>
+        <div className='red darken-4'> */}
       {/* <div className="App">
 
         <div className="teal lighten-2">
