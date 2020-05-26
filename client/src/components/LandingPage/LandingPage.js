@@ -3,8 +3,8 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
     return (
-      
-    <div className='landingPage'>
+      <dv 
+    <div<<div className='landingPage'>
       <div className="card"
     </div>
   )

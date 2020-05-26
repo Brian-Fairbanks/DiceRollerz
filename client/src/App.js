@@ -12,6 +12,7 @@ import Footer from './components/Footer/Footer';
 // import Toolbar from '@material-ui/core/Toolbar';
 // import TypoGraphy from '@material-ui/core/Typography';
 
+
 function App () {
   return (
     /* <AppBar>
