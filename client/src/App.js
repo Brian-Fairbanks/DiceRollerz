@@ -6,6 +6,7 @@ import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
+import NavBar from "./components/Navbar";
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
 
       <div className="App">
 
-        <div className="teal lighten-2">
+        <div className="red darken-4">
           <h1>Header - Dice Rollers FTW!</h1>
           <div>Hello, {user.userName}</div>
         </div>
@@ -48,5 +49,31 @@ function App() {
     </UserContext.Provider>
   );
 }
+
+import React, { Component } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar'
+import TypoGraphy from '@material-ui/core/Typography'
+
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <AppBar color="danger" position="static">
+          <Toolbar>
+            <TypoGraphy variant="title"
+              color="inherit"
+            >
+              My header
+           </TypoGraphy>
+          </Toolbar>
+        </AppBar>
+
+      </div>
+    );
+  }
+}
+
 
 export default App;
