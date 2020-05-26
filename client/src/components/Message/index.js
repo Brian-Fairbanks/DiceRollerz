@@ -7,7 +7,7 @@ function Message({body, deleted, updated, sender, yours, id,  getMsg}){
         {
           deleted? "Message has been deleted":
             `${body} ${updated?"  (Updated)":""}`}
-            {yours? <i className="far fa-edit"></i> :""}
+            {/*yours? <i className="far fa-edit"></i> :""*/}
       </div>
     </div>
   )

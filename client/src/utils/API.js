@@ -21,11 +21,20 @@ export default {
     this.socketMsg(post);
     return data;
   },
-  sendPost: async function(post){
+
+  editPost: async function(post){
     const data = await axios.put("/api/post", post);
     this.socketMsg(post);
     return data;
   },
+
+  deletePost: async function(id){
+    console.log( "deleting "+id);
+    const data = await axios.put("/api/post/"+id, {deleted:true});
+    this.socketMsg(data.data);
+    return data;
+  },
+
 
   createNewChatroom: async function(chatOptions){
     const data = await axios.post("/api/chat", chatOptions);

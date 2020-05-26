@@ -33,6 +33,7 @@ function Chatrooms(){
   
   
     async function updateMessages(id){
+      console.log("Received Callback From Socket!")
       if(id === currentChatroom.chatroom._id){
         const data = await API.getChatroom(id);
         setCurrentChatroom(data.data);
@@ -47,6 +48,7 @@ function Chatrooms(){
       event.preventDefault();
       if (newMessage.sender && newMessage.room && newMessage.body) {
         try{
+          console.log(newMessage);
           await API.sendPost(newMessage)
           setNewMessage({...newMessage, body:""});
           updateMessages(currentChatroom.chatroom._id)
@@ -145,10 +147,11 @@ function Chatrooms(){
         </form>
         :""
       }
+      {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality*/}
       {editMsg.id?(
         <div>
-          <button>Cancel</button>
-          <button>Delete</button>
+          <button onClick={() => setEditMsg({id:"", body:""})}>Cancel</button>
+          <button onClick={()=>{API.deletePost(editMsg.id); setEditMsg({id:"", body:""})}}>Delete</button>
           <button>Edit</button>
         </div>
         )
