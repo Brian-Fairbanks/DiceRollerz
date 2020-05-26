@@ -7,8 +7,15 @@ import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
+<<<<<<< HEAD
 import Landing from "./pages/landing"
+<<<<<<< HEAD
 import Login from "./pages/Login/login";
+=======
+=======
+import Login from "./pages/Login/login";
+>>>>>>> c71070a25714f77200b2f959466c39154321d41a
+>>>>>>> master
 
 function App() {
 
@@ -35,8 +42,17 @@ function App() {
 
         <BrowserRouter>
           <Switch>
+<<<<<<< HEAD
             <Route exact path={"/"}>
+=======
+            <Route exact path={["/","/login"]}>
+<<<<<<< HEAD
+>>>>>>> master
               <Landing />
+=======
+              <div>Must add login page here!</div>
+              <Login></Login>
+>>>>>>> c71070a25714f77200b2f959466c39154321d41a
             </Route>
             <Route exact path= {"/login"}>
             <Login />
