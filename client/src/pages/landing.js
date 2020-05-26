@@ -1,5 +1,4 @@
 import React from "react";
-import Nav from "../components/Navbar";
 import {Col, Row, Container} from "../components/Grid";
 import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
 import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
@@ -8,7 +7,7 @@ function Landing(){
 return(
 <div>
     
-    <Nav />
+    
 
     <Row>
     {/* <div className="col s12 m7"> */}
