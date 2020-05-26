@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {Switch, BrowserRouter, Route} from "react-router-dom";
 import './App.css';
+import { Textarea, TextareaWIcon } from './components/TextArea';
 import { Avatar, AvatarWPic } from './components/Avatar';
 import Chat from "./pages/chatrooms";
 import Profile from "./pages/profile";
 import API from './utils/API';
 import UserContext from "./utils/userContext";
+<<<<<<< HEAD
 import Landing from "./pages/landing"
+=======
+import Login from "./pages/Login/login";
+>>>>>>> c71070a25714f77200b2f959466c39154321d41a
 
 function App() {
 
@@ -34,7 +39,12 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route exact path={["/","/login"]}>
+<<<<<<< HEAD
               <Landing />
+=======
+              <div>Must add login page here!</div>
+              <Login></Login>
+>>>>>>> c71070a25714f77200b2f959466c39154321d41a
             </Route>
             <Route exact path={"/chat"}>
               <Chat/>
