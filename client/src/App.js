@@ -39,8 +39,8 @@ function App () {
           <h1>Header - Dice Rollers FTW!</h1>
           <div>Hello, {user.userName}</div>
         </div> */}
-      <NavBar />
         <BrowserRouter>
+          <NavBar />
           <Switch>
             <Route exact path={"/"}>
               <Landing />
