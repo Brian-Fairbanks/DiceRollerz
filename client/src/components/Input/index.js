@@ -5,7 +5,7 @@ import React from "react";
  * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange
  */
 export function Input(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, value, onChange } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, value, defaultValue, onChange } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <input 
@@ -13,6 +13,7 @@ export function Input(propz) {
                 className={!inputClass ? "validate" : inputClass}
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
+                defaultValue={defaultValue}
                 value={value}
                 onChange={onChange}
             />
@@ -26,7 +27,7 @@ export function Input(propz) {
  * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange
  */
 export function InputWIcon(propz) {
-    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value, onChange } = propz
+    const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value, defaultValue, onChange } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
             <i className="material-icons prefix">{icon}</i>
@@ -35,6 +36,7 @@ export function InputWIcon(propz) {
                 className={!inputClass ? "validate" : inputClass}
                 placeholder={placeholder} 
                 type={!type ? "text" : type} 
+                defaultValue={defaultValue}
                 value={value}
                 onChange={onChange}
             />

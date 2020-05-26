@@ -5,31 +5,31 @@ import UserContext from "../utils/userContext";
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { Input, InputWIcon } from '../components/Input';
 import { Textarea, TextareaWIcon } from '../components/TextArea';
+import { Button, FloatingButton, SubmitButton } from '../components/Button';
 
 function Profile() {
   const { user } = useContext(UserContext);
-  const [currentUser, setCurrentUser] = useState({})
-  // console.log("profile.user:", user);
+  const [currentUser, setCurrentUser] = useState({userName: "", firstName: "", lastName: "", email: ""})
 
   useEffect(() => {
     setCurrentUser(user);
-    console.log("profile.currentUser:", currentUser);
-  })  
+  }, [user])  
 
-  function changeHandler(event) {
-    let newUser = currentUser;
-    switch (event.target.id) {
+  const changeHandler = event => {
+    const { id, value } = event.target;
+    let newUser = { ...currentUser };
+    switch (id) {
       case "user-name":
-        newUser.userName = event.target.value;
+        newUser.userName = value;
         break;
       case "first-name":
-        newUser.firstName = event.target.value;
+        newUser.firstName = value;
         break;
       case "last-name":
-        newUser.lastName = event.target.value;
+        newUser.lastName = value;
         break;
       case "email":
-        newUser.email = event.target.value;
+        newUser.email = value;
         break;
       case "description":
         // newUser.description = event.target.value;
@@ -38,7 +38,11 @@ function Profile() {
         return;
     }
     setCurrentUser(newUser);
-    // console.log(newUser, currentUser);
+  }
+
+  const clickHandler = event => {
+    event.preventDefault();
+    console.log("Submit button Clicked!");
   }
 
   return (
@@ -55,6 +59,7 @@ function Profile() {
                     title="HAL 9000"
                     text={["I'm sorry, Dave", "I'm afraid I can't do that."]}
                     href="#"
+                    key="0"
                 />
             </Avatar>
               
@@ -108,6 +113,13 @@ function Profile() {
                 onChange={changeHandler}
               />
 
+              <SubmitButton 
+                id="submit-button"
+                name="profile-form"
+                icon=""
+                text="Save Changes"
+                onClick={clickHandler}
+              />
           </form>
         </div>
       </div>
