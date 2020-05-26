@@ -11,6 +11,7 @@ function Chatrooms(){
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
 
   const [clientMsg, setClientMsg] = useState("")
+  const [editMsg, setEditMsg] = useState({id:"", body:""})
   const [newMessage, setNewMessage] = useState({
     sender:user.userName,
     room:"",
@@ -58,6 +59,12 @@ function Chatrooms(){
       const {value} = event.currentTarget;
       setNewMessage({...newMessage, body: value})
     };
+
+    function getEditMessage(post, id){
+      //alert(`Clicked ${JSON.stringify(post)}!`);
+      setEditMsg({post, id})
+      
+    }
 
 
 /*  ###############################################################
@@ -117,6 +124,8 @@ function Chatrooms(){
               body={post.body}
               sender={post.sender}
               yours={post.sender === user._id}
+              id = {post._id}
+              getMsg={getEditMessage}
             />
           )
         }):"No Messages"}        
@@ -135,6 +144,16 @@ function Chatrooms(){
           </div>
         </form>
         :""
+      }
+      {editMsg.id?(
+        <div>
+          <button>Cancel</button>
+          <button>Delete</button>
+          <button>Edit</button>
+        </div>
+        )
+        :
+        ""
       }
 
     </div>

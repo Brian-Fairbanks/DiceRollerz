@@ -16,8 +16,13 @@ export default {
     return axios.get("/api/user");
   },
 
+  sendPost: async function(id, post){
+    const data = await axios.post("/api/post"+id, post);
+    this.socketMsg(post);
+    return data;
+  },
   sendPost: async function(post){
-    const data = await axios.post("/api/post", post);
+    const data = await axios.put("/api/post", post);
     this.socketMsg(post);
     return data;
   },
