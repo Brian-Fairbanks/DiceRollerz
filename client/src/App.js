@@ -40,8 +40,9 @@ function App () {
           <h1>Header - Dice Rollers FTW!</h1>
           <div>Hello, {user.userName}</div>
         </div> */}
-      <NavBar />
         <BrowserRouter>
+          <NavBar />
+          <main>
           <Switch>
             <Route exact path={"/"}>
               <Landing />
@@ -59,9 +60,9 @@ function App () {
               <SignUp />
             </Route>
           </Switch>
+          </main>
         </BrowserRouter>
         <Footer />
-      {/* </div> */}
     </UserContext.Provider>
   )
 }
