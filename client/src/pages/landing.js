@@ -1,20 +1,12 @@
 import React from "react";
-<<<<<<< HEAD
-import Nav from "./components/Navbar"
-=======
 import Nav from "../components/Navbar";
 import {Col, Row, Container} from "../components/Grid";
 import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
 import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
->>>>>>> master
 
 function Landing(){
 return(
 <div>
-<<<<<<< HEAD
-    <Nav />
-    
-=======
     
     <Nav />
 
@@ -54,7 +46,6 @@ return(
     {/* </div> */}
     </Row>
 
->>>>>>> master
 </div>
     
 )
