@@ -12,23 +12,6 @@ import Login from "./pages/Login/login";
 
 
 function App () {
-  return (
-    /* <AppBar>
-          <Toolbar>
-            <TypoGraphy variant="title" color="inherit">
-              My header
-            </TypoGraphy>
-          </Toolbar>
-        </AppBar>
-        <br></br> */
-    <div className='App'>
-      <NavBar />
-      <Footer />
-    </div>
-  )
-}
-
-function Appfxn () {
   const [user, setUser] = useState({
     _id: '',
     firstName: '',
@@ -56,7 +39,7 @@ function Appfxn () {
           <h1>Header - Dice Rollers FTW!</h1>
           <div>Hello, {user.userName}</div>
         </div> */}
-
+      <NavBar />
         <BrowserRouter>
           <Switch>
             <Route exact path={"/"}>
@@ -73,9 +56,10 @@ function Appfxn () {
             </Route>
           </Switch>
         </BrowserRouter>
+        <Footer />
       {/* </div> */}
     </UserContext.Provider>
   )
 }
 
-export default App;
+export default App
