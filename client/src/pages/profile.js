@@ -4,14 +4,14 @@ import UserContext from "../utils/userContext";
 import API from "../utils/API.js";
 
 import { Avatar, AvatarWPic } from '../components/Avatar';
-import { InputWIcon } from '../components/Input';
+import { Input, InputWIcon, InputNoLabel } from '../components/Input';
 import { TextareaWIcon } from '../components/TextArea';
 import { SubmitButton } from '../components/Button';
 
 function Profile() {
   const { user } = useContext(UserContext);
-  const [primeUser, setPrimeUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: ""})
-  const [currentUser, setCurrentUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: ""})
+  const [primeUser, setPrimeUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
+  const [currentUser, setCurrentUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
 
   useEffect(() => {
     //      PrimeUser tracks the current state of the Database.
@@ -26,6 +26,12 @@ function Profile() {
     switch (id) {
       case "user-name":
         newUser.userName = value;
+        break;
+      case "user-tagline":
+        newUser.tagLine = value;
+        break;
+      case "user-status":
+        newUser.status = value;
         break;
       case "first-name":
         newUser.firstName = value;
@@ -51,7 +57,12 @@ function Profile() {
     let userChanges = {};
     if (currentUser.userName !== primeUser.userName) {
       userChanges.userName = currentUser.userName;
-
+    }
+    if (currentUser.status !== primeUser.status) {
+      userChanges.status = currentUser.status;
+    }
+    if (currentUser.tagLine !== primeUser.tagLine) {
+      userChanges.tagLine = currentUser.tagLine;
     }
     if (currentUser.firstName !== primeUser.firstName) {
       userChanges.firstName = currentUser.firstName;
@@ -83,10 +94,30 @@ function Profile() {
               <Avatar>
                   <AvatarWPic
                       imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
-                      imageHeight="50px"
                       altText="Red Dot"
-                      title="HAL 9000"
-                      text={["I'm sorry, Dave", "I'm afraid I can't do that."]}
+                      title={"~ " + currentUser.userName + " ~"}
+                      text={[
+                        <InputNoLabel
+                          id="user-tagline"
+                          placeholder="Tagline"
+                          title="Tagline"
+                          type="text"
+                          style={{ fontSize: "16px"}}
+                          value={currentUser.tagLine}
+                          onChange={changeHandler}
+                          inputClass={(currentUser.tagLine === primeUser.tagLine) ? "validate white-text" : "validate yellow-text"}
+                        />,
+                        <InputNoLabel
+                          id="user-status"
+                          placeholder="Status"
+                          title="Status"
+                          type="text"
+                          style={{ fontSize: "16px" }}
+                          value={currentUser.status}
+                          onChange={changeHandler}
+                          inputClass={(currentUser.status === primeUser.status) ? "validate white-text" : "validate yellow-text"}
+                        />
+                      ]}
                       href="#"
                       key="0"
                   />
@@ -102,7 +133,7 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.userName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.userName === primeUser.userName) ? "validate white-text" : "validate red-text"}
+                  inputClass={(currentUser.userName === primeUser.userName) ? "validate white-text" : "validate yellow-text"}
                 />
                 <InputWIcon
                   id="first-name"
@@ -113,7 +144,7 @@ function Profile() {
                   type="text"
                   value={currentUser.firstName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate red-text"}
+                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate yellow-text"}
                 />
                 <InputWIcon
                   id="last-name"
@@ -124,7 +155,7 @@ function Profile() {
                   type="text"
                   value={currentUser.lastName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate red-text"}
+                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate yellow-text"}
                 />
                 <InputWIcon
                   id="email"
@@ -136,7 +167,7 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.email}
                   onChange={changeHandler}
-                  inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate red-text"}
+                  inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate yellow-text"}
                 />
                 <TextareaWIcon
                   id="description"
@@ -146,7 +177,7 @@ function Profile() {
                   value={currentUser.description}
                   isDisabled={true}
                   onChange={changeHandler}
-                  areaClass={(currentUser.description === primeUser.description) ? "validate white-text" : "validate red-text"}
+                  areaClass={(currentUser.description === primeUser.description) ? "validate white-text" : "validate yellow-text"}
                 />
 
                 <SubmitButton 
@@ -154,7 +185,7 @@ function Profile() {
                   name="profile-form"
                   icon=""
                   text="Save Changes"
-                  isDisabled={currentUser !== primeUser}
+                  isDisabled={currentUser === primeUser}
                 />
             </form>
           </div>
