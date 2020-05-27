@@ -105,12 +105,12 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="btn" >{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="btn red accent" >{room.name}</button>
         )
       })}
 
       {/*Adding a new chatroom button */}
-      <NewChatModal
+      <NewChatModal 
         //value={"Testing Values"}
       />
 
@@ -135,11 +135,13 @@ function Chatrooms(){
       {currentChatroom.chatroom? 
         <form className="row">
             <div className="input-field col s10">
-              <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea" ></textarea>
+              <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
               <label htmlFor="message">New Message</label>
             </div>
             <div className="col s2">
-              <button onClick={handleMsgSubmit} className="btn">Submit</button>
+              {/* <button onClick={handleMsgSubmit}>Submit</button> */}
+              <button class="btn red accent" onClick={handleMsgSubmit}>Submit
+              </button>
             </div>
         </form>
         :""
@@ -147,9 +149,9 @@ function Chatrooms(){
       {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality*/}
       {editMsg.id?(
         <div>
-          <button onClick={() => setEditMsg({id:"", body:""})}>Cancel</button>
-          <button onClick={()=>{API.deletePost(editMsg.id); setEditMsg({id:"", body:""})}}>Delete</button>
-          <button>Edit</button>
+          <button class="btn waves-effect waves-light red accent" onClick={() => setEditMsg({id:"", body:""})}>Cancel</button>
+          <button class="btn waves-effect waves-light red accent" onClick={()=>{API.deletePost(editMsg.id); setEditMsg({id:"", body:""})}}>Delete</button>
+          <button class="btn waves-effect waves-light red accent">Edit</button>
         </div>
         )
         :
