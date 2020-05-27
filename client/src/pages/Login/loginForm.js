@@ -88,7 +88,7 @@ class loginForm extends Component {
 
     render() {
         return (
-            <div className="loginForm">
+            <div className="loginForm white-text">
                 Log In
                 <InputField
                     type='text'
