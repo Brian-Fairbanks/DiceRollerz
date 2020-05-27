@@ -10,7 +10,7 @@ export function Textarea (propz) {
         <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
           <textarea 
             id={id} 
-            className={(areaClass ? "materialize-textarea " + areaClass : "materialize-textarea")}
+            className={(areaClass ? "materialize-textarea " + areaClass : "materialize-textarea white-text")}
             disabled={isDisabled}
             required={isRequired}
           >
@@ -32,7 +32,7 @@ export function TextareaWIcon (propz) {
           <i className="material-icons prefix">{icon}</i>
           <textarea 
             id={id} 
-            className={(areaClass ? "materialize-textarea " + areaClass : "materialize-textarea")}
+            className={(areaClass ? "materialize-textarea " + areaClass : "materialize-textarea white-text")}
             disabled={isDisabled}
             required={isRequired}
           >

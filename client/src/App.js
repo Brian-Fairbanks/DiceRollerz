@@ -9,6 +9,7 @@ import NavBar from './components/Navbar';
 import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 import Login from "./pages/Login/login";
+import SignUp from './pages/SignUp/signup';
 
 
 function App () {
@@ -41,24 +42,38 @@ function App () {
         </div> */}
         <BrowserRouter>
           <NavBar />
-          <main>
           <Switch>
             <Route exact path={"/"}>
-              <Landing />
+              <main>
+                <Landing />
+              </main>
+              <Footer />
             </Route>
             <Route exact path={"/login"}>
-            <Login />
+              <main>
+                <Login />
+              </main>
+              <Footer />
             </Route>
             <Route exact path='/chat'>
-              <Chat />
+              <main>
+                <Chat />
+              </main>
             </Route>
             <Route exact path='/profile'>
-              <Profile />
+              <main>
+                <Profile />
+              </main>
+              <Footer />
+            </Route>
+            <Route exact path="/signup">
+              <main>
+                <SignUp />
+              </main>
+              <Footer />
             </Route>
           </Switch>
-          </main>
         </BrowserRouter>
-        <Footer />
     </UserContext.Provider>
   )
 }

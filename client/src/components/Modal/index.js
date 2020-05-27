@@ -39,7 +39,7 @@ class NewChatModal extends Component {
     return (
       <div>
         <a
-          className="waves-effect waves-light btn modal-trigger"
+          className="btn red modal-trigger"
           data-target="modal1"
         >
           <i className="fas fa-comment-medical"></i>
