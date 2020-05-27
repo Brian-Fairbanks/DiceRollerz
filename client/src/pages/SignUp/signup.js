@@ -28,11 +28,13 @@ const userSchema = new Schema({
   firstName: {
     type: String,
     trim: true,
+    match:[/^[a-zA-Z0-9]+$/, 'is invalid'],
     required: "First Name is required",
   },
   lastName: {
     type: String,
     trim: true,
+    match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     required: "Last Name is required"
   }
 });
