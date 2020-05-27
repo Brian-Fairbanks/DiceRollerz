@@ -102,7 +102,7 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.userName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.userName === primeUser.userName) ? "validate" : "validate red-text"}
+                  inputClass={(currentUser.userName === primeUser.userName) ? "validate white-text" : "validate red-text"}
                 />
                 <InputWIcon
                   id="first-name"
@@ -113,7 +113,7 @@ function Profile() {
                   type="text"
                   value={currentUser.firstName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate" : "validate red-text"}
+                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate red-text"}
                 />
                 <InputWIcon
                   id="last-name"
@@ -124,7 +124,7 @@ function Profile() {
                   type="text"
                   value={currentUser.lastName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate" : "validate red-text"}
+                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate red-text"}
                 />
                 <InputWIcon
                   id="email"
@@ -136,7 +136,7 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.email}
                   onChange={changeHandler}
-                  inputClass={(currentUser.email === primeUser.email) ? "validate" : "validate red-text"}
+                  inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate red-text"}
                 />
                 <TextareaWIcon
                   id="description"
@@ -146,7 +146,7 @@ function Profile() {
                   value={currentUser.description}
                   isDisabled={true}
                   onChange={changeHandler}
-                  areaClass={(currentUser.description === primeUser.description) ? "validate" : "validate red-text"}
+                  areaClass={(currentUser.description === primeUser.description) ? "validate white-text" : "validate red-text"}
                 />
 
                 <SubmitButton 
