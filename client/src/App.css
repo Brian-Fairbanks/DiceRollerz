@@ -48,3 +48,8 @@ body, #root{
 main {
   flex: 1 0 auto;
 }
+
+.posts{
+  max-height: 50vh;
+  overflow-y:scroll;
+}
