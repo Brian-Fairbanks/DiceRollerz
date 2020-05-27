@@ -118,6 +118,7 @@ function Chatrooms(){
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
             <Message
+              members={currentChatroom.chatroom.members}
               key={post._id}
               deleted={post.deleted}
               updated={post.updated}
