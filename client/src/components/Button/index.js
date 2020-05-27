@@ -26,7 +26,7 @@ export function FloatingButton({ id, color, buttonClass, iconName, onClick }) {
  */
 export function SubmitButton({ id, type, name, text, icon, onClick }) {
     return (
-        <button id={id} className="btn waves-effect waves-light" type={(type ? type : "submit")} name={name ? name : "action"} onClick={onClick}>{text}
+        <button id={id} className="btn waves-effect waves-light red accent" type={(type ? type : "submit")} name={name ? name : "action"} onClick={onClick}>{text}
             <i className="material-icons right">{(icon ? icon : "send")}</i>
         </button>
     )

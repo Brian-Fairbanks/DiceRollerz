@@ -30,7 +30,7 @@ export function InputWIcon(propz) {
     const { id, colSize, placeholder, label, type, inputClass, wrapperClass, icon, value, defaultValue, onChange } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
-            <i className="material-icons prefix">{icon}</i>
+            <i className="material-icons prefix red">{icon}</i>
             <input 
                 id={id} 
                 className={!inputClass ? "validate" : inputClass}
@@ -39,6 +39,7 @@ export function InputWIcon(propz) {
                 defaultValue={defaultValue}
                 value={value}
                 onChange={onChange}
+                className="white-text"
             />
             <label htmlFor={id}>{label}</label>
         </div>
