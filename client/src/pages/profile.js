@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import './profile.css';
 import UserContext from "../utils/userContext";
+import API from "../utils/API.js";
 
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { Input, InputWIcon } from '../components/Input';
@@ -18,31 +19,62 @@ function Profile() {
   const changeHandler = event => {
     const { id, value } = event.target;
     let newUser = { ...currentUser };
+    let originalValue;
     switch (id) {
       case "user-name":
         newUser.userName = value;
+        originalValue = user.userName;
         break;
       case "first-name":
         newUser.firstName = value;
+        originalValue = user.firstName;
         break;
       case "last-name":
         newUser.lastName = value;
+        originalValue = user.lastName;
         break;
       case "email":
         newUser.email = value;
+        originalValue = user.email;
         break;
       case "description":
         // newUser.description = event.target.value;
+        // originalValue = user.description;
         // break;
       default:
         return;
     }
     setCurrentUser(newUser);
+    // if (value === originalValue) {
+    //   event.target.className = "validate";
+    // } else {
+    //   event.target.className = "validate red-text";
+    // }
   }
 
   const clickHandler = event => {
     event.preventDefault();
     console.log("Submit button Clicked!");
+
+    let userChanges = {};
+    if (currentUser.userName !== user.userName) {
+      userChanges.userName = currentUser.userName;
+
+    }
+    if (currentUser.firstName !== user.firstName) {
+      userChanges.firstName = currentUser.firstName;
+    }
+    if (currentUser.lastName !== user.lastName) {
+      userChanges.lastName = currentUser.lastName;
+    }
+    if (currentUser.email !== user.email) {
+      userChanges.email = currentUser.email;
+    }
+
+    if (userChanges !== {}) {
+      userChanges._id = user._id;
+      API.updateUser(userChanges);
+    }
   }
 
   return (
@@ -70,8 +102,10 @@ function Profile() {
                 label="User Name"
                 placeholder="User Name"
                 type="text"
+                isRequired={true}
                 value={currentUser.userName}
                 onChange={changeHandler}
+                inputClass={(currentUser.userName === user.userName) ? "validate" : "validate red-text"}
               />
               <InputWIcon
                 id="first-name"
@@ -82,6 +116,7 @@ function Profile() {
                 type="text"
                 value={currentUser.firstName}
                 onChange={changeHandler}
+                inputClass={(currentUser.firstName === user.firstName) ? "validate" : "validate red-text"}
               />
               <InputWIcon
                 id="last-name"
@@ -92,6 +127,7 @@ function Profile() {
                 type="text"
                 value={currentUser.lastName}
                 onChange={changeHandler}
+                inputClass={(currentUser.lastName === user.lastName) ? "validate" : "validate red-text"}
               />
               <InputWIcon
                 id="email"
@@ -99,9 +135,11 @@ function Profile() {
                 icon="email"
                 label="Email"
                 placeholder="Email"
-                type="text"
+                type="email"
+                isRequired={true}
                 value={currentUser.email}
                 onChange={changeHandler}
+                inputClass={(currentUser.email === user.email) ? "validate" : "validate red-text"}
               />
               <TextareaWIcon
                 id="description"
@@ -109,8 +147,9 @@ function Profile() {
                 icon=""
                 label="About Me"
                 value={currentUser.description}
-                disabled={true}
+                isDisabled={true}
                 onChange={changeHandler}
+                areaClass={(currentUser.description === user.description) ? "validate" : "validate red-text"}
               />
 
               <SubmitButton 
@@ -119,6 +158,7 @@ function Profile() {
                 icon=""
                 text="Save Changes"
                 onClick={clickHandler}
+                isDisabled={currentUser !== user}
               />
           </form>
         </div>
