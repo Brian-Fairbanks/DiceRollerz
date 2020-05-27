@@ -118,6 +118,7 @@ function Chatrooms(){
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
             <Message
+              members={currentChatroom.chatroom.members}
               key={post._id}
               deleted={post.deleted}
               updated={post.updated}
@@ -133,12 +134,12 @@ function Chatrooms(){
       </div>
 
       {currentChatroom.chatroom? 
-        <form className="row">
-            <div className="input-field col s10">
+        <form className="row flex flex-align-center">
+            <div className="input-field col flex-grow">
               <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
               <label htmlFor="message">New Message</label>
             </div>
-            <div className="col s2">
+            <div className="col">
               {/* <button onClick={handleMsgSubmit}>Submit</button> */}
               <button class="btn red accent" onClick={handleMsgSubmit}>Submit
               </button>

@@ -82,3 +82,19 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000; 
 }
+
+.fade{
+  opacity:.4;
+}
+
+.flex{
+  display:flex;
+}
+
+.flex-align-center{
+  align-items: center;
+}
+
+.flex-grow{
+  flex:1;
+}
