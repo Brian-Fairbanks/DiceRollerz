@@ -1,10 +1,50 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import './profile.css';
+import UserContext from "../utils/userContext";
+
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { Input, InputWIcon } from '../components/Input';
 import { Textarea, TextareaWIcon } from '../components/TextArea';
+import { Button, FloatingButton, SubmitButton } from '../components/Button';
 
-function App() {
+function Profile() {
+  const { user } = useContext(UserContext);
+  const [currentUser, setCurrentUser] = useState({userName: "", firstName: "", lastName: "", email: ""})
+
+  useEffect(() => {
+    setCurrentUser(user);
+  }, [user])  
+
+  const changeHandler = event => {
+    const { id, value } = event.target;
+    let newUser = { ...currentUser };
+    switch (id) {
+      case "user-name":
+        newUser.userName = value;
+        break;
+      case "first-name":
+        newUser.firstName = value;
+        break;
+      case "last-name":
+        newUser.lastName = value;
+        break;
+      case "email":
+        newUser.email = value;
+        break;
+      case "description":
+        // newUser.description = event.target.value;
+        // break;
+      default:
+        return;
+    }
+    setCurrentUser(newUser);
+  }
+
+  const clickHandler = event => {
+    event.preventDefault();
+    console.log("Submit button Clicked!");
+  }
+
   return (
     <div className="App">
       <div className="row">
@@ -19,7 +59,7 @@ function App() {
                     title="HAL 9000"
                     text={["I'm sorry, Dave", "I'm afraid I can't do that."]}
                     href="#"
-                    key="1"
+                    key="0"
                 />
             </Avatar>
               
@@ -30,6 +70,8 @@ function App() {
                 label="User Name"
                 placeholder="User Name"
                 type="text"
+                value={currentUser.userName}
+                onChange={changeHandler}
               />
               <InputWIcon
                 id="first-name"
@@ -38,6 +80,8 @@ function App() {
                 label="First Name"
                 placeholder="First Name"
                 type="text"
+                value={currentUser.firstName}
+                onChange={changeHandler}
               />
               <InputWIcon
                 id="last-name"
@@ -46,6 +90,8 @@ function App() {
                 label="Last Name"
                 placeholder="Last Name"
                 type="text"
+                value={currentUser.lastName}
+                onChange={changeHandler}
               />
               <InputWIcon
                 id="email"
@@ -54,18 +100,26 @@ function App() {
                 label="Email"
                 placeholder="Email"
                 type="text"
+                value={currentUser.email}
+                onChange={changeHandler}
               />
               <TextareaWIcon
                 id="description"
                 name="desc"
                 icon=""
                 label="About Me"
+                value={currentUser.description}
+                disabled={true}
+                onChange={changeHandler}
               />
-              
 
-
-
-
+              <SubmitButton 
+                id="submit-button"
+                name="profile-form"
+                icon=""
+                text="Save Changes"
+                onClick={clickHandler}
+              />
           </form>
         </div>
       </div>
@@ -73,4 +127,4 @@ function App() {
   );
 }
 
-export default App;
+export default Profile;

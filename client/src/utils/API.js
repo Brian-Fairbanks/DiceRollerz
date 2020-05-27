@@ -12,15 +12,38 @@ export default {
     return axios.get("/api/chat/"+id);
   },
 
+  getUser: function(id){
+    return axios.get("/api/user/"+id);
+  },
+
   getUsers: function(){
     return axios.get("/api/user");
   },
 
+  updateUser: async function(user){
+    const data = await axios.put("/api/user/"+user._id, user);
+    this.socketMsg(user);
+    return data;
+  },
   sendPost: async function(post){
     const data = await axios.post("/api/post", post);
     this.socketMsg(post);
     return data;
   },
+
+  editPost: async function(id){
+    console.log( "deleting "+id);
+    const data = await axios.put("/api/post/"+id, {deleted:true});
+    this.socketMsg(data.data);
+    return data;
+  },
+
+  deletePost: async function(id){
+    const data = await axios.put("/api/post/"+id, {deleted:true});
+    this.socketMsg({...data.data});
+    return data;
+  },
+
 
   createNewChatroom: async function(chatOptions){
     const data = await axios.post("/api/chat", chatOptions);
@@ -30,6 +53,7 @@ export default {
 
   // Socket Send
   socketMsg(msg){
+    console.log(msg);
     socket.emit('chatMessage', (msg));
   },
   socketListen(cb){

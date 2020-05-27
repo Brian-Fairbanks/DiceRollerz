@@ -2,13 +2,13 @@ import React from "react";
 
 /**
  * Textarea component
- * @param {Object} propz id, colSize, label, text, wrapperClass
+ * @param {Object} propz id, colSize, label, value, wrapperClass
  */
 export function Textarea (propz) {
-    const { id, colSize, text, label , wrapperClass } = propz;
+    const { id, colSize, value, label , wrapperClass } = propz;
     return (
         <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
-          <textarea id={id} className="materialize-textarea">{text}</textarea>
+          <textarea id={id} className="materialize-textarea">{value}</textarea>
           <label htmlFor={id}>{label}</label>
         </div>
     )
@@ -16,14 +16,14 @@ export function Textarea (propz) {
 
 /**
  * Textarea component with icon prefix
- * @param {Object} propz id, colSize, icon, label, text, wrapperClass
+ * @param {Object} propz id, colSize, icon, label, value, wrapperClass
  */
 export function TextareaWIcon (propz) {
-    const {id, colSize, text, label, icon, wrapperClass } = propz;
+    const {id, colSize, value, label, icon, wrapperClass } = propz;
     return (
         <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
           <i className="material-icons prefix">{icon}</i>
-          <textarea id={id} className="materialize-textarea">{text}</textarea>
+          <textarea id={id} className="materialize-textarea white-text">{value}</textarea>
           <label htmlFor={id}>{label}</label>
         </div>
     )

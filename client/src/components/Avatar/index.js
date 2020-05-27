@@ -10,16 +10,14 @@ export function Avatar (propz) {
 
 /**
  * Avatar component with circular picture
- * @param {Object} propz imagePath, imageHeight, altText, title, text, hRef, colSize, wrapperClass, key
+ * @param {Object} param0 imagePath, imageHeight, altText, title, text, hRef, colSize, wrapperClass, key
  */
-export function AvatarWPic(propz) {
-    const {imagePath, imageHeight, altText, title, text, hRef, colSize, wrapperClass, key} = propz
-
+export function AvatarWPic({ imagePath, imageHeight, altText, title, text, hRef, colSize, wrapperClass, key }) {
     return (
-        <li className={"collection-item avatar col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")} key={key}>
+        <li className={" blue-grey lighten-2 white-text collection-item avatar col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")} key={key}>
             <img src={imagePath} alt={altText} height={imageHeight} className="circle" />
             <span className="title">{title}</span>
-            <p>{(!Array.isArray(text) ? text : text.map(line => <p>{line}</p>))}</p>
+            <div>{(!Array.isArray(text) ? <p>{text}</p> : text.map(line => <p>{line}</p>))}</div>
             <a href={hRef} className="secondary-content"><i className="material-icons">grade</i></a>
         </li>
     );
