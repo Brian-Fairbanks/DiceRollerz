@@ -2,6 +2,7 @@ import React from "react";
 import {Col, Row, Container} from "../components/Grid";
 import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
 import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
+import {Link} from "react-router-dom"
 
 function Landing(){
 return(
@@ -18,7 +19,7 @@ return(
           <h5>Sign up adventurer! Be ready to join our vast community on epic journeys! </h5>
         </div>
         <div className="card-action">
-        <a className="waves-effect waves-light btn red accent" href="/signup">Sign Up</a>
+        <Link to ="/signup" className="waves-effect waves-light btn red accent">Sign Up </Link>
         </div>
       </div>
       </Col>
@@ -36,7 +37,7 @@ return(
           <h5>Welcome Back traveler! Ready to continue your heroes story?</h5>
         </div>
         <div className="card-action">
-          <a className="waves-effect waves-light btn red accent" href="/login">Log In</a>
+          <Link to ="/login"className="waves-effect waves-light btn red accent" >Log In</Link>
         </div>
       </div>
       </Col>

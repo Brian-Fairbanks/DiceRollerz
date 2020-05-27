@@ -27,6 +27,7 @@
     "@material-ui/core": "^4.10.0",
     "@material/top-app-bar": "^6.0.0",
     "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "material-components-web": "^6.0.0",
