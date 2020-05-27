@@ -30,7 +30,13 @@ const userSchema = new Schema({
     trim: true,
     match: [/^[a-zA-Z0-9]+$/, 'is invalid'],
     required: "Last Name is required"
-  }
+  },
+    tagLine: {
+      type: String
+    },
+    status: {
+      type: String
+    }
 });
 
 
