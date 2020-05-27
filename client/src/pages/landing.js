@@ -2,6 +2,7 @@ import React from "react";
 import {Col, Row, Container} from "../components/Grid";
 import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
 import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
+import {Link} from "react-router-dom"
 
 function Landing(){
 return(
@@ -12,13 +13,13 @@ return(
     <Col size= "s12 m6">
       <div className="card blue-grey darken-1 center-align">
         <div className="card-image">
-          <img src={Dungeon} height="450"/>
+          <img src={Dungeon} height="450" width="auto"/>
         </div>
         <div className="card-content amber-text">
           <h5>Sign up adventurer! Be ready to join our vast community on epic journeys! </h5>
         </div>
         <div className="card-action">
-        <a className="waves-effect waves-light btn red accent" href="/signup">Sign Up</a>
+        <Link to ="/signup" className="waves-effect waves-light btn red accent">Sign Up </Link>
         </div>
       </div>
       </Col>
@@ -30,13 +31,13 @@ return(
     <Col size= "s12 m6">
       <div className="card blue-grey darken-1 center-align">
         <div className="card-image">
-          <img src= {Creepy} height= "450"/>
+          <img src= {Creepy} height= "450" width="auto"/>
         </div>
         <div className="card-content amber-text">
           <h5>Welcome Back traveler! Ready to continue your heroes story?</h5>
         </div>
         <div className="card-action">
-          <a className="waves-effect waves-light btn red accent" href="/login">Log In</a>
+          <Link to ="/login"className="waves-effect waves-light btn red accent" >Log In</Link>
         </div>
       </div>
       </Col>
