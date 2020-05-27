@@ -23,7 +23,7 @@ export function TextareaWIcon (propz) {
     return (
         <div className={"input-field col " + (!colSize ? "s12" : colSize) + (wrapperClass ? " " + wrapperClass : "")}>
           <i className="material-icons prefix">{icon}</i>
-          <textarea id={id} className="materialize-textarea">{value}</textarea>
+          <textarea id={id} className="materialize-textarea white-text">{value}</textarea>
           <label htmlFor={id}>{label}</label>
         </div>
     )
