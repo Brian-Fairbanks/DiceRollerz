@@ -58,5 +58,11 @@ export default {
   },
   socketListen(cb){
     socket.on("newMessage", (msg) => {cb(msg)});
-  }
+  },
+
+  //Sign Up Users
+  signUpNewUser: async function(signInData){
+    const data = await axios.post("/api/user/signup", signInData);
+    return data;
+  },
 };
