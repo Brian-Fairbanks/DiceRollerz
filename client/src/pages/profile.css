@@ -27,14 +27,6 @@
   .App-link {
     color: #61dafb;
   }
-  
-  body i {
-    color: #aaa;
-  }
-
-  input, textarea {
-    color: #eee;
-  }
 
   @keyframes App-logo-spin {
     from {
