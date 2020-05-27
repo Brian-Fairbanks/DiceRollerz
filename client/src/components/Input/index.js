@@ -59,7 +59,7 @@ export function InputWIcon(propz) {
     } = propz
     return (
         <div className={"input-field col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")}>
-            <i className="material-icons prefix red">{icon}</i>
+            <i className="material-icons prefix red-text">{icon}</i>
             <input 
                 id={id} 
                 className={!inputClass ? "validate white-text" : inputClass}
