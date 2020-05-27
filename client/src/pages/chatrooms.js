@@ -99,14 +99,13 @@ function Chatrooms(){
 
 
   return (
-    <div>
-
+    <div className="center-align grey-text">
       list the chatrooms for {user.userName}
       <div>{currentChatroom.chatroom.name}</div>
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="waves-effect waves-light btn red accent" >{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="btn red accent" >{room.name}</button>
         )
       })}
 
@@ -115,7 +114,7 @@ function Chatrooms(){
         //value={"Testing Values"}
       />
 
-      <div className="row m-auto white-text">
+      <div className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
             <Message
@@ -127,24 +126,23 @@ function Chatrooms(){
               yours={post.sender === user._id}
               id = {post._id}
               getMsg={getEditMessage}
+              time={post.timestamp}
             />
           )
         }):"No Messages"}        
       </div>
 
       {currentChatroom.chatroom? 
-        <form className="col s12">
-          <div className="row">
+        <form className="row">
             <div className="input-field col s10">
               <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
               <label htmlFor="message">New Message</label>
             </div>
             <div className="col s2">
               {/* <button onClick={handleMsgSubmit}>Submit</button> */}
-              <button class="btn waves-effect waves-light red accent" onClick={handleMsgSubmit}>Submit
+              <button class="btn red accent" onClick={handleMsgSubmit}>Submit
               </button>
             </div>
-          </div>
         </form>
         :""
       }
