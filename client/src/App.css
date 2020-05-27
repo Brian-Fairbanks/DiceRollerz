@@ -86,3 +86,15 @@ main {
 .fade{
   opacity:.4;
 }
+
+.flex{
+  display:flex;
+}
+
+.flex-align-center{
+  align-items: center;
+}
+
+.flex-grow{
+  flex:1;
+}
