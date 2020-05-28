@@ -19,6 +19,7 @@ import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import PrivateRoute from "./components/Private-Route";
 import Dashboard from "./components/Dashboard";
+import M from  'materialize-css/dist/js/materialize.min.js';
 
 
 
@@ -43,7 +44,6 @@ if (localStorage.jwtToken) {
   }
 }
 
-import M from  'materialize-css/dist/js/materialize.min.js';
 
 document.addEventListener('DOMContentLoaded', function() {
   let sidenav = document.querySelector('.sidenav');

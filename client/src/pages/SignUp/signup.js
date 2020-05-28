@@ -29,6 +29,9 @@ function handleFormSubmit(event) {
       userSubmission
     ).then(data => {
       console.log(data)
+      // if(data.status == 200){
+      //   props.history.push("/chat");
+      // }
     })
     .catch(err => console.log(err))
   }
