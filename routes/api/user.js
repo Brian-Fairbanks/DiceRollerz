@@ -19,13 +19,13 @@ const { errors, isValid } = validateLoginInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
-const userName = req.body.userName;
+const username = req.body.username;
   const password = req.body.password;
 // Find user by username
-  User.findOne({ userName }).then(user => {
+  db.User.findOne({ username }).then(user => {
     // Check if user exists
     if (!user) {
-      return res.status(404).json({ userNamenotfound: "Username not found" });
+      return res.status(404).json({ usernamenotfound: "Username not found" });
     }
 // Check password
     bcrypt.compare(password, user.password).then(isMatch => {
@@ -58,30 +58,6 @@ const userName = req.body.userName;
     });
   });
 });
-
-// Matches with "/api/books"
-router.route("/")
-  .get(userController.findAll)
-  .post(userController.create);
-
-// Matches with "/api/books/:id"
-router
-  .route("/:id")
-  .get(userController.findById)
-  .put(userController.update);
-
-router.route("/signup")
-  .post(validateSignUp)
-  .get(validateSignUp);
-
-  module.exports = router;
-
-
-
-
-
-
-
 
 // @route POST api/users/register
 // @desc Register user
@@ -121,3 +97,29 @@ db.User.findOne({ email: req.body.email }).then(user => {
     }
   });
 };
+
+// Matches with "/api/books"
+router.route("/")
+  .get(userController.findAll)
+  .post(userController.create);
+
+// Matches with "/api/books/:id"
+router
+  .route("/:id")
+  .get(userController.findById)
+  .put(userController.update);
+
+router.route("/signup")
+  .post(validateSignUp)
+  .get(validateSignUp);
+
+  module.exports = router;
+
+
+
+
+
+
+
+
+

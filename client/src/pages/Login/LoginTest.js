@@ -1,111 +1,140 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import LoginService from '../services/LoginService';
-import Message from '../elements/Message';
-import Error from '../elements/Error';
-import {
-  COMMON_FIELDS,
-  REGISTRATION_FIELDS,
-  LOGIN_FIELDS,
-  LOGIN_MESSAGE,
-  ERROR_IN_LOGIN,
-} from '../MessageBundle';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../../actions/authActions";
+import classnames from "classnames";
 
-export default class LoginTest extends Component {
-  constructor(props) {
-    super(props);
-
+class Login extends Component {
+  constructor() {
+    super();
     this.state = {
-      user_name: '',
-      password: '',
-      error: false,
-      loginSuccess: false,
+      email: "",
+      password: "",
+      errors: {}
     };
   }
 
-  handleOnChangeUserName = (e) => {
-    this.setState({
-      user_name: e.target.value,
-    });
-  };
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
 
-  handleOnChangePassword = (e) => {
-    this.setState({
-      password: e.target.value,
-    });
-  };
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push("/dashboard"); // push user to dashboard when they login
+    }
+    if (nextProps.errors) {
+      this.setState({
+        errors: nextProps.errors
+      });
+    }
+  }
 
-  onSubmit = async (e) => {
-    const data = {
-      user_name: this.state.user_name,
-      password: this.state.password,
+  onChange = e => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+  onSubmit = e => {
+    e.preventDefault();
+
+    const userData = {
+      email: this.state.email,
+      password: this.state.password
     };
-    const loginResult = await LoginService(data);
-    if (loginResult !== 200) {
-      this.setState({
-        error: true,
-        loginSuccess: false,
-      });
-    } else
-      this.setState({
-        loginSuccess: true,
-        error: false,
-      });
+    this.props.loginUser(userData);
+    // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };
 
-  render() {
-    const { loginSuccess, error } = this.state;
+  
 
-    return (
-      <div className="Login">
-        <h1> {LOGIN_FIELDS.LOGIN_HEADING} </h1> {' '}
-        <form onSubmit={this.onSubmit}>
-          <div>
-            <div className="fields">
-              <p> {COMMON_FIELDS.USER_NAME} </p>    {' '}
+render() {
+  const { errors } = this.state;
+  return (
+    <div className="container">
+      <div style={{ marginTop: "4rem" }} className="row">
+        <div className="col s8 offset-s2">
+          <Link to="/" className="btn-flat waves-effect">
+            <i className="material-icons left">keyboard_backspace</i> Back to
+              home
+            </Link>
+          <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+            <h4>
+              <b>Login</b> below
+              </h4>
+            <p className="grey-text text-darken-1">
+              Don't have an account? <Link to="/signup">Sign up</Link>
+            </p>
+          </div>
+          <form noValidate onSubmit={this.onSubmit}>
+            <div className="input-field col s12">
               <input
-                type="text"
-                name="Username"
-                onChange={this.handleOnChangeUserName}
-                autoComplete="Username"
-                required
+                onChange={this.onChange}
+                value={this.state.email}
+                error={errors.email}
+                id="email"
+                type="email"
+                className={classnames("", {
+                  invalid: errors.email || errors.emailnotfound
+                })}
               />
-            </div>{' '}
-            {' '}
-            <div className="fields">
-              {' '}
-              <p> {COMMON_FIELDS.PASSWORD} </p>    {' '}
+              <label htmlFor="email">Email</label>
+              <span className="red-text">
+                  {errors.email}
+                  {errors.emailnotfound}
+                </span>
+            </div>
+            <div className="input-field col s12">
               <input
+                onChange={this.onChange}
+                value={this.state.password}
+                error={errors.password}
+                id="password"
                 type="password"
-                name="Password"
-                onChange={this.handleOnChangePassword}
-                autoComplete="Password"
-                required
-              />{' '}
-                  {' '}
-            </div>{' '}
-            {' '}
-            <div className="buttons">
-              {' '}
+                className={classnames("", {
+                  invalid: errors.password || errors.passwordincorrect
+                })}
+              />
+              <label htmlFor="password">Password</label>
+              <span className="red-text">
+                  {errors.password}
+                  {errors.passwordincorrect}
+                </span>
+            </div>
+            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <button
-                type="button"
-                onClick={this.onSubmit}
-                className="btn btn-primary"
+                style={{
+                  width: "150px",
+                  borderRadius: "3px",
+                  letterSpacing: "1.5px",
+                  marginTop: "1rem"
+                }}
+                type="submit"
+                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
-                {' '}
-                  {LOGIN_FIELDS.LOGIN}    {' '}
-              </button>{' '}
-                  <Link to="/register">
-                     {REGISTRATION_FIELDS.REGISTER} </Link>  {' '}
-               {' '}
-            </div>{' '}
-               {' '}
-          </div>{' '}
-           {' '}
-        </form>{' '}
-            {loginSuccess && <Message message={LOGIN_MESSAGE} />}    {' '}
-        {error && <Error message={ERROR_IN_LOGIN} />}    {' '}
+                Login
+                </button>
+            </div>
+          </form>
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
+}
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors
+});
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Login);
+
