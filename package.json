@@ -51,10 +51,7 @@
     "react-scroll-to-bottom": "^2.0.0",
     "react-tap-event-plugin": "^3.0.3",
     "redux": "^4.0.5",
-<<<<<<< HEAD
     "redux-devtools-extension": "^2.13.8",
-=======
->>>>>>> 3546e7eab47052936d517e1d3fe607e4196e63f3
     "redux-thunk": "^2.3.0",
     "socket.io": "^2.3.0",
     "validator": "^13.0.0"
