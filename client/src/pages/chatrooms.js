@@ -4,6 +4,10 @@ import UserContext from "../utils/userContext";
 import Message from "../components/Message";
 import NewChatModal from "../components/Modal";
 
+// Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
+import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+
+
 function Chatrooms(){
   const { user } = useContext(UserContext);
 
@@ -18,6 +22,10 @@ function Chatrooms(){
     body:""
   });
 
+  // sticky scrollbar settigns
+  const scrollToBottom = useScrollToBottom();
+  const [sticky] = useSticky();
+  
 /*  ###############################################################
     Helper Functions 
 ################################################################### */
@@ -114,7 +122,7 @@ function Chatrooms(){
         //value={"Testing Values"}
       />
 
-      <div className="posts row m-auto overflow-scroll ">
+      <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
             <Message
@@ -130,8 +138,9 @@ function Chatrooms(){
               time={post.timestamp}
             />
           )
-        }):"No Messages"}        
-      </div>
+        }):"No Messages"}
+        {!sticky}     
+      </ScrollToBottom>
 
       {currentChatroom.chatroom? 
         <form className="row flex flex-align-center">
@@ -141,7 +150,7 @@ function Chatrooms(){
             </div>
             <div className="col">
               {/* <button onClick={handleMsgSubmit}>Submit</button> */}
-              <button class="btn red accent" onClick={handleMsgSubmit}>Submit
+              <button className="btn red accent" onClick={handleMsgSubmit}>Submit
               </button>
             </div>
         </form>
