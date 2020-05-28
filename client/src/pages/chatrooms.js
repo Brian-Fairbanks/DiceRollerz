@@ -17,7 +17,7 @@ function Chatrooms(){
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({id:"", body:""})
   const [newMessage, setNewMessage] = useState({
-    sender:user.userName,
+    sender:user.username,
     room:"",
     body:""
   });
@@ -108,7 +108,7 @@ function Chatrooms(){
 
   return (
     <div className="center-align grey-text">
-      list the chatrooms for {user.userName}
+      list the chatrooms for {user.username}
       <div>{currentChatroom.chatroom.name}</div>
       <br/>
       {allChatrooms.map(room => {

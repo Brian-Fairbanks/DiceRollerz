@@ -43,6 +43,15 @@ if (localStorage.jwtToken) {
   }
 }
 
+import M from  'materialize-css/dist/js/materialize.min.js';
+
+document.addEventListener('DOMContentLoaded', function() {
+  let sidenav = document.querySelector('.sidenav');
+  M.Sidenav.init(sidenav, {});
+})
+
+// M.AutoInit();
+
 function App () {
   const [user, setUser] = useState({
     _id: '',
@@ -63,9 +72,15 @@ function App () {
   //    <UserContext.Provider value={{ user }}> replacing this line with provider store
 
   return (
-    <Provider store={store}>
-    {/* // <UserContext.Provider value={{ user }}> */}
-     
+    <UserContext.Provider value={{ user }}>
+      {/* <div className='App'>
+        <div className='red darken-4'> */}
+      {/* <div className="App">
+
+        <div className="teal lighten-2">
+          <h1>Header - Dice Rollers FTW!</h1>
+          <div>Hello, {user.userName}</div>
+        </div> */}
         <BrowserRouter>
           <NavBar />
           <Switch>
@@ -84,11 +99,11 @@ function App () {
               </main>
               <Footer />
             </Route>
-            <PrivateRoute exact path='/chat' component= {<Chat />} />
+            <Route exact path='/chat'>
               <main>
-                {/* <Chat /> */}
+                <Chat />
               </main>
-            {/* </Route> */}
+            </Route>
             <Route exact path='/profile'>
               <main>
                 <Profile />
@@ -103,8 +118,7 @@ function App () {
             </Route>
           </Switch>
         </BrowserRouter>
-    {/* </UserContext.Provider> */}
-    </Provider>
+    </UserContext.Provider>
   )
 }
 

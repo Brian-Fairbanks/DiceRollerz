@@ -9,31 +9,31 @@ const userSeed = [
   {
     firstName: "Brian",
     lastName: "Fairbanks",
-    userName: "Akuma",
+    username: "Akuma",
     email: "brian.k.fairbanks@gmail.com"
   },
   {
     firstName: "Surge",
     lastName: "Bracamontes",
-    userName: "Warsurge",
+    username: "Warsurge",
     email:  "surgebrock15@gmail.com"
   },
   {
     firstName: "Jonathan",
     lastName: "Andrews",
-    userName: "ionathas78",
+    username: "ionathas78",
     email: "ionathas78@hotmail.com"
   },
   {
     firstName: "Jason",
     lastName: "Strouphauer",
-    userName: "jdstroup10",
+    username: "jdstroup10",
     email:  "jdstroup@gmail.com"
   },
   {
     firstName: "LeeAnn",
     lastName: "Norman",
-    userName: "DnD_Newbie",
+    username: "DnD_Newbie",
     email: "no_email@email.com" 
   }
 ]

@@ -6,10 +6,7 @@ import API from "../../utils/API"
 
 
 
-
-
-function SignUp(props) {
-
+function SignUp() {
 const [userSubmission, setUserSubmission] = 
 useState({
   username:"",
@@ -32,12 +29,6 @@ function handleFormSubmit(event) {
       userSubmission
     ).then(data => {
       console.log(data)
-      if (data.status === 200){
-        console.log("everthing worked")
-        // update user context with new user
-        // redirect to chat page
-         
-      }
     })
     .catch(err => console.log(err))
   }
