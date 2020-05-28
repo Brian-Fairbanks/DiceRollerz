@@ -52,6 +52,8 @@ main {
 .posts{
   height: 50vh;
   /* overflow-y:scroll; */
+  scrollbar-color: red rgba(0,0,0,.1);
+  scrollbar-width: thin;
 }
 
 .message{
