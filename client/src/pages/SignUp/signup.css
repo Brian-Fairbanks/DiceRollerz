@@ -5,6 +5,7 @@ input:invalid {
 input:invalid:required {
   background-image: linear-gradient(to right, rgb(8, 8, 8), rgb(255, 0, 0));
 }
+/* radial */
 
 input:valid {
   border: 2px solid black;
