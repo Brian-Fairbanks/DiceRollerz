@@ -10,15 +10,15 @@ import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 //import Login from "./pages/Login/login";
 import SignUp from './pages/SignUp/signup';
-import Login from './pages/Login/logintest.js';
+import Login from './pages/Login/LoginTest';
 import store from "./store";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-import PrivateRoute from "./components/private-route/PrivateRoute";
-import Dashboard from "./components/dashboard/Dashboard";
+import PrivateRoute from "./components/Private-Route";
+import Dashboard from "./components/Dashboard";
 
 
 
