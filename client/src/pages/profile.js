@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import './profile.css';
 import UserContext from "../utils/userContext";
 import API from "../utils/API.js";
+import M from "materialize-css";
 
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { InputWIcon, InputNoLabel } from '../components/Input';
@@ -85,6 +86,8 @@ function Profile() {
       setPrimeUser(currentUser);
     }
   }
+  
+  // M.updateTextFields();
 
   return (
     <UserContext.Provider value={ primeUser }>
@@ -136,6 +139,7 @@ function Profile() {
                   value={currentUser.username}
                   onChange={changeHandler}
                   inputClass={(currentUser.username === primeUser.username) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="first-name"
@@ -147,6 +151,7 @@ function Profile() {
                   value={currentUser.firstName}
                   onChange={changeHandler}
                   inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="last-name"
@@ -158,6 +163,7 @@ function Profile() {
                   value={currentUser.lastName}
                   onChange={changeHandler}
                   inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="email"
@@ -170,6 +176,7 @@ function Profile() {
                   value={currentUser.email}
                   onChange={changeHandler}
                   inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <TextareaWIcon
                   id="description"
