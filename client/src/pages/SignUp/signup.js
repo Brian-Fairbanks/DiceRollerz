@@ -6,10 +6,7 @@ import API from "../../utils/API"
 
 
 
-
-
-function SignUp(props) {
-
+function SignUp() {
 const [userSubmission, setUserSubmission] = 
 useState({
   username:"",
@@ -32,12 +29,6 @@ function handleFormSubmit(event) {
       userSubmission
     ).then(data => {
       console.log(data)
-      if (data.status === 200){
-        console.log("everthing worked")
-        // update user context with new user
-        // redirect to chat page
-         
-      }
     })
     .catch(err => console.log(err))
   }
@@ -45,66 +36,18 @@ function handleFormSubmit(event) {
 
 return(
 <Container>
-  <div className="row center center-align">
-    <div className="col s12 m7 xl10">
-      <div className="card blue-grey darken-1">
-        <div className="card-content white-text">
-          <input 
-          placeholder="Username" 
-          name="username" 
-          onChange={handleInputChange} 
-          type="text" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
-          <input 
-          placeholder="Password" 
-          name="password" 
-          onChange={handleInputChange} 
-          type="password" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true" 
-          minLength="6"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
-          <input 
-          placeholder="Confirm Password" 
-          onChange={handleInputChange} 
-          name="password2" 
-          type="password" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true" 
-          minLength="6"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
-          <input 
-          placeholder="Email" 
-          name="email" 
-          onChange={handleInputChange} 
-          type="email" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
-          <input 
-          placeholder="First Name" 
-          onChange={handleInputChange} 
-          name="firstName" type="text" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
-          <input 
-          placeholder="Last Name" 
-          onChange={handleInputChange} 
-          name="lastName" type="text" 
-          className="validate white-text" 
-          required="true" 
-          aria-required="true"></input>
-          <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+  <div class="row center center-align">
+    <div class="col s12 m7 xl10">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <input placeholder="Username" name="username" onChange={handleInputChange} type="text" className="white-text"></input>
+          <input placeholder="Password" name="password" onChange={handleInputChange} type="text" className="white-text"></input>
+          <input placeholder="Confirm Password" onChange={handleInputChange} name="password2" type="text" className="white-text"></input>
+          <input placeholder="Email" name="email" onChange={handleInputChange} type="email" className="white-text"></input>
+          <input placeholder="First Name" onChange={handleInputChange} name="firstName" type="text" className="white-text"></input>
+          <input placeholder="Last Name" onChange={handleInputChange} name="lastName" type="text" className="white-text"></input>
         </div>
-        <div className="card-action">
+        <div class="card-action">
         <button className="waves-effect waves-light btn red accent" onClick={handleFormSubmit}> Sign Up </button>
         <Link to= "/login"className="waves-effect waves-light btn red accent">Log In</Link>
         </div>
