@@ -10,7 +10,14 @@ import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 import Login from "./pages/Login/login";
 import SignUp from './pages/SignUp/signup';
+import M from  'materialize-css/dist/js/materialize.min.js';
 
+document.addEventListener('DOMContentLoaded', function() {
+  let sidenav = document.querySelector('.sidenav');
+  M.Sidenav.init(sidenav, {});
+})
+
+// M.AutoInit();
 
 function App () {
   const [user, setUser] = useState({
