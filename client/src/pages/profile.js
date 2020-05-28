@@ -2,16 +2,17 @@ import React, { useState, useEffect, useContext } from "react";
 import './profile.css';
 import UserContext from "../utils/userContext";
 import API from "../utils/API.js";
+import M from "materialize-css";
 
 import { Avatar, AvatarWPic } from '../components/Avatar';
-import { Input, InputWIcon, InputNoLabel } from '../components/Input';
+import { InputWIcon, InputNoLabel } from '../components/Input';
 import { TextareaWIcon } from '../components/TextArea';
 import { SubmitButton } from '../components/Button';
 
 function Profile() {
   const { user } = useContext(UserContext);
-  const [primeUser, setPrimeUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
-  const [currentUser, setCurrentUser] = useState({_id: "", userName: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
+  const [primeUser, setPrimeUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
+  const [currentUser, setCurrentUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
 
   useEffect(() => {
     //      PrimeUser tracks the current state of the Database.
@@ -21,11 +22,12 @@ function Profile() {
   }, [user])  
 
   const changeHandler = event => {
+    //      Input Controller
     const { id, value } = event.target;
     let newUser = { ...currentUser };
     switch (id) {
       case "user-name":
-        newUser.userName = value;
+        newUser.username = value;
         break;
       case "user-tagline":
         newUser.tagLine = value;
@@ -52,11 +54,12 @@ function Profile() {
   }
 
   const submitHandler = event => {
+    //      Handles form submit
     event.preventDefault();
 
     let userChanges = {};
-    if (currentUser.userName !== primeUser.userName) {
-      userChanges.userName = currentUser.userName;
+    if (currentUser.username !== primeUser.username) {
+      userChanges.username = currentUser.username;
     }
     if (currentUser.status !== primeUser.status) {
       userChanges.status = currentUser.status;
@@ -83,6 +86,8 @@ function Profile() {
       setPrimeUser(currentUser);
     }
   }
+  
+  // M.updateTextFields();
 
   return (
     <UserContext.Provider value={ primeUser }>
@@ -95,7 +100,7 @@ function Profile() {
                   <AvatarWPic
                       imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
                       altText="Red Dot"
-                      title={"~ " + currentUser.userName + " ~"}
+                      title={"~ " + currentUser.username + " ~"}
                       text={[
                         <InputNoLabel
                           id="user-tagline"
@@ -125,15 +130,16 @@ function Profile() {
                 
               <InputWIcon
                   id="user-name"
-                  name="userName"
+                  name="username"
                   icon="person"
                   label="User Name"
                   placeholder="User Name"
                   type="text"
                   isRequired={true}
-                  value={currentUser.userName}
+                  value={currentUser.username}
                   onChange={changeHandler}
-                  inputClass={(currentUser.userName === primeUser.userName) ? "validate white-text" : "validate yellow-text"}
+                  inputClass={(currentUser.username === primeUser.username) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="first-name"
@@ -145,6 +151,7 @@ function Profile() {
                   value={currentUser.firstName}
                   onChange={changeHandler}
                   inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="last-name"
@@ -156,6 +163,7 @@ function Profile() {
                   value={currentUser.lastName}
                   onChange={changeHandler}
                   inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <InputWIcon
                   id="email"
@@ -168,6 +176,7 @@ function Profile() {
                   value={currentUser.email}
                   onChange={changeHandler}
                   inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate yellow-text"}
+                  labelClass="active"
                 />
                 <TextareaWIcon
                   id="description"

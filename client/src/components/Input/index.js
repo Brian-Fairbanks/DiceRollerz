@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange, isDisabled, isRequired
+ * @param {Object} propz id, colSize, placeholder, label, type ("text"), inputClass ("validate"), wrapperClass, labelClass, value, onChange, isDisabled, isRequired
  */
 export function Input(propz) {
     const { 
@@ -13,6 +13,7 @@ export function Input(propz) {
         type, 
         inputClass, 
         wrapperClass, 
+        labelClass,
         value, 
         defaultValue, 
         onChange, 
@@ -32,14 +33,14 @@ export function Input(propz) {
                 disabled={isDisabled}
                 required={isRequired}
             />
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={id} className={labelClass}>{label}</label>
         </div>
     );
 }
 
 /**
  * Text Input control
- * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass, value, onChange, isDisabled, isRequired
+ * @param {Object} propz id, colSize, placeholder, icon, label, type ("text"), inputClass ("validate"), wrapperClass, labelClass, value, onChange, isDisabled, isRequired
  */
 export function InputWIcon(propz) {
     const { 
@@ -50,6 +51,7 @@ export function InputWIcon(propz) {
         type, 
         inputClass, 
         wrapperClass, 
+        labelClass,
         icon, 
         value, 
         defaultValue, 
@@ -71,7 +73,7 @@ export function InputWIcon(propz) {
                 disabled={isDisabled}
                 required={isRequired}
             />
-            <label htmlFor={id}>{label}</label>
+            <label htmlFor={id} className={labelClass}>{label}</label>
         </div>
     );
 }
