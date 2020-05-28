@@ -5,6 +5,16 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 
+// Bodyparser middleware
+app.use(
+  bodyParser.urlencoded({
+    extended: false
+  })
+);
+app.use(bodyParser.json());
+
+// DB Config
+const db = require("./config/keys").mongoURI;
 
 const PORT = process.env.PORT || 3001;
 
