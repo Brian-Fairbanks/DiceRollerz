@@ -10,33 +10,6 @@ import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 import Login from "./pages/Login/login";
 import SignUp from './pages/SignUp/signup';
-import { Provider } from "react-redux";
-import store from "./store";
-import jwt_decode from "jwt-decode";
-import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
-import PrivateRoute from "./components/Private-Route/PrivateRoute";
-import Dashboard from "./components/Dashboard/Dashboard";
-
-// Check for token to keep user logged in
-if (localStorage.jwtToken) {
-  console.log("checking for token")
-  // Set auth token header auth
-  const token = localStorage.jwtToken;
-  setAuthToken(token);
-  // Decode token and get user info and exp
-  const decoded = jwt_decode(token);
-  // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-// Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
-  if (decoded.exp < currentTime) {
-    // Logout user
-    store.dispatch(logoutUser());
-    // Redirect to login
-    window.location.href = "./login";
-  }
-}
 
 
 function App () {
@@ -58,9 +31,15 @@ function App () {
   //  this here is only temporary !!! -------------
 
   return (
-    <Provider store={store}>
-    {/* // <UserContext.Provider value={{ user }}> */}
-     
+    <UserContext.Provider value={{ user }}>
+      {/* <div className='App'>
+        <div className='red darken-4'> */}
+      {/* <div className="App">
+
+        <div className="teal lighten-2">
+          <h1>Header - Dice Rollers FTW!</h1>
+          <div>Hello, {user.userName}</div>
+        </div> */}
         <BrowserRouter>
           <NavBar />
           <Switch>
@@ -76,11 +55,11 @@ function App () {
               </main>
               <Footer />
             </Route>
-            <PrivateRoute exact path='/chat' component= {<Chat />} />
+            <Route exact path='/chat'>
               <main>
-                {/* <Chat /> */}
+                <Chat />
               </main>
-            {/* </Route> */}
+            </Route>
             <Route exact path='/profile'>
               <main>
                 <Profile />
@@ -95,8 +74,7 @@ function App () {
             </Route>
           </Switch>
         </BrowserRouter>
-    {/* </UserContext.Provider> */}
-    </Provider>
+    </UserContext.Provider>
   )
 }
 
