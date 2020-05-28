@@ -44,27 +44,38 @@ function App () {
         </div> */}
         <BrowserRouter>
           <NavBar />
-          <main>
           <Switch>
             <Route exact path={"/"}>
-              <Landing />
+              <main>
+                <Landing />
+              </main>
+              <Footer />
             </Route>
             <Route exact path={"/login"}>
-            <Login />
+              <main>
+                <Login />
+              </main>
+              <Footer />
             </Route>
             <Route exact path='/chat'>
-              <Chat />
+              <main>
+                <Chat />
+              </main>
             </Route>
             <Route exact path='/profile'>
-              <Profile />
+              <main>
+                <Profile />
+              </main>
+              <Footer />
             </Route>
             <Route exact path="/signup">
-              <SignUp />
+              <main>
+                <SignUp />
+              </main>
+              <Footer />
             </Route>
           </Switch>
-          </main>
         </BrowserRouter>
-        <Footer />
     </UserContext.Provider>
   )
 }
