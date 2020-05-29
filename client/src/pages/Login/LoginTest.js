@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
 class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: "",
@@ -16,15 +16,18 @@ class Login extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
-      this.props.history.push("/dashboard");
+      console.log("Congrats!" + this.props.auth.user.id )
+      return <Redirect to={"/"}/>;
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard"); // push user to dashboard when they login
+      console.log("Congrats!" + this.props.auth.user.id )
+      return <Redirect to={"/"}/>; // push user to dashboard when they login
     }
     if (nextProps.errors) {
       this.setState({
@@ -114,7 +117,7 @@ render() {
                 className="btn btn-large waves-effect waves-light hoverable blue accent-3"
               >
                 Login
-                </button>
+              </button>
             </div>
           </form>
         </div>
@@ -129,10 +132,12 @@ Login.propTypes = {
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
+
 const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
+
 export default connect(
   mapStateToProps,
   { loginUser }

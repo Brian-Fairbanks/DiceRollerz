@@ -96,15 +96,15 @@ function App () {
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
               <main>
-                <Login />
+                <Login/>
               </main>
               <Footer />
             </Route>
-            <Route exact path='/chat'>
+            <PrivateRoute exact path='/chat'>
               <main>
                 <Chat />
               </main>
-            </Route>
+            </PrivateRoute>
             <Route exact path='/profile'>
               <main>
                 <Profile />
