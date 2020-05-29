@@ -3,17 +3,13 @@ import React, { useState, useEffect } from 'react';
 import API from './utils/API';
 import UserContext from './utils/userContext';
 
-import store from "./store";
-import { Provider } from "react-redux";
-
 //Routing Dependencies
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
-import PrivateRoute from "./components/Private-Route";
+//import PrivateRoute from "./components/Private-Route";
 
 // Authentication Dependencies
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 // Styling Dependencies
 import M from  'materialize-css/dist/js/materialize.min.js';
