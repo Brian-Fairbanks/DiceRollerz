@@ -30,6 +30,7 @@
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "classnames": "^2.2.6",
     "express": "^4.17.1",
     "if-env": "^1.0.4",
     "is-empty": "^1.2.0",
@@ -47,6 +48,9 @@
     "react-router-dom": "^5.2.0",
     "react-scroll-to-bottom": "^2.0.0",
     "react-tap-event-plugin": "^3.0.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "socket.io": "^2.3.0",
     "validator": "^13.0.0"
   },
