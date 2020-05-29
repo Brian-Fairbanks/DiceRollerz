@@ -1,31 +1,37 @@
+// State Dependencies
 import React, { useState, useEffect } from 'react';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
-import './App.css';
-import Chat from './pages/chatrooms';
-import Profile from './pages/profile';
 import API from './utils/API';
-import UserContext from './utils/userContext';
-import NavBar from './components/Navbar';
-import Footer from './components/Footer/Footer';
-import Landing from "./pages/landing"
-//import Login from "./pages/Login/login";
-import SignUp from './pages/SignUp/signup';
-import Login from './pages/Login/LoginTest';
 import store from "./store";
 import { Provider } from "react-redux";
-import jwt_decode from "jwt-decode";
 
+//Routing Dependencies
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import PrivateRoute from "./components/Private-Route";
+
+// Authentication Dependencies
+import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
-import PrivateRoute from "./components/Private-Route";
-import Dashboard from "./components/Dashboard";
+// Styling Dependencies
 import M from  'materialize-css/dist/js/materialize.min.js';
+import './App.css';
+
+//Page Dependencies
+import NavBar from './components/Navbar';
+import Footer from './components/Footer/Footer';
+import Landing from "./pages/landing"
+import SignUp from './pages/SignUp/signup';
+import Login from './pages/Login/LoginTest';
+import Chat from './pages/chatrooms';
+import Profile from './pages/profile';
+import Dashboard from "./components/Dashboard";
 
 
 
-
-
+/* ###############################################################
+User Persistant Sign In / set up redux/store with user information
+################################################################*/
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -36,7 +42,7 @@ if (localStorage.jwtToken) {
   // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 // Check for expired token
-  const currentTime = Date.now() / 1000; // to get in milliseconds
+  const currentTime = Date.now() / 1000; // to get in seconds instead of miliseconds
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
@@ -53,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // M.AutoInit();
 
+/* ###############################################################
+App Render
+################################################################*/
 function App () {
   const [user, setUser] = useState({
     _id: '',
