@@ -10,8 +10,10 @@ const chatroomSchema = new Schema({
         ref:"User",
         required: true 
       },
-      role: {type:String}
-    }
+      role: {type:String},
+      
+      }
+      
   ],
   gameMode: {type: Boolean, default: false}
 });

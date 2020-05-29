@@ -6,6 +6,7 @@ import NewChatModal from "../components/Modal";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+import { Avatar } from "react-avatar";
 
 
 function Chatrooms(){
@@ -125,6 +126,7 @@ function Chatrooms(){
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
+            
             <Message
               members={currentChatroom.chatroom.members}
               key={post._id}
