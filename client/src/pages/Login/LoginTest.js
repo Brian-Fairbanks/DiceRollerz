@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+//import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
@@ -20,26 +20,26 @@ class Login extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.props);
-    // If logged in and user navigates to Login page, should redirect them to dashboard
-    if (this.props.auth.isAuthenticated) {
-      console.log("Congrats!" + this.props.auth.user.id )
-      this.setState( {isLoggedIn:true})
-    }
-  }
+  // componentDidMount() {
+  //   console.log(this.props);
+  //   // If logged in and user navigates to Login page, should redirect them to dashboard
+  //   // if (this.props.auth.isAuthenticated) {
+  //   //   console.log("Congrats!" + this.props.auth.user.id )
+  //   //   this.setState( {isLoggedIn:true})
+  //   }
+  // }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.auth.isAuthenticated) {
-      console.log("Congrats!" + this.props.auth.user.id )
-      this.setState( {isLoggedIn:true})
-    }
-    if (nextProps.errors) {
-      this.setState({
-        errors: nextProps.errors
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.auth.isAuthenticated) {
+  //     console.log("Congrats!" + this.props.auth.user.id )
+  //     this.setState( {isLoggedIn:true})
+  //   }
+  //   if (nextProps.errors) {
+  //     this.setState({
+  //       errors: nextProps.errors
+  //     });
+  //   }
+  // }
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -51,8 +51,12 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    this.props.loginUser(userData);
-    // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
+    console.log("Calling Login")
+    loginUser(userData)
+    .then(token =>{
+      console.log(token);
+      this.props.setToken(token);
+    })
   };
 
   
@@ -71,7 +75,7 @@ render() {
                 home
               </Link>
             <div className="col s12">
-              <h4 className>
+              <h4>
                 <b>Login</b> below
                 </h4>
               <p className="grey-text text-lighten-1">
@@ -136,19 +140,19 @@ render() {
 }
 }
 
-Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
-};
+// Login.propTypes = {
+//   loginUser: PropTypes.func.isRequired,
+//   auth: PropTypes.object.isRequired,
+//   errors: PropTypes.object.isRequired
+// };
 
-const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
-});
+// const mapStateToProps = state => ({
+//   auth: state.auth,
+//   errors: state.errors
+// });
 
-export default connect(
-  mapStateToProps,
-  { loginUser }
-)(Login);
-
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
+export default Login;
