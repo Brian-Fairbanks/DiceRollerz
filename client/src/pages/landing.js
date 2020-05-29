@@ -1,5 +1,5 @@
 import React from "react";
-import {Col, Row, Container} from "../components/Grid";
+import {Col, Row} from "../components/Grid";
 import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
 import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
 import {Link} from "react-router-dom"
@@ -13,7 +13,7 @@ return(
     <Col size= "s12 m6">
       <div className="card blue-grey darken-1 center-align">
         <div className="card-image">
-          <img src={Dungeon} height="450" width="auto"/>
+          <img src={Dungeon} alt="Monochrome Red color-shift of a series of doors in a dungeon" height="450" width="auto"/>
         </div>
         <div className="card-content amber-text">
           <h5>Sign up adventurer! Be ready to join our vast community on epic journeys! </h5>
@@ -31,7 +31,7 @@ return(
     <Col size= "s12 m6">
       <div className="card blue-grey darken-1 center-align">
         <div className="card-image">
-          <img src= {Creepy} height= "450" width="auto"/>
+          <img src= {Creepy} alt="Dark silhouette of a man looking of a dungeon cell over a bright white background" height= "450" width="auto"/>
         </div>
         <div className="card-content amber-text">
           <h5>Welcome Back traveler! Ready to continue your heroes story?</h5>

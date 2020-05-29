@@ -11,7 +11,7 @@ import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
 function Chatrooms(){
   const { user } = useContext(UserContext);
 
-  const [allChatrooms, setAllChatrooms] = useState(["test"]);
+  const [allChatrooms, setAllChatrooms] = useState([]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
 
   const [clientMsg, setClientMsg] = useState("")
@@ -133,9 +133,10 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
+          <button key={room._id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
         )
-      })}
+        })
+      }
 
       {/*Adding a new chatroom button */}
       <NewChatModal 
