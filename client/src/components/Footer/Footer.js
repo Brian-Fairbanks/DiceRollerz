@@ -16,7 +16,6 @@ export default function Footer () {
             <a className="grey-text text-lighten-3" href="https://github.com/Brian-Fairbanks">Brian</a>
             <a className="grey-text text-lighten-3" href="https://github.com/jdstroup10">Jason</a>
             <a className="grey-text text-lighten-3" href="https://github.com/ionathas78">Jonathan</a>
-            <a className="grey-text text-lighten-3" href="https://github.com/leenorman">Lee Ann</a>
             <a className="grey-text text-lighten-3" href="https://github.com/warsurge">Surge</a>
           </div>
         </div>
