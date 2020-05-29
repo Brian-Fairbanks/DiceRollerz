@@ -7,6 +7,7 @@ import NewChatModal from "../components/Modal";
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
 
+//  invisibilify commence!
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
