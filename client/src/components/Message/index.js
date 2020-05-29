@@ -2,7 +2,7 @@ import React from "react";
 
 function Message({members, body, deleted, updated, sender, yours, id,  getMsg, time}){
   return(
-    <div className={"col s12 white-text"} onClick={() => getMsg(body, id)}>
+    <div className={"col s12 white-text"} onClick={() => getMsg(body, id, sender)}>
       <div>{sender} { time }</div>
       <div className={`message col s10 push-s1 left-align ${yours?"red":"teal"} ${deleted? "fade":""}`}>
         {
