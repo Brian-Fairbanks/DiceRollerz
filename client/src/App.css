@@ -100,3 +100,7 @@ main {
 .flex-grow{
   flex:1;
 }
+
+.hiddediv{
+  width:0px!important;
+}
