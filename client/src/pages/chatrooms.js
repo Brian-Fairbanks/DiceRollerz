@@ -15,7 +15,8 @@ function Chatrooms(){
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
 
   const [clientMsg, setClientMsg] = useState("")
-  const [editMsg, setEditMsg] = useState({id:"", body:""})
+  const [editMsg, setEditMsg] = useState({id:"", body:"", sender:"", room:""})
+  const [isEditingMsg, setIsEditingMsg] = useState(false);
   const [newMessage, setNewMessage] = useState({
     sender:user.username,
     room:"",
@@ -55,7 +56,12 @@ function Chatrooms(){
       event.preventDefault();
       if (newMessage.sender && newMessage.room && newMessage.body) {
         try{
-          await API.sendPost(newMessage)
+          if (!isEditingMsg) {
+            await API.sendPost(newMessage)
+          } else {
+            await API.editPost(newMessage);
+            setIsEditingMsg(false)
+          }
           setNewMessage({...newMessage, body:""});
           updateMessages(currentChatroom.chatroom._id)
         }
@@ -68,12 +74,29 @@ function Chatrooms(){
       setNewMessage({...newMessage, body: value})
     };
 
-    function getEditMessage(post, id){
+    function getEditMessage(body, id, sender){
       //alert(`Clicked ${JSON.stringify(post)}!`);
-      setEditMsg({post, id})
-      
+      setEditMsg({id, body, sender, room: currentChatroom.chatroom._id})
     }
 
+    function clearEditMessage() {
+      //      Empties the current selection
+      setEditMsg({id:"", body:"", sender:"", room:""})
+    }
+
+    function deleteEditMessage() {
+      //      Deletes the currently selected message
+      API.deletePost(editMsg.id); 
+      setIsEditingMsg(false);
+      clearEditMessage();
+    }
+
+    function UpdateEditMessage() {
+      //      Starts editing the text of the currently selected message
+      setNewMessage(editMsg); 
+      setIsEditingMsg(true); 
+      document.getElementById("message").focus()
+    }
 
 /*  ###############################################################
     Use Effects 
@@ -104,8 +127,6 @@ function Chatrooms(){
     }
   }, [clientMsg])
 
-
-
   return (
     <div className="center-align grey-text">
       list the chatrooms for {user.username}
@@ -113,7 +134,7 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id)}} className="btn red accent" >{room.name}</button>
+          <button key={room.id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
         )
       })}
 
@@ -146,7 +167,7 @@ function Chatrooms(){
         <form className="row flex flex-align-center">
             <div className="input-field col flex-grow">
               <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
-              <label htmlFor="message">New Message</label>
+              <label htmlFor="message">{(!isEditingMsg ? "New Message" : "Edit Message")}</label>
             </div>
             <div className="col">
               {/* <button onClick={handleMsgSubmit}>Submit</button> */}
@@ -159,9 +180,9 @@ function Chatrooms(){
       {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality*/}
       {editMsg.id?(
         <div>
-          <button class="btn waves-effect waves-light red accent" onClick={() => setEditMsg({id:"", body:""})}>Cancel</button>
-          <button class="btn waves-effect waves-light red accent" onClick={()=>{API.deletePost(editMsg.id); setEditMsg({id:"", body:""})}}>Delete</button>
-          <button class="btn waves-effect waves-light red accent">Edit</button>
+          <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
+          <button className="btn waves-effect waves-light red accent" onClick={deleteEditMessage} disabled={editMsg.sender !== user._id}>Delete</button>
+          <button className="btn waves-effect waves-light red accent" onClick={UpdateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
         )
         :

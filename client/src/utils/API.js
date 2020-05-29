@@ -31,9 +31,9 @@ export default {
     return data;
   },
 
-  editPost: async function(id){
-    console.log( "deleting "+id);
-    const data = await axios.put("/api/post/"+id, {deleted:true});
+  editPost: async function(post){
+    console.log( "updating "+post.id);
+    const data = await axios.put("/api/post/"+post.id, {body: post.body});
     this.socketMsg(data.data);
     return data;
   },
