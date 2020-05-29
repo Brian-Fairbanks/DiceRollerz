@@ -149,7 +149,6 @@ function Chatrooms(){
               <label htmlFor="message">New Message</label>
             </div>
             <div className="col">
-              {/* <button onClick={handleMsgSubmit}>Submit</button> */}
               <button className="btn red accent" onClick={handleMsgSubmit}>Submit
               </button>
             </div>

@@ -39,7 +39,7 @@ function handleFormSubmit(event) {
 
 return(
 <Container>
-  <div className="row center center-align">
+  <div className="center center-align flex flex-align-center">
     <div className="col s12 m7 xl10">
       <div className="card blue-grey darken-1">
         <div className="card-content white-text">
