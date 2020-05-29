@@ -9,6 +9,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoggedIn:false,
       username: "",
       password: "",
       errors: {}
@@ -20,14 +21,14 @@ class Login extends Component {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
       console.log("Congrats!" + this.props.auth.user.id )
-      return <Redirect to={"/"}/>;
+      this.setState( {isLoggedIn:true})
     }
   }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
       console.log("Congrats!" + this.props.auth.user.id )
-      return <Redirect to={"/"}/>; // push user to dashboard when they login
+      this.setState( {isLoggedIn:true})
     }
     if (nextProps.errors) {
       this.setState({
@@ -55,7 +56,9 @@ class Login extends Component {
 render() {
   const { errors } = this.state;
   return (
+
     <div className="container">
+      {this.state.isLoggedIn? <Redirect to={"/chat"}/>:""}
       <div style={{ marginTop: "4rem" }} className="row">
         <div className="col s8 offset-s2">
           <Link to="/" className="btn-flat waves-effect">
