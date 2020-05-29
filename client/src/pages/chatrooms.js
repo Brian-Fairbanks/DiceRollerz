@@ -6,6 +6,7 @@ import NewChatModal from "../components/Modal";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+import { ContentAddCircleOutline } from "material-ui/svg-icons";
 
 //  invisibilify commence!
 
@@ -112,8 +113,18 @@ function Chatrooms(){
 
     // get and print all chatrooms
     API.getChatrooms()
-    .then( data => {setAllChatrooms(data.data)})
-  }, [])
+    .then( data => {
+      let myChatRooms = [];
+      if (Array.isArray(data.data)) {
+        data.data.map(room => {
+          if (room.members.find(item => item.user === user._id)) {
+            myChatRooms.push(room);
+          }
+        })
+      }
+      setAllChatrooms(myChatRooms);
+    })
+  }, [user])
 
   //set sender for new message form once user context is loaded.
   useEffect(() => {
