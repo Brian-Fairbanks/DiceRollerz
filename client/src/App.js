@@ -14,6 +14,7 @@ import Login from './pages/Login/LoginTest';
 import store from "./store";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
+
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
@@ -72,7 +73,7 @@ function App () {
   //    <UserContext.Provider value={{ user }}> replacing this line with provider store
 
   return (
-    <UserContext.Provider value={{ user }}>
+    <Provider store={store}>>
       {/* <div className='App'>
         <div className='red darken-4'> */}
       {/* <div className="App">
@@ -118,7 +119,7 @@ function App () {
             </Route>
           </Switch>
         </BrowserRouter>
-    </UserContext.Provider>
+    </Provider>
   )
 }
 

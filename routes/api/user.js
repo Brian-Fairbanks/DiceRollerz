@@ -13,10 +13,12 @@ const db = require("../../models");
 // @desc Login user and return JWT token
 // @access Public
 router.post("/login", (req, res) => {
+  console.log(req.body);
   // Form validation
 const { errors, isValid } = validateLoginInput(req.body);
 // Check validation
   if (!isValid) {
+    console.log("Not Valid - returned 400")
     return res.status(400).json(errors);
   }
 const username = req.body.username;
