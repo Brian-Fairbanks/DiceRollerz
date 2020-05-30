@@ -50,9 +50,15 @@ io.on('connection', (socket) => {
     console.log('message: ' + msg);
     socket.broadcast.emit("newMessage", msg);
   });
-});
 
 //  Chat Socket Listener goes here
+
+  socket.on('chatroomEdit', msg => {
+    console.log('room: ' + msg);
+    socket.broadcast.emit("chatroomChanged", msg);
+  })
+});
+
 
 
 // Start the API server

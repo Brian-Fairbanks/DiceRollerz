@@ -90,11 +90,39 @@ function Chatrooms(){
       clearEditMessage();
     }
 
-    function UpdateEditMessage() {
+    function updateEditMessage() {
       //      Starts editing the text of the currently selected message
       setNewMessage(editMsg); 
       setIsEditingMsg(true); 
       document.getElementById("message").focus()
+    }
+
+    function changeChatRoom(id) {
+      let newRoom = allChatrooms.find(room => room._id === id);
+      if (!newRoom) {
+        console.log("Couldn't switch to chatroom "+id);
+        return;
+      }
+      getChatLogs(id);
+      setCurrentChatroom({chatroom: newRoom});
+      console.log("Switched to room: " + id);
+      clearEditMessage();
+    }
+
+    function updateChatRooms() {
+      API.getChatrooms()
+      .then( data => {
+        let myChatRooms = [];
+        if (Array.isArray(data.data)) {
+          data.data.map(room => {
+            if (room.members.find(item => item.user === user._id)) {
+              myChatRooms.push(room);
+            }
+          })
+        }
+        setAllChatrooms(myChatRooms);
+      })
+      .catch( err => {console.error(err)});
     }
 
 /*  ###############################################################
@@ -108,23 +136,15 @@ function Chatrooms(){
       setClientMsg(msg);
     })
 
-    // get and print all chatrooms
-    API.getChatrooms()
-    .then( data => {
-      let myChatRooms = [];
-      if (Array.isArray(data.data)) {
-        data.data.map(room => {
-          if (room.members.find(item => item.user === user._id)) {
-            myChatRooms.push(room);
-          }
-        })
-      }
-      setAllChatrooms(myChatRooms);
+    API.socketRoomListen(msg => {
+      console.log(msg);
+      updateChatRooms();
     })
+
+    // get and print all chatrooms
+    updateChatRooms()
   }, [user])
 
-  //  Chat Socket goes here
-  
   //set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})
@@ -138,6 +158,7 @@ function Chatrooms(){
     }
   }, [clientMsg])
 
+  // console.log("chatrooms:currentChatroom - ", currentChatroom);
   return (
     <div className="center-align grey-text">
       list the chatrooms for {user.username}
@@ -145,7 +166,7 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room._id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
+          <button key={room._id} onClick={()=> {changeChatRoom(room._id)}} className="btn red accent" >{room.name}</button>
         )
         })
       }
@@ -201,7 +222,7 @@ function Chatrooms(){
         <div>
           <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
           <button className="btn waves-effect waves-light red accent" onClick={deleteEditMessage} disabled={editMsg.sender !== user._id}>Delete</button>
-          <button className="btn waves-effect waves-light red accent" onClick={UpdateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
+          <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
         )
         :

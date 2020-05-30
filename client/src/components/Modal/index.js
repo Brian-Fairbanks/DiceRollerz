@@ -65,11 +65,6 @@ class NewChatModal extends Component {
 }
 
 class AddUserModal extends Component {
-  constructor (chatRoom) {
-    super();
-    this.chatRoom = chatRoom;
-  }
-
   componentDidMount() {
     const options = {
       // onOpenStart: () => {
@@ -96,13 +91,14 @@ class AddUserModal extends Component {
   }
 
   render() {
+    // console.log("AddUserModal.props.chatroom - ", this.props.chatRoom);
     return (
       <div>
         <a
           className="btn red modal-trigger"
           data-target="modal2"
         >
-          <i class="fas fa-user-plus"></i>
+          <i className="fas fa-user-plus"></i>
         </a>
 
         <div
@@ -117,7 +113,7 @@ class AddUserModal extends Component {
                         If you want Fixed Footer Modal then add
                         modal-fixed-footer to the "modal" div*/}
             <AddUserForm 
-              chatRoom={this.chatRoom}
+              chatRoom={this.props.chatRoom}
             />
           </div>
         </div>
