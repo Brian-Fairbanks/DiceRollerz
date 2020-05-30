@@ -164,6 +164,7 @@ function Chatrooms(){
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
+            
             <Message
               members={currentChatroom.chatroom.members}
               key={post._id}
