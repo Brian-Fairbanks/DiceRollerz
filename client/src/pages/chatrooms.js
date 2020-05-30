@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import UserContext from "../utils/userContext";
 import Message from "../components/Message";
-import NewChatModal from "../components/Modal";
+import { NewChatModal, AddUserModal } from "../components/Modal";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
 
+//  invisibilify commence!
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
@@ -33,7 +34,6 @@ function Chatrooms(){
     // function to get information for an individual chat room.  Called when chat room name is clicked
     async function getChatLogs(id){
       const data = await API.getChatroom(id);
-      // console.log(data.data);
       setCurrentChatroom(data.data);
       // set the current room in your new message state!
       setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
@@ -110,8 +110,18 @@ function Chatrooms(){
 
     // get and print all chatrooms
     API.getChatrooms()
-    .then( data => {setAllChatrooms(data.data)})
-  }, [])
+    .then( data => {
+      let myChatRooms = [];
+      if (Array.isArray(data.data)) {
+        data.data.map(room => {
+          if (room.members.find(item => item.user === user._id)) {
+            myChatRooms.push(room);
+          }
+        })
+      }
+      setAllChatrooms(myChatRooms);
+    })
+  }, [user])
 
   //set sender for new message form once user context is loaded.
   useEffect(() => {
@@ -138,10 +148,18 @@ function Chatrooms(){
         })
       }
 
+      <div style={{display: "flex",  justifyContent: "center"}}>
       {/*Adding a new chatroom button */}
       <NewChatModal 
         //value={"Testing Values"}
       />
+      {currentChatroom.chatroom._id &&
+        currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
+        <AddUserModal
+          chatRoom={currentChatroom.chatroom}
+        /> :
+        ""}
+      </div>
 
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
