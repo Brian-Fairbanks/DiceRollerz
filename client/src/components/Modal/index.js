@@ -9,18 +9,18 @@ class NewChatModal extends Component {
 
   componentDidMount() {
     const options = {
-      // onOpenStart: () => {
-      //   console.log("Open Start");
-      // },
-      // onOpenEnd: () => {
-      //   console.log("Open End");
-      // },
-      // onCloseStart: () => {
-      //   console.log("Close Start");
-      // },
-      // onCloseEnd: () => {
-      //   console.log("Close End");
-      // },
+      onOpenStart: () => {
+        console.log("Open Start");
+      },
+      onOpenEnd: () => {
+        console.log("Open End");
+      },
+      onCloseStart: () => {
+        console.log("Close Start");
+      },
+      onCloseEnd: () => {
+        console.log("Close End");
+      },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
@@ -72,18 +72,18 @@ class AddUserModal extends Component {
 
   componentDidMount() {
     const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
+      // onOpenStart: () => {
+      //   console.log("Open Start");
+      // },
+      // onOpenEnd: () => {
+      //   console.log("Open End");
+      // },
+      // onCloseStart: () => {
+      //   console.log("Close Start");
+      // },
+      // onCloseEnd: () => {
+      //   console.log("Close End");
+      // },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
@@ -93,10 +93,6 @@ class AddUserModal extends Component {
     };
     M.Modal.init(this.Modal, options);
 
-    // let instance = M.Modal.getInstance(this.Modal);
-    // instance.open();
-    // instance.close();
-    // instance.destroy();
   }
 
   render() {

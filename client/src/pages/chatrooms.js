@@ -36,7 +36,6 @@ function Chatrooms(){
     // function to get information for an individual chat room.  Called when chat room name is clicked
     async function getChatLogs(id){
       const data = await API.getChatroom(id);
-      // console.log(data.data);
       setCurrentChatroom(data.data);
       // set the current room in your new message state!
       setNewMessage( {...newMessage, body:"", room: data.data.chatroom._id})
@@ -150,6 +149,7 @@ function Chatrooms(){
         )
       })}
 
+      <div style={{display: "flex",  justifyContent: "center"}}>
       {/*Adding a new chatroom button */}
       <NewChatModal 
         //value={"Testing Values"}
@@ -160,7 +160,7 @@ function Chatrooms(){
           chatRoom={currentChatroom.chatroom}
         /> :
         ""}
-
+      </div>
 
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
