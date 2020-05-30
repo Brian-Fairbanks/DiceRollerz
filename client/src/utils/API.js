@@ -62,19 +62,23 @@ export default {
 
   // Socket Send
   socketMsg(msg){
-    console.log(msg);
     socket.emit('chatMessage', (msg));
   },
   socketRoom(msg){
-    console.log("emitting chatroom update")
     socket.emit("chatroomEdit", msg);
   },
+
   socketListen(cb){
+    console.log("Now listening for new messages");
     socket.on("newMessage", (msg) => {cb(msg)});
   },
-  socketRoomListen(cb){
-    socket.on("chatroomChanged", msg => {console.log("receiving chatroom update"); cb(msg)});
+
+  socketRoomListen (cb){
+    console.log("Now listening for new chatrooms");
+    socket.on("chatroomChanged", (msg) => {cb(msg)});
   },
+
+
   //Sign Up Users
   signUpNewUser: async function(signInData){
     const data = await axios.post("/api/user/signup", signInData);

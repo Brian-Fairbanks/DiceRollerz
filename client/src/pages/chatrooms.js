@@ -14,7 +14,7 @@ function Chatrooms(){
 
   const [allChatrooms, setAllChatrooms] = useState([]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
-  const [clientRoom, setClientRoom] = useState([]);
+  const [clientRoom, setClientRoom] = useState("");
 
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({id:"", body:"", sender:"", room:""})
@@ -74,6 +74,12 @@ function Chatrooms(){
       setNewMessage({...newMessage, body: value})
     };
 
+
+
+
+    /* Edit/Delete Context Helpers
+    =============================================*/
+
     function getEditMessage(body, id, sender){
       //alert(`Clicked ${JSON.stringify(post)}!`);
       setEditMsg({id, body, sender, room: currentChatroom.chatroom._id})
@@ -98,6 +104,10 @@ function Chatrooms(){
       document.getElementById("message").focus()
     }
 
+
+
+
+
     function changeChatRoom(id) {
       let newRoom = allChatrooms.find(room => room._id === id);
       if (!newRoom) {
@@ -110,7 +120,9 @@ function Chatrooms(){
       clearEditMessage();
     }
 
+
     function updateChatRooms() {
+      console.log("Updating the chatroom Data")
       API.getChatrooms()
       .then( data => {
         let myChatRooms = [];
@@ -148,13 +160,12 @@ function Chatrooms(){
   // set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})
-
-    // get and print all chatrooms
+    // also get and print all chatrooms
     updateChatRooms()
   }, [user])
 
    // Update messages when socket.io callback changes this state
-   useEffect(() => {
+  useEffect(() => {
     // console.log(clientMsg)
     if(clientRoom){
       updateChatRooms();
