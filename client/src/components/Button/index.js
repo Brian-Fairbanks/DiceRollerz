@@ -6,7 +6,7 @@ import React from "react";
  */
 export function Button({ id, buttonClass, text, onClick, isDisabled }) {
     return (
-        <a type="button" id={id} className={"waves-effect waves-light btn" + (buttonClass ? " " + buttonClass : "")} onClick={onClick} disabled={isDisabled}>{text}</a>
+        <button type="button" id={id} className={"waves-effect waves-light btn" + (buttonClass ? " " + buttonClass : "")} onClick={onClick} disabled={isDisabled}>{text}</button>
     );
 }
 
@@ -16,7 +16,7 @@ export function Button({ id, buttonClass, text, onClick, isDisabled }) {
  */
 export function FloatingButton({ id, color, buttonClass, iconName, onClick, isDisabled }) {
     return (
-        <a id={id} className={"btn-floating btn-large waves-effect waves-light " + (color ? color : "red") + (buttonClass ? " " + buttonClass : "")} onClick={onClick} disabled={isDisabled}><i class="material-icons">{(iconName ? iconName : "add")}</i></a>
+        <button id={id} className={"btn-floating btn-large waves-effect waves-light " + (color ? color : "red") + (buttonClass ? " " + buttonClass : "")} onClick={onClick} disabled={isDisabled}><i class="material-icons">{(iconName ? iconName : "add")}</i></button>
     )
 }
 

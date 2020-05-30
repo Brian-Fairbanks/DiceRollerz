@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import './profile.css';
 import UserContext from "../utils/userContext";
 import API from "../utils/API.js";
-import M from "materialize-css";
 
 import { Avatar, AvatarWPic } from '../components/Avatar';
 import { InputWIcon, InputNoLabel } from '../components/Input';
@@ -46,7 +45,7 @@ function Profile() {
         break;
       case "description":
         // newUser.description = event.target.value;
-        // break;
+        break;
       default:
         return;
     }

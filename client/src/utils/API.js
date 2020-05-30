@@ -50,6 +50,12 @@ export default {
     return data;
   },
 
+  addChatroomMember: async function(id, post) {
+    const { user, role } = post
+    const data = await axios.put("/api/chat/"+id, { "$push": {"members": { "user": user, "role": role }}});
+    return data;
+  },
+
 
   // Socket Send
   socketMsg(msg){

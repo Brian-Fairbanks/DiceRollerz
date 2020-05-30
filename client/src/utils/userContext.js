@@ -2,7 +2,7 @@ import React from "react";
 
 const UserContext = React.createContext({
   user:{},
-  token:""
+  token:"notSet"
 });
 
 export default UserContext;

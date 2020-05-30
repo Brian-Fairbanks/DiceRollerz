@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import PropTypes from "prop-types";
-//import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classnames from "classnames";
 
@@ -20,26 +18,25 @@ class Login extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   // If logged in and user navigates to Login page, should redirect them to dashboard
-  //   // if (this.props.auth.isAuthenticated) {
-  //   //   console.log("Congrats!" + this.props.auth.user.id )
-  //   //   this.setState( {isLoggedIn:true})
-  //   }
-  // }
+  componentDidMount() {
+    // If logged in and user navigates to Login page, should redirect them to dashboard
+    if (this.props.user._id) {
+      console.log("Congrats!" + this.props.user.username )
+      this.setState( {isLoggedIn:true})
+    }
+  }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.auth.isAuthenticated) {
-  //     console.log("Congrats!" + this.props.auth.user.id )
-  //     this.setState( {isLoggedIn:true})
-  //   }
-  //   if (nextProps.errors) {
-  //     this.setState({
-  //       errors: nextProps.errors
-  //     });
-  //   }
-  // }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.token !=="NotSet") {
+      //console.log("Congrats!")
+      this.setState( {isLoggedIn:true})
+    }
+    // if (nextProps.errors) {
+    //   this.setState({
+    //     errors: nextProps.errors
+    //   });
+    // }
+  }
 
   onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
@@ -51,10 +48,8 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log("Calling Login")
     loginUser(userData)
     .then(token =>{
-      console.log(token);
       this.props.setToken(token);
     })
   };
