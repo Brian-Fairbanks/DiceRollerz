@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./signup.css"
 import { Container } from "../../components/Grid";
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import API from "../../utils/API"
 
 
@@ -16,6 +16,7 @@ useState({
   firstName: "",
   lastName: ""
 });
+const [isValid, setIsValid] = useState(false);
 
 function handleInputChange(event){
   const { name, value } = event.target;
@@ -29,6 +30,10 @@ function handleFormSubmit(event) {
       userSubmission
     ).then(data => {
       console.log(data)
+      // if sign up is valid...
+      if(data.status === 200){
+        setIsValid(true);
+      }
     })
     .catch(err => console.log(err))
   }
@@ -36,6 +41,7 @@ function handleFormSubmit(event) {
 
 return(
 <Container>
+  {isValid? <Redirect to="/chat" /> : ""}
   <div className="center center-align flex flex-align-center">
     <div className="col s12 m7 xl10">
       <div className="card blue-grey darken-1">

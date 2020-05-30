@@ -39,12 +39,12 @@ class NewChatModal extends Component {
   render() {
     return (
       <div>
-        <a
-          className="btn red modal-trigger"
+        <div 
+          className="pointer btn red modal-trigger"
           data-target="modal1"
         >
           <i className="fas fa-comment-medical"></i>
-        </a>
+        </div>
 
         <div
           ref={Modal => {

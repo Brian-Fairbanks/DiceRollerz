@@ -13,8 +13,8 @@ function Nav() {
         <img src={Logo} alt="DRZ Logo" height="55"/>
       </Link>
       <div className="show-on-small" style={{ display: "none" }}>
-        <a href="#" className="sidenav-trigger" data-target="nav-mobile"><i className="small material-icons">menu</i></a>
-     </div>
+        <div className="sidenav-trigger cur-pointer" data-target="nav-mobile"><i className="small material-icons">menu</i></div>
+    </div>
       <div className="hide-on-small-only">
         <ul className="right">
           <li><Link to="/" title="Home"><i className="material-icons">home</i></Link></li>

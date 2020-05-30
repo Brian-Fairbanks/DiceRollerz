@@ -100,3 +100,13 @@ main {
 .flex-grow{
   flex:1;
 }
+
+/* Fix error caused by materialize-css*/
+.hiddediv{
+  width:0px!important;
+}
+
+/*  Standardize the css class for changing to pointer */
+.cur-pointer:hover{
+  cursor: pointer;
+}

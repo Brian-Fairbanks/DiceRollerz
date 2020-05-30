@@ -43,12 +43,12 @@ function NewChatform(){
       </form>
     </div>
       <div className="modal-footer">
-        <a className="modal-close waves-effect waves-red btn">
+        <button className="modal-close waves-effect waves-red btn">
           Cancel
-        </a>
-        <a className="modal-close waves-effect waves-green btn" onClick={submitNewChat}>
+        </button>
+        <button className="modal-close waves-effect waves-green btn" onClick={submitNewChat}>
           Create
-        </a>
+        </button>
       </div>
     </div>
   )
