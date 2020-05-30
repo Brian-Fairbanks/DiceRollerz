@@ -14,6 +14,7 @@ function Chatrooms(){
 
   const [allChatrooms, setAllChatrooms] = useState([]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
+  const [clientRoom, setClientRoom] = useState([]);
 
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({id:"", body:"", sender:"", room:""})
@@ -139,17 +140,26 @@ function Chatrooms(){
 
     API.socketRoomListen( function (msg){
       console.log(msg);
-      updateChatRooms();
+      // updateChatRooms();
+      setClientRoom(msg);
     })
   }, [])
 
-  //set sender for new message form once user context is loaded.
+  // set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})
 
     // get and print all chatrooms
     updateChatRooms()
   }, [user])
+
+   // Update messages when socket.io callback changes this state
+   useEffect(() => {
+    // console.log(clientMsg)
+    if(clientRoom){
+      updateChatRooms();
+    }
+  }, [clientRoom])
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {

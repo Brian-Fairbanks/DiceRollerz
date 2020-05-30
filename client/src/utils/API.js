@@ -66,13 +66,14 @@ export default {
     socket.emit('chatMessage', (msg));
   },
   socketRoom(msg){
+    console.log("emitting chatroom update")
     socket.emit("chatroomEdit", msg);
   },
   socketListen(cb){
     socket.on("newMessage", (msg) => {cb(msg)});
   },
   socketRoomListen(cb){
-    socket.on("chatroomEdit", msg => {cb(msg)});
+    socket.on("chatroomChanged", msg => {console.log("receiving chatroom update"); cb(msg)});
   },
   //Sign Up Users
   signUpNewUser: async function(signInData){
