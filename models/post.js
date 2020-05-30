@@ -16,6 +16,7 @@ const postSchema = new Schema({
   timestamp: { type: Date, default: Date.now },
   deleted: {type: Boolean, default: false},
   updated: {type: Boolean, default: false},
+  
 });
 
 const Post = mongoose.model("Post", postSchema);
