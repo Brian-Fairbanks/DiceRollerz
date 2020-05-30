@@ -5,14 +5,14 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 
-const passport = require("passport");
-// const users = require("./routes/api/user");
-// Passport middleware
-app.use(passport.initialize());
-// Passport config
-require("./config/passport")(passport);
-// Routes
-// app.use("/api/users", users);
+// const passport = require("passport");
+// // const users = require("./routes/api/user");
+// // Passport middleware
+// app.use(passport.initialize());
+// // Passport config
+// require("./config/passport")(passport);
+// // Routes
+// // app.use("/api/users", users);
 
 
 const PORT = process.env.PORT || 3001;

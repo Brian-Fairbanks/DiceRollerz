@@ -5,7 +5,7 @@ import UserContext from './utils/userContext';
 
 //Routing Dependencies
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
-//import PrivateRoute from "./components/Private-Route";
+import Authenticate from "./components/Private-Route";
 
 // Authentication Dependencies
 import jwt_decode from "jwt-decode";
@@ -44,7 +44,7 @@ function App () {
     email: ''
   })
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("NotSet");
 
   /* ###############################################################
   User Persistant Sign In / set up redux/store with user information
@@ -109,6 +109,7 @@ function App () {
             </Route>
             <Route exact path="/login" component={Login}>
               <main>
+                {/* This page is done as a class extending component, and cannot make use of the useContext hook */}
                 <UserContext.Consumer>
                   {ctx => <Login 
                     setToken={ctx.setToken}
@@ -118,23 +119,30 @@ function App () {
               </main>
               <Footer />
             </Route>
-            <Route exact path='/chat'>
-              <main>
-                <Chat />
-              </main>
-            </Route>
-            <Route exact path='/profile'>
-              <main>
-                <Profile />
-              </main>
-              <Footer />
-            </Route>
             <Route exact path="/signup">
               <main>
                 <SignUp />
               </main>
               <Footer />
             </Route>
+            <Route exact path='/chat'>
+              <Authenticate/>
+              <main>
+                <Chat />
+              </main>
+            </Route>
+            <Route exact path='/profile'>
+              <Authenticate/>
+              <main>
+                <Profile />
+              </main>
+              <Footer />
+            </Route>
+            {/* Default Route, when not valid */}
+            <main>
+                <Landing />
+              </main>
+              <Footer />
           </Switch>
         </BrowserRouter>
     </UserContext.Provider>
