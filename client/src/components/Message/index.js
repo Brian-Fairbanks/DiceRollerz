@@ -1,4 +1,5 @@
 import React from "react";
+import moment from 'moment'
 
 
 function Message({ members, body, deleted, updated, sender, yours, id, getMsg, time }) {
