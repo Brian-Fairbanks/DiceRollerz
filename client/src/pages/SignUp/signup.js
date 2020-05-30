@@ -80,75 +80,86 @@ function SignUp() {
         <div className="col s12 m7 xl10">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
-              <input
-                placeholder="Username"
-                name="username"
-                onChange={handleInputChange}
-                type="text"
-                className="validate white-text"
-                required="true"
-                aria-required="true">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
 
-              <input
-                placeholder="Password"
-                name="password"
-                onChange={handleInputChange}
-                type="password"
-                className="validate white-text"
-                required="true"
-                aria-required="true"
-                minLength="6">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+              <Link to="/" className="btn-flat waves-effect">
+                <i className="material-icons left">keyboard_backspace</i> Back to home
+                </Link>
+              <div className="section">
+                <div className="col s12">
+                  <h4 className="black-text">
+                    <b>SignUp</b> below
+                </h4>
+                  <p className="grey-text text-lighten-1">
+                    Already have an account? <Link to="/login">Log In</Link>
+                  </p>
+                </div>
+              </div>
 
-              <input
-                placeholder="Confirm Password"
-                onChange={handleInputChange}
-                name="password2"
-                type="password"
-                className="validate white-text"
-                required="true"
-                aria-required="true"
-                minLength="6">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+              <div className="container center-align">
+                <input
+                  placeholder="Username"
+                  name="username"
+                  onChange={handleInputChange}
+                  type="text"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true">
+                </input>
 
-              <input
-                placeholder="Email"
-                name="email"
-                onChange={handleInputChange}
-                type="email"
-                className="validate white-text"
-                required="true"
-                aria-required="true">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+                <input
+                  placeholder="Password"
+                  name="password"
+                  onChange={handleInputChange}
+                  type="password"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true"
+                  minLength="6">
+                </input>
 
-              <input
-                placeholder="First Name"
-                onChange={handleInputChange}
-                name="firstName" type="text"
-                className="validate white-text"
-                required="true"
-                aria-required="true">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+                <input
+                  placeholder="Confirm Password"
+                  onChange={handleInputChange}
+                  name="password2"
+                  type="password"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true"
+                  minLength="6">
+                </input>
 
-              <input
-                placeholder="Last Name"
-                onChange={handleInputChange}
-                name="lastName" type="text"
-                className="validate white-text"
-                required="true"
-                aria-required="true">
-              </input>
-              <span className="helper-text" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</span>
+                <input
+                  placeholder="Email"
+                  name="email"
+                  onChange={handleInputChange}
+                  type="email"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true">
+                </input>
+
+                <input
+                  placeholder="First Name"
+                  onChange={handleInputChange}
+                  name="firstName" type="text"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true">
+                </input>
+
+                <input
+                  placeholder="Last Name"
+                  onChange={handleInputChange}
+                  name="lastName" type="text"
+                  className="validate white-text center-align"
+                  required="true"
+                  aria-required="true">
+                </input>
+                <div className="helper-text center-align bold" data-error="You Dishonor Me" data-success="You Chose Wisely">Choose Wisely</div>
+              </div>
             </div>
             <div className="card-action">
               <button className="waves-effect waves-light btn red accent" onClick={handleFormSubmit}> Sign Up </button>
-              <Link to="/login" className="waves-effect waves-light btn red accent">Log In</Link>
             </div>
           </div>
         </div>
