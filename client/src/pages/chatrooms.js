@@ -123,6 +123,8 @@ function Chatrooms(){
     })
   }, [user])
 
+  //  Chat Socket goes here
+  
   //set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})

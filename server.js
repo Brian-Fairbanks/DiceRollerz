@@ -52,6 +52,8 @@ io.on('connection', (socket) => {
   });
 });
 
+//  Chat Socket Listener goes here
+
 
 // Start the API server
 http.listen(PORT, function() {
