@@ -143,8 +143,9 @@ function Chatrooms(){
         setAllChatrooms(myChatRooms);
       })
       .catch( err => {console.error(err)});
+    }
 
-      
+
     function printDate(timestamp){
       let date = moment(timestamp).format('MMMM Do YYYY')
       if(date === lastDate){
