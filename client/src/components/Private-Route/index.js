@@ -3,15 +3,19 @@ import { Redirect } from 'react-router-dom';
 import userContext from '../../utils/userContext';
 
 function Authenticate(){
-  const {user} = useContext(userContext);
-  const [isAuth, setIsAuth] = useState(false);
+  const {token} = useContext(userContext);
+  const [isAuth, setIsAuth] = useState(true);
+
   useEffect( ()=>{
-    setIsAuth(user._id?true:false);
-  },[])
+    if (token){
+      const auth = token===''?false:true;
+      setIsAuth(auth);
+  }
+  },[token])
 
   return(
     <div>
-          {isAuth? "" : <Redirect to="/login" />}
+        {isAuth? "":<Redirect to="/login" />}
     </div>
     )
 };
