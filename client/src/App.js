@@ -44,7 +44,7 @@ function App () {
     email: ''
   })
 
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState("NotSet");
 
   /* ###############################################################
   User Persistant Sign In / set up redux/store with user information
