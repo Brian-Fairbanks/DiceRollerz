@@ -3,6 +3,7 @@ import API from "../utils/API";
 import UserContext from "../utils/userContext";
 import Message from "../components/Message";
 import { NewChatModal, AddUserModal } from "../components/Modal";
+import moment from "moment";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
@@ -13,7 +14,8 @@ function Chatrooms(){
   const { user } = useContext(UserContext);
 
   const [allChatrooms, setAllChatrooms] = useState([]);
-  const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
+  const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[]});
+  
 
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({id:"", body:"", sender:"", room:""})
@@ -26,6 +28,9 @@ function Chatrooms(){
 
   // sticky scrollbar settigns
   const [sticky] = useSticky();
+  
+  // dateStampts
+  var lastDate="";
   
 /*  ###############################################################
     Helper Functions 
@@ -97,6 +102,15 @@ function Chatrooms(){
       document.getElementById("message").focus()
     }
 
+    function printDate(timestamp){
+      let date = moment(timestamp).format('MMMM Do YYYY')
+      if(date === lastDate){
+        return "";
+      }
+      lastDate=date;
+      return (<div key={date} className="date-stamp">{date}</div>);
+    }
+
 /*  ###############################################################
     Use Effects 
 ################################################################### */
@@ -138,7 +152,6 @@ function Chatrooms(){
 
   return (
     <div className="center-align grey-text">
-      list the chatrooms for {user.username}
       <div>{currentChatroom.chatroom.name}</div>
       <br/>
       {allChatrooms.map(room => {
@@ -164,19 +177,21 @@ function Chatrooms(){
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
           return (
-            
-            <Message
-              members={currentChatroom.chatroom.members}
-              key={post._id}
-              deleted={post.deleted}
-              updated={post.updated}
-              body={post.body}
-              sender={post.sender}
-              yours={post.sender === user._id}
-              id = {post._id}
-              getMsg={getEditMessage}
-              time={post.timestamp}
-            />
+            <div>
+              {printDate(post.timestamp)}
+              <Message
+                members={currentChatroom.chatroom.members}
+                key={post._id}
+                deleted={post.deleted}
+                updated={post.updated}
+                body={post.body}
+                sender={post.sender}
+                yours={post.sender === user._id}
+                id = {post._id}
+                getMsg={getEditMessage}
+                time={post.timestamp}
+              />
+            </div>
           )
         }):"No Messages"}
         {!sticky}     
