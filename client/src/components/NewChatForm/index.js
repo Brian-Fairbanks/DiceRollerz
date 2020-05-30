@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
 import UserContext from "../../utils/userContext";
 
-function NewChatform(){
+function NewChatform({ onAddChatroom }){
 
   const { user } = useContext(UserContext);
 
@@ -18,6 +18,7 @@ function NewChatform(){
 
   function submitNewChat(){
     API.createNewChatroom(newChatroom);
+    if (onAddChatroom) onAddChatroom();
   }
 
 
@@ -33,7 +34,7 @@ function NewChatform(){
     <div>
       <div className="modal-content">
       <h4>New Chatroom</h4>
-      <form>
+      <form onSubmit={submitNewChat}>
         
         <div className="input-field col s6">
           <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate" />

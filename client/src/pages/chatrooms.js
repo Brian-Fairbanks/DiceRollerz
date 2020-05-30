@@ -15,6 +15,8 @@ function Chatrooms(){
 
   const [allChatrooms, setAllChatrooms] = useState([]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[]});
+  const [clientRoom, setClientRoom] = useState("");
+
   
 
   const [clientMsg, setClientMsg] = useState("")
@@ -78,6 +80,12 @@ function Chatrooms(){
       setNewMessage({...newMessage, body: value})
     };
 
+
+
+
+    /* Edit/Delete Context Helpers
+    =============================================*/
+
     function getEditMessage(body, id, sender){
       //alert(`Clicked ${JSON.stringify(post)}!`);
       setEditMsg({id, body, sender, room: currentChatroom.chatroom._id})
@@ -95,12 +103,48 @@ function Chatrooms(){
       clearEditMessage();
     }
 
-    function UpdateEditMessage() {
+    function updateEditMessage() {
       //      Starts editing the text of the currently selected message
       setNewMessage(editMsg); 
       setIsEditingMsg(true); 
       document.getElementById("message").focus()
     }
+
+
+
+
+
+    function changeChatRoom(id) {
+      let newRoom = allChatrooms.find(room => room._id === id);
+      if (!newRoom) {
+        console.log("Couldn't switch to chatroom "+id);
+        return;
+      }
+      getChatLogs(id);
+      setCurrentChatroom({chatroom: newRoom});
+      console.log("Switched to room: " + id);
+      clearEditMessage();
+    }
+
+
+    function updateChatRooms() {
+      console.log("Updating the chatroom Data")
+      API.getChatrooms()
+      .then( data => {
+        let myChatRooms = [];
+        if (Array.isArray(data.data)) {
+          data.data.map(room => {
+            if (room.members.find(item => item.user === user._id)) {
+              myChatRooms.push(room);
+            }
+          })
+        }
+        myChatRooms.sort((a, b) => a.name > b.name ? 1 : a.name === b.name ? 0 : -1);
+        setAllChatrooms(myChatRooms);
+      })
+      .catch( err => {console.error(err)});
+    }
+
 
     function printDate(timestamp){
       let date = moment(timestamp).format('MMMM Do YYYY')
@@ -122,25 +166,27 @@ function Chatrooms(){
       setClientMsg(msg);
     })
 
-    // get and print all chatrooms
-    API.getChatrooms()
-    .then( data => {
-      let myChatRooms = [];
-      if (Array.isArray(data.data)) {
-        data.data.map(room => {
-          if (room.members.find(item => item.user === user._id)) {
-            myChatRooms.push(room);
-          }
-        })
-      }
-      setAllChatrooms(myChatRooms);
+    API.socketRoomListen( function (msg){
+      console.log(msg);
+      // updateChatRooms();
+      setClientRoom(msg);
     })
-  }, [user])
+  }, [])
 
-  //set sender for new message form once user context is loaded.
+  // set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})
+    // also get and print all chatrooms
+    updateChatRooms()
   }, [user])
+
+   // Update messages when socket.io callback changes this state
+  useEffect(() => {
+    // console.log(clientMsg)
+    if(clientRoom){
+      updateChatRooms();
+    }
+  }, [clientRoom])
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {
@@ -156,7 +202,7 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room._id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
+          <button key={room._id} onClick={()=> {changeChatRoom(room._id)}} className="btn red accent" >{room.name}</button>
         )
         })
       }
@@ -164,6 +210,7 @@ function Chatrooms(){
       <div style={{display: "flex",  justifyContent: "center"}}>
       {/*Adding a new chatroom button */}
       <NewChatModal 
+        onAddChatroom={updateChatRooms}
         //value={"Testing Values"}
       />
       {currentChatroom.chatroom._id &&
@@ -215,7 +262,7 @@ function Chatrooms(){
         <div>
           <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
           <button className="btn waves-effect waves-light red accent" onClick={deleteEditMessage} disabled={editMsg.sender !== user._id}>Delete</button>
-          <button className="btn waves-effect waves-light red accent" onClick={UpdateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
+          <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
         )
         :

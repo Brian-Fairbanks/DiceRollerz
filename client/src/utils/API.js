@@ -1,6 +1,7 @@
 import axios from "axios";
 // set up socket info 
 import openSocket from 'socket.io-client';
+import { CommunicationStayPrimaryLandscape } from "material-ui/svg-icons";
 const socket = openSocket.connect();//openSocket('http://localhost:3001');
 
 export default {
@@ -47,24 +48,36 @@ export default {
 
   createNewChatroom: async function(chatOptions){
     const data = await axios.post("/api/chat", chatOptions);
+    this.socketRoom(data.data);
     return data;
   },
 
   addChatroomMember: async function(id, post) {
     const { user, role } = post
     const data = await axios.put("/api/chat/"+id, { "$push": {"members": { "user": user, "role": role }}});
+    this.socketRoom(data.data);
     return data;
   },
 
 
   // Socket Send
   socketMsg(msg){
-    console.log(msg);
     socket.emit('chatMessage', (msg));
   },
+  socketRoom(msg){
+    socket.emit("chatroomEdit", msg);
+  },
+
   socketListen(cb){
+    console.log("Now listening for new messages");
     socket.on("newMessage", (msg) => {cb(msg)});
   },
+
+  socketRoomListen (cb){
+    console.log("Now listening for new chatrooms");
+    socket.on("chatroomChanged", (msg) => {cb(msg)});
+  },
+
 
   //Sign Up Users
   signUpNewUser: async function(signInData){

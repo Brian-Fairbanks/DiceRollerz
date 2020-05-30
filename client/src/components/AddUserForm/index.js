@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
 import UserContext from "../../utils/userContext";
 import chat from "material-ui/svg-icons/communication/chat";
 
 function AddUserForm({ chatRoom }){
-
-  const { user } = useContext(UserContext);
-
   const [allUsers, setAllUsers] = useState([]);
-  const [members, setMembers] = useState([]);
 
   function clickAddHandler(event) {
     event.preventDefault();
@@ -19,29 +15,34 @@ function AddUserForm({ chatRoom }){
     }
     
     console.log(chatRoom);
-    chatRoom.chatRoom.members.push(newUser);
-    API.addChatroomMember(chatRoom.chatRoom._id, newUser)
-      .then(data => console.log("Added member to chatroom " + chatRoom.chatRoom._id, data))
+    chatRoom.members.push(newUser);
+    API.addChatroomMember(chatRoom._id, newUser)
+      .then(data => console.log("Added member to chatroom " + chatRoom._id, data))
       .catch(err => console.error(err))
   }
 
   useEffect(() => {
     API.getUsers()
       .then(data => {
+        if (!data.data) {
+          console.error("Error retrieving users!")
+          return;
+        }
+        let userArray = data.data;
+        userArray.sort((a, b) => a.username > b.username ? 1 : a.username === b.username ? 0 : -1)
         setAllUsers(data.data);
       })
       .catch(err => console.error(err))
   })
 
   let x = -1;
-  // console.log(allUsers, user, chatRoom);
   return(
       <div className="modal-content">
         <h4>Add Users</h4>
         <div className="users-field col s6" style={{height: "80%", overflow: "auto"}}>
           <ul>
             {allUsers.map(currentUser => {
-                if ((!chatRoom.chatRoom.members.find(item => item.user === currentUser._id))) {
+                if ((!chatRoom.members.find(item => item.user === currentUser._id))) {
                   x++;
 
                   return (
@@ -58,7 +59,7 @@ function AddUserForm({ chatRoom }){
         </div>
         <div className="modal-footer">
           <a className="modal-close waves-effect waves-red btn">
-            Cancel
+            Close
           </a>
         </div>
     </div>
