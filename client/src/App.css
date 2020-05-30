@@ -37,7 +37,6 @@
   }
 }
 
-
 body, #root{
   background-color: #282c34;
   display: flex;
@@ -109,4 +108,28 @@ main {
 /*  Standardize the css class for changing to pointer */
 .cur-pointer:hover{
   cursor: pointer;
+}
+
+/*  Hacky override for default autofill settings set by google chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border-left:none!important;
+  border-right:none!important;
+  border-top:none!important;
+  -webkit-text-fill-color: blanchedalmond !important;
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0), inset 0 0 0 100px rgb(110,127,100) !important;
+}
+
+input:-internal-autofill-selected,
+textArea:-internal-autofill-selected,
+select:-internal-autofill-selected {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0), inset 0 0 0 100px rgb(110,127,122) !important;
 }
