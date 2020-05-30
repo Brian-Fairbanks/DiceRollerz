@@ -119,24 +119,30 @@ function App () {
               </main>
               <Footer />
             </Route>
-            <Route exact path='/chat'>
-            <Authenticate/>
-              <main>
-                <Chat />
-              </main>
-            </Route>
-            <Route exact path='/profile'>
-              <main>
-                <Profile />
-              </main>
-              <Footer />
-            </Route>
             <Route exact path="/signup">
               <main>
                 <SignUp />
               </main>
               <Footer />
             </Route>
+            <Route exact path='/chat'>
+              <Authenticate/>
+              <main>
+                <Chat />
+              </main>
+            </Route>
+            <Route exact path='/profile'>
+              <Authenticate/>
+              <main>
+                <Profile />
+              </main>
+              <Footer />
+            </Route>
+            {/* Default Route, when not valid */}
+            <main>
+                <Landing />
+              </main>
+              <Footer />
           </Switch>
         </BrowserRouter>
     </UserContext.Provider>
