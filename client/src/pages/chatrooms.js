@@ -108,7 +108,7 @@ function Chatrooms(){
         return "";
       }
       lastDate=date;
-      return (<div className="date-stamp">{date}</div>);
+      return (<div key={date} className="date-stamp">{date}</div>);
     }
 
 /*  ###############################################################
