@@ -48,10 +48,8 @@ class Login extends Component {
       username: this.state.username,
       password: this.state.password
     };
-    console.log("Calling Login")
     loginUser(userData)
     .then(token =>{
-      console.log(token);
       this.props.setToken(token);
     })
   };

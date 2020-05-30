@@ -1,8 +1,11 @@
-import React, {useState} from "react";
+import React, {useState, useContext, useEffect} from "react";
+import userContext from "../../utils/userContext";
 import "./signup.css"
 import { Container } from "../../components/Grid";
 import {Link, Redirect} from "react-router-dom"
 import API from "../../utils/API"
+
+import { loginUser } from "../../actions/authActions";
 
 
 
@@ -16,7 +19,37 @@ useState({
   firstName: "",
   lastName: ""
 });
+// used for redirect if user just signed up
 const [isValid, setIsValid] = useState(false);
+useEffect( ()=>{
+  if (isValid){
+  // code for login here
+    const userData = {
+      username: userSubmission.username,
+      password: userSubmission.password
+    };
+    loginUser(userData)
+    .then(token =>{
+      setToken(token);
+    })
+  }
+},[isValid])
+
+// use for redirect if user is already signed in
+const {token, setToken} = useContext(userContext);
+const [isAuth, setIsAuth] = useState(false);
+useEffect( ()=>{
+  if (token){
+    console.log(token);
+    const auth = token==='NotSet'?false:true;
+    setIsAuth(auth);
+  }
+},[token])
+
+
+/*#############################
+Helper Functions
+###############################*/
 
 function handleInputChange(event){
   const { name, value } = event.target;
@@ -39,9 +72,10 @@ function handleFormSubmit(event) {
   }
 }
 
+
 return(
 <Container>
-  {isValid? <Redirect to="/chat" /> : ""}
+  {isAuth? <Redirect to="/chat" />:"" }
   <div className="center center-align flex flex-align-center">
     <div className="col s12 m7 xl10">
       <div className="card blue-grey darken-1">
