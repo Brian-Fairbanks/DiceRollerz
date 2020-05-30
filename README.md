@@ -37,11 +37,6 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
     npm install
 ### Run (production)
     npm start
-    npx nodemon server.js
-### Run (dev)
-    npm run client
-### Seed
-    npm run seed
 ### Build
     npm run build
 
@@ -81,8 +76,6 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 
 ## Verfification
-### Travis CI
-Continuous Integration checks using Travis CI
 
 ### Protected Master
 The master branch is protected, and requires at least one peer review to merge into.
@@ -101,12 +94,19 @@ Members Contributing on this project:
     * Icons/Images
     * Aditional Styling
     * Account Verification and Login error handling
+    * ChatRoom/New Message creation
+    * Message Deletions
+    * Socket.io (realtime) chatroom updates.
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
     * API calls for front end
-    * 
+    * Message Update
+    * User authentication for message changing
+    * Header/Side Nav
+
 * [Sergio Bracamontes](https://github.com/warsurge)
+    * Landing page 
     * Sign up page
     * API calls for front end
 
@@ -115,6 +115,9 @@ Members Contributing on this project:
     * Account Verification and Login error handling
     * API calls for front end
     * Documentation
+
+* [Lee Ann Norman](https://github.com/leenorman)
+    * Rough Draft UI/UX Wireframe
 
 
 

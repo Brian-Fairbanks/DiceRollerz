@@ -31,7 +31,7 @@ function handleFormSubmit(event) {
     ).then(data => {
       console.log(data)
       // if sign up is valid...
-      if(data.status == 200){
+      if(data.status === 200){
         setIsValid(true);
       }
     })

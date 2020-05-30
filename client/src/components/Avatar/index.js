@@ -16,11 +16,9 @@ export function AvatarWPic({ imagePath, altText, imageLinkOnClick, title, text, 
     return (
         <li className={"blue-grey white-text collection-item avatar col " + (colSize ? colSize : "s12") + (wrapperClass ? " " + wrapperClass : "")} key={key}>
             {(title ? <h6>{title}</h6> : "")}
-            <a
-                onClick={imageLinkOnClick}
-            >
+            <div className="pointer" onClick={imageLinkOnClick}>
                 <img src={imagePath} alt={altText} className="circle" />
-            </a>
+            </div>
             <div>{(!Array.isArray(text) ? <div>{text}</div> : text.map(line => <div>{line}</div>))}</div>
         </li>
     );

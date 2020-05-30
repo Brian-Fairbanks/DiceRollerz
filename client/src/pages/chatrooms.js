@@ -5,13 +5,13 @@ import Message from "../components/Message";
 import NewChatModal from "../components/Modal";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
-import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
+import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
 
 
 function Chatrooms(){
   const { user } = useContext(UserContext);
 
-  const [allChatrooms, setAllChatrooms] = useState(["test"]);
+  const [allChatrooms, setAllChatrooms] = useState([]);
   const [currentChatroom, setCurrentChatroom] = useState({chatroom:{},posts:[{_id:"stop no key alert", body:"No Messages"}]});
 
   const [clientMsg, setClientMsg] = useState("")
@@ -24,7 +24,6 @@ function Chatrooms(){
   });
 
   // sticky scrollbar settigns
-  const scrollToBottom = useScrollToBottom();
   const [sticky] = useSticky();
   
 /*  ###############################################################
@@ -121,7 +120,7 @@ function Chatrooms(){
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {
-    console.log(clientMsg)
+    // console.log(clientMsg)
     if(clientMsg){
       updateMessages(clientMsg.room)
     }
@@ -134,9 +133,10 @@ function Chatrooms(){
       <br/>
       {allChatrooms.map(room => {
         return (
-          <button key={room.id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
+          <button key={room._id} onClick={()=> {getChatLogs(room._id);clearEditMessage();}} className="btn red accent" >{room.name}</button>
         )
-      })}
+        })
+      }
 
       {/*Adding a new chatroom button */}
       <NewChatModal 
