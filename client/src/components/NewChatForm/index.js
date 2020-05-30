@@ -34,7 +34,7 @@ function NewChatform({ onAddChatroom }){
     <div>
       <div className="modal-content">
       <h4>New Chatroom</h4>
-      <form>
+      <form onSubmit={submitNewChat}>
         
         <div className="input-field col s6">
           <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate" />

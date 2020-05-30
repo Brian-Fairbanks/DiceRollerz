@@ -24,6 +24,12 @@ function AddUserForm({ chatRoom }){
   useEffect(() => {
     API.getUsers()
       .then(data => {
+        if (!data.data) {
+          console.error("Error retrieving users!")
+          return;
+        }
+        let userArray = data.data;
+        userArray.sort((a, b) => a.username > b.username ? 1 : a.username === b.username ? 0 : -1)
         setAllUsers(data.data);
       })
       .catch(err => console.error(err))
@@ -53,7 +59,7 @@ function AddUserForm({ chatRoom }){
         </div>
         <div className="modal-footer">
           <a className="modal-close waves-effect waves-red btn">
-            Cancel
+            Close
           </a>
         </div>
     </div>

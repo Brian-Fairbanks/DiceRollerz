@@ -120,6 +120,7 @@ function Chatrooms(){
             }
           })
         }
+        myChatRooms.sort((a, b) => a.name > b.name ? 1 : a.name === b.name ? 0 : -1);
         setAllChatrooms(myChatRooms);
       })
       .catch( err => {console.error(err)});
