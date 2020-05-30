@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import API from "../utils/API";
 import UserContext from "../utils/userContext";
 import Message from "../components/Message";
-import NewChatModal from "../components/Modal";
+import { NewChatModal, AddUserModal } from "../components/Modal";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
@@ -154,6 +154,13 @@ function Chatrooms(){
       <NewChatModal 
         //value={"Testing Values"}
       />
+      {currentChatroom.chatroom._id &&
+        currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
+        <AddUserModal
+          chatRoom={currentChatroom.chatroom}
+        /> :
+        ""}
+
 
       <ScrollToBottom className="posts row m-auto overflow-scroll ">
         {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
