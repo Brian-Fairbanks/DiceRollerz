@@ -38,11 +38,10 @@ function AddUserForm({ chatRoom }){
   return(
       <div className="modal-content">
         <h4>Add Users</h4>
-        <div className="input-field col s6">
+        <div className="users-field col s6" style={{height: "80%", overflow: "auto"}}>
           <ul>
             {allUsers.map(currentUser => {
-                if ((currentUser._id !== user._id) &&
-                    (!chatRoom.chatRoom.members.find(item => item.user === user.username))) {
+                if ((!chatRoom.chatRoom.members.find(item => item.user === currentUser._id))) {
                   x++;
 
                   return (
@@ -56,6 +55,11 @@ function AddUserForm({ chatRoom }){
                 }
             })}
           </ul>
+        </div>
+        <div className="modal-footer">
+          <a className="modal-close waves-effect waves-red btn">
+            Cancel
+          </a>
         </div>
     </div>
   )
