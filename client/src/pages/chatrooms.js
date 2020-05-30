@@ -120,7 +120,7 @@ function Chatrooms(){
 
   // Update messages when socket.io callback changes this state
   useEffect(() => {
-    console.log(clientMsg)
+    // console.log(clientMsg)
     if(clientMsg){
       updateMessages(clientMsg.room)
     }
