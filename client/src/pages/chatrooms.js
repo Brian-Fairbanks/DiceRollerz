@@ -136,18 +136,18 @@ function Chatrooms(){
       setClientMsg(msg);
     })
 
-    API.socketRoomListen(msg => {
+    API.socketRoomListen( function (msg){
       console.log(msg);
       updateChatRooms();
     })
-
-    // get and print all chatrooms
-    updateChatRooms()
-  }, [user])
+  }, [])
 
   //set sender for new message form once user context is loaded.
   useEffect(() => {
     setNewMessage( {sender: user._id})
+
+    // get and print all chatrooms
+    updateChatRooms()
   }, [user])
 
   // Update messages when socket.io callback changes this state
@@ -158,7 +158,6 @@ function Chatrooms(){
     }
   }, [clientMsg])
 
-  // console.log("chatrooms:currentChatroom - ", currentChatroom);
   return (
     <div className="center-align grey-text">
       list the chatrooms for {user.username}
@@ -174,6 +173,7 @@ function Chatrooms(){
       <div style={{display: "flex",  justifyContent: "center"}}>
       {/*Adding a new chatroom button */}
       <NewChatModal 
+        onAddChatroom={updateChatRooms}
         //value={"Testing Values"}
       />
       {currentChatroom.chatroom._id &&

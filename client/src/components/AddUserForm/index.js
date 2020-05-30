@@ -30,7 +30,6 @@ function AddUserForm({ chatRoom }){
   })
 
   let x = -1;
-  // console.log("AddUserForm: ", allUsers, chatRoom);
   return(
       <div className="modal-content">
         <h4>Add Users</h4>

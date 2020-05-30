@@ -53,8 +53,8 @@ io.on('connection', (socket) => {
 
 //  Chat Socket Listener goes here
 
-  socket.on('chatroomEdit', msg => {
-    console.log('room: ' + msg);
+  socket.on('chatroomEdit', (msg) => {
+    console.log('room: ', msg);
     socket.broadcast.emit("chatroomChanged", msg);
   })
 });

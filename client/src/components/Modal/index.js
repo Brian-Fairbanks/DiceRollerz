@@ -9,18 +9,18 @@ class NewChatModal extends Component {
 
   componentDidMount() {
     const options = {
-      onOpenStart: () => {
-        console.log("Open Start");
-      },
-      onOpenEnd: () => {
-        console.log("Open End");
-      },
-      onCloseStart: () => {
-        console.log("Close Start");
-      },
-      onCloseEnd: () => {
-        console.log("Close End");
-      },
+      // onOpenStart: () => {
+      //   console.log("Open Start");
+      // },
+      // onOpenEnd: () => {
+      //   console.log("Open End");
+      // },
+      // onCloseStart: () => {
+      //   console.log("Close Start");
+      // },
+      // onCloseEnd: () => {
+      //   console.log("Close End");
+      // },
       inDuration: 250,
       outDuration: 250,
       opacity: 0.5,
@@ -57,7 +57,7 @@ class NewChatModal extends Component {
                         bottom-sheet class to the "modal" div
                         If you want Fixed Footer Modal then add
                         modal-fixed-footer to the "modal" div*/}
-            <NewChatForm />
+            <NewChatForm onAddChatroom={this.props.onAddChatroom} />
           </div>
         </div>
     );
@@ -91,7 +91,6 @@ class AddUserModal extends Component {
   }
 
   render() {
-    // console.log("AddUserModal.props.chatroom - ", this.props.chatRoom);
     return (
       <div>
         <a
