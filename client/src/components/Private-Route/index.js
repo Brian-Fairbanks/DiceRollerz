@@ -1,20 +1,19 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import UserContext from "../utils/userContext";
+import React,{useState, useEffect, useContext} from 'react';
+import { Redirect } from 'react-router-dom';
+import userContext from '../../utils/userContext';
 
-const { user, isAuthenticated } = useContext(UserContext);
+function Authenticate(){
+  const {user} = useContext(userContext);
+  const [isAuth, setIsAuth] = useState(false);
+  useEffect( ()=>{
+    setIsAuth(user._id?true:false);
+  },[])
 
-const PrivateRoute = ({ component: Component, auth, ...rest }) => (
-  <Route
-    {...rest}
-    render={props =>
-      auth.isAuthenticated === true ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
-    }
-  />
-);
+  return(
+    <div>
+          {isAuth? "" : <Redirect to="/login" />}
+    </div>
+    )
+};
 
-export default PrivateRoute;
+export default Authenticate;

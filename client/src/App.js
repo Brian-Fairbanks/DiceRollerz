@@ -5,7 +5,7 @@ import UserContext from './utils/userContext';
 
 //Routing Dependencies
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
-//import PrivateRoute from "./components/Private-Route";
+import Authenticate from "./components/Private-Route";
 
 // Authentication Dependencies
 import jwt_decode from "jwt-decode";
@@ -109,6 +109,7 @@ function App () {
             </Route>
             <Route exact path="/login" component={Login}>
               <main>
+                {/* This page is done as a class extending component, and cannot make use of the useContext hook */}
                 <UserContext.Consumer>
                   {ctx => <Login 
                     setToken={ctx.setToken}
@@ -119,6 +120,7 @@ function App () {
               <Footer />
             </Route>
             <Route exact path='/chat'>
+            <Authenticate/>
               <main>
                 <Chat />
               </main>
