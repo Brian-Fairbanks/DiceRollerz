@@ -14,6 +14,9 @@ Dice Rollerz is an online chat app that helps D&D enthusiasts communicate and or
 * [License](#license)
 * [Scripts](#Scripts)
 * [Dependencies](#dependencies)
+* [Verfification](#verfification)
+* [Testing](#tests)
+* [Account Handling](#accounts)
 * [Credits](#contributing)
 * [Testing](#tests)
 * [Questions](#questions)
@@ -84,6 +87,12 @@ The master branch is protected, and requires at least one peer review to merge i
 ## Tests
 Manually tested.  No additinal frameworks used.
 
+## Accounts
+### Security
+Account passwords are salted, hashed, and stored privately, with the help of the ByCrypt Package
+### Persistance
+Accounts, on log in, are assigned a JSON Web Token, which may be presented for up to one year.
+This is stored in the browsers local storage, and compared each login to mainain a persistant login session.
 
 ## Contributing
 Members Contributing on this project:
