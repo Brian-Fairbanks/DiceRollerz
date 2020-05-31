@@ -22,7 +22,6 @@ function Nav() {
       email: ''
     });
     setToken("NotSet");
-
   }
 
 
