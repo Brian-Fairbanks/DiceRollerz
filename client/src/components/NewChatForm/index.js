@@ -31,23 +31,23 @@ function NewChatform({ onAddChatroom }){
 
 
   return(
-    <div>
-      <div className="modal-content">
-      <h4>New Chatroom</h4>
+    <div> 
+      <div className="modal-content blue-grey black-text" >
+      <h4><b>New Chatroom</b></h4>
       <form onSubmit={submitNewChat}>
         
         <div className="input-field col s6">
-          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate" />
+          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate white-text" />
             <label className="active" htmlFor="chatName">Chatroom Name</label>
         </div>
         
       </form>
     </div>
-      <div className="modal-footer">
+      <div className="modal-footer blue-grey">
         <button className="modal-close waves-effect waves-red btn">
           Cancel
         </button>
-        <button className="modal-close waves-effect waves-green btn" onClick={submitNewChat}>
+        <button className="modal-close waves-effect waves-red btn" onClick={submitNewChat}>
           Create
         </button>
       </div>
