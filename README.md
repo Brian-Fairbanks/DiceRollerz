@@ -14,6 +14,9 @@ Dice Rollerz is an online chat app that helps D&D enthusiasts communicate and or
 * [License](#license)
 * [Scripts](#Scripts)
 * [Dependencies](#dependencies)
+* [Verfification](#verfification)
+* [Testing](#tests)
+* [Account Handling](#accounts)
 * [Credits](#contributing)
 * [Testing](#tests)
 * [Questions](#questions)
@@ -84,36 +87,52 @@ The master branch is protected, and requires at least one peer review to merge i
 ## Tests
 Manually tested.  No additinal frameworks used.
 
+## Accounts
+### Security
+Account passwords are salted, hashed, and stored privately, with the help of the ByCrypt Package
+### Persistance
+Accounts, on log in, are assigned a JSON Web Token, which may be presented for up to one year.
+This is stored in the browsers local storage, and compared each login to mainain a persistant login session.
 
 ## Contributing
 Members Contributing on this project:
 * [Brian Fairbanks](https://github.com/Brian-Fairbanks)
     * Project Manager
+    * Deployment Handling
     * Database creation/management
     * API Backends
-    * Icons/Images
-    * Aditional Styling
-    * Account Verification and Login error handling
     * ChatRoom/New Message creation
-    * Message Deletions
-    * Socket.io (realtime) chatroom updates.
+    * Message Deletion Functionality
+    * Socket.io (realtime) message updates
+    * Account Verification and Login error handling
+    * Authenticated Pages and Redircts
+    * Logout Functionality
+    * Icons/Images
+    * Styling
+    * Code Formatting / Cleanup
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
-    * API calls for front end
-    * Message Update
-    * User authentication for message changing
     * Header/Side Nav
+    * API calls from front end
+    * Socket.io (realtime) Chatroom Additions
+    * User authentication for message edits/deletes
+    * Edit Message Functionality
+    * User Authentication for Viewing Chatrooms
+    * Member Additions per Chatroom
+
 
 * [Sergio Bracamontes](https://github.com/warsurge)
     * Landing page 
     * Sign up page
-    * API calls for front end
+    * Signup Validations, Front and Back End
+    * API calls from front end
+    * Message Avatar Settings
 
 * [Jason Strouphauer](https://github.com/jdstroup10)
     * Login page
     * Account Verification and Login error handling
-    * API calls for front end
+    * API calls from front end
     * Documentation
 
 * [Lee Ann Norman](https://github.com/leenorman)
