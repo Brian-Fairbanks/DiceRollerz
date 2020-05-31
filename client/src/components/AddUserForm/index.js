@@ -37,7 +37,7 @@ function AddUserForm({ chatRoom }){
 
   let x = -1;
   return(
-      <div className="modal-content">
+      <div className="modal-content blue-grey white-text">
         <h4>Add Users</h4>
         <div className="users-field col s6" style={{height: "80%", overflow: "auto"}}>
           <ul>
@@ -57,7 +57,7 @@ function AddUserForm({ chatRoom }){
             })}
           </ul>
         </div>
-        <div className="modal-footer">
+        <div className="modal-footer blue-grey">
           <a className="modal-close waves-effect waves-red btn">
             Close
           </a>
