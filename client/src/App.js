@@ -70,8 +70,14 @@ function App () {
       const currentTime = Date.now() / 1000; // to get in seconds instead of miliseconds
       if (decoded.exp < currentTime) {
         // Logout user
-        setUser({});
-        setToken("");
+        setUser({
+          _id: '',
+          firstName: '',
+          lastName: '',
+          userName: '',
+          email: ''
+        });
+        setToken("NotSet");
         // Redirect to login
         window.location.href = "./login";
       }
