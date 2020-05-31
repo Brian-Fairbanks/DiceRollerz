@@ -50,7 +50,9 @@ class Login extends Component {
     };
     loginUser(userData)
     .then(token =>{
-      this.props.setToken(token);
+      if(token){
+        this.props.setToken(token);
+      }
     })
   };
 
