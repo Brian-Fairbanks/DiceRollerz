@@ -136,6 +136,7 @@ select:-internal-autofill-selected {
 
 /* Chatroom Date Stamp*/
 .date-stamp{
+  display:inline-block;
   width:200px;
   margin: 10px auto;
   padding:2px;

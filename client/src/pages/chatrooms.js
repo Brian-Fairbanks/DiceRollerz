@@ -146,13 +146,15 @@ function Chatrooms(){
     }
 
 
+    /* DateStamp Creation Logic
+    ================================ */
     function printDate(timestamp){
       let date = moment(timestamp).format('MMMM Do YYYY')
       if(date === lastDate){
         return "";
       }
       lastDate=date;
-      return (<div key={date} className="date-stamp">{date}</div>);
+      return (<span key={date} className="date-stamp">{date}</span>);
     }
 
 /*  ###############################################################
