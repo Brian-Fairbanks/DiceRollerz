@@ -31,13 +31,13 @@ function NewChatform({ onAddChatroom }){
 
 
   return(
-    <div style={{boxShadow:"0 0 50px 2px #f00"}}> 
+    <div> 
       <div className="modal-content blue-grey black-text" >
       <h4><b>New Chatroom</b></h4>
       <form onSubmit={submitNewChat}>
         
         <div className="input-field col s6">
-          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate" />
+          <input value={newChatroom.name} onChange={handleNewChatroomForm}id="chatName" type="text" className="validate white-text" />
             <label className="active" htmlFor="chatName">Chatroom Name</label>
         </div>
         
