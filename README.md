@@ -89,19 +89,23 @@ Manually tested.  No additinal frameworks used.
 Members Contributing on this project:
 * [Brian Fairbanks](https://github.com/Brian-Fairbanks)
     * Project Manager
+    * Deployment Handling
     * Database creation/management
     * API Backends
-    * Icons/Images
-    * Aditional Styling
-    * Account Verification and Login error handling
     * ChatRoom/New Message creation
     * Message Deletions
     * Socket.io (realtime) chatroom updates.
+    * Account Verification and Login error handling
+    * Authenticated Pages and Redircts
+    * Logout Functionality
+    * Icons/Images
+    * Styling
+    * Code Formatting / Cleanup
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
     * API calls for front end
-    * Message Update
+    * Edit Message
     * User authentication for message changing
     * Header/Side Nav
 
@@ -109,6 +113,7 @@ Members Contributing on this project:
     * Landing page 
     * Sign up page
     * API calls for front end
+    * Message Avatar Settings
 
 * [Jason Strouphauer](https://github.com/jdstroup10)
     * Login page
