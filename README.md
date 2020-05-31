@@ -102,8 +102,8 @@ Members Contributing on this project:
     * Database creation/management
     * API Backends
     * ChatRoom/New Message creation
-    * Message Deletions
-    * Socket.io (realtime) chatroom updates.
+    * Message Deletion Functionality
+    * Socket.io (realtime) message updates
     * Account Verification and Login error handling
     * Authenticated Pages and Redircts
     * Logout Functionality
@@ -113,21 +113,26 @@ Members Contributing on this project:
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
-    * API calls for front end
-    * Edit Message
-    * User authentication for message changing
     * Header/Side Nav
+    * API calls from front end
+    * Socket.io (realtime) Chatroom Additions
+    * User authentication for message edits/deletes
+    * Edit Message Functionality
+    * User Authentication for Viewing Chatrooms
+    * Member Additions per Chatroom
+
 
 * [Sergio Bracamontes](https://github.com/warsurge)
     * Landing page 
     * Sign up page
-    * API calls for front end
+    * Signup Validations, Front and Back End
+    * API calls from front end
     * Message Avatar Settings
 
 * [Jason Strouphauer](https://github.com/jdstroup10)
     * Login page
     * Account Verification and Login error handling
-    * API calls for front end
+    * API calls from front end
     * Documentation
 
 * [Lee Ann Norman](https://github.com/leenorman)
