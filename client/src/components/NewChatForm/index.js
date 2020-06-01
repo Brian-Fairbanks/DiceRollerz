@@ -44,10 +44,10 @@ function NewChatform({ onAddChatroom }){
       </form>
     </div>
       <div className="modal-footer blue-grey darken-3">
-        <button className="modal-close waves-effect waves-red btn">
+        <button className="modal-close waves-effect red btn">
           Cancel
         </button>
-        <button className="modal-close waves-effect waves-red btn" onClick={submitNewChat}>
+        <button className="modal-close waves-effect red btn" onClick={submitNewChat}>
           Create
         </button>
       </div>

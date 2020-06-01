@@ -37,7 +37,7 @@ function AddUserForm({ chatRoom }){
 
   let x = -1;
   return(
-      <div className="modal-content blue-grey darken-3">
+      <div className="modal-content blue-grey darken-3 white-text">
         <h4>Add Users</h4>
         <div className="users-field col s6" style={{height: "80%", overflow: "auto"}}>
           <ul>
@@ -48,7 +48,7 @@ function AddUserForm({ chatRoom }){
                   return (
                     <p>
                       {currentUser.username} 
-                      <a id={currentUser._id} className="btn-small waves-effect waves-red right" onClick={clickAddHandler} key={x}>
+                      <a id={currentUser._id} className="btn-small waves-effect red right" onClick={clickAddHandler} key={x}>
                         +
                       </a>
                     </p>
@@ -58,7 +58,7 @@ function AddUserForm({ chatRoom }){
           </ul>
         </div>
         <div className="modal-footer blue-grey darken-3">
-          <a className="modal-close waves-effect waves-red btn">
+          <a className="modal-close waves-effect red btn">
             Close
           </a>
         </div>
