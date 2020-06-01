@@ -8,7 +8,7 @@ function Message({ members, body, deleted, updated, sender, yours, id, getMsg, t
   return (
     <div className={"col s12 white-text"} onClick={() => getMsg(body, id, sender)}>
       <div>
-        {sender} {moment(time).format('h:mm:ss a')}
+        {moment(time).format('h:mm:ss a')}
       </div>
       <div className={`col s1 center-align valign-wrapper`}>
       {userImage?

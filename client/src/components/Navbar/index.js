@@ -45,8 +45,8 @@ function Nav() {
 
     </div>
 
-    <ul id="nav-mobile" className="sidenav">
-      <li><Link to="/"><i className="material-icons">home</i>Home</Link></li>
+    <ul id="nav-mobile" className="sidenav blue-grey darken-3">
+      <li><Link to="/"><i className="material-icons text-red">home</i>Home</Link></li>
       <li><Link to="/profile"><i className="small material-icons">person</i> My Profile</Link></li>
       <li><Link to="/chat"><i className="small material-icons">chat_bubble</i> Chat Rooms</Link></li>
       <li><a onClick={()=>{logOut()}}><i className="small material-icons">phonelink_erase</i> Log Out</a></li>
