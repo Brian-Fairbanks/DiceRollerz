@@ -263,7 +263,7 @@ function Chatrooms(){
       {editMsg.id?(
         <div>
           <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
-          <button className="btn waves-effect waves-light red accent" onClick={deleteEditMessage} disabled={editMsg.sender !== user._id}>Delete</button>
+          <button className="btn waves-effect waves-light red accent" onClick={() => {updateMessages(currentChatroom.chatroom._id); deleteEditMessage()}} disabled={editMsg.sender !== user._id}>Delete</button>
           <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
         )
