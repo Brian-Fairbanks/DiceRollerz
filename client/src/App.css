@@ -92,6 +92,10 @@ main {
   display:flex;
 }
 
+.flex-column{
+  flex-direction: column;
+}
+
 .flex-align-center{
   align-items: center;
 }
@@ -147,6 +151,11 @@ select:-internal-autofill-selected {
   box-shadow:0px 3px 3px rgba(0,0,0,.3);
 }
 
+/* Modal Settings */
 .modal{
   box-shadow:0 0 50px 2px #f00;
+}
+
+.sidenav{
+  border-right:5px solid red;
 }

@@ -32,7 +32,7 @@ function NewChatform({ onAddChatroom }){
 
   return(
     <div> 
-      <div className="modal-content blue-grey black-text" >
+      <div className="modal-content blue-grey darken-3 white-text" >
       <h4><b>New Chatroom</b></h4>
       <form onSubmit={submitNewChat}>
         
@@ -43,7 +43,7 @@ function NewChatform({ onAddChatroom }){
         
       </form>
     </div>
-      <div className="modal-footer blue-grey">
+      <div className="modal-footer blue-grey darken-3">
         <button className="modal-close waves-effect waves-red btn">
           Cancel
         </button>
