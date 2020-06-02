@@ -21,7 +21,7 @@ import Footer from './components/Footer/Footer';
 import Landing from "./pages/landing"
 import SignUp from './pages/SignUp/signup';
 import Login from './pages/Login/LoginTest';
-import Chat from './pages/chatrooms';
+import Chat from './pages/Chatrooms';
 import Profile from './pages/profile';
 
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-import API from "../utils/API";
-import UserContext from "../utils/userContext";
-import Message from "../components/Message";
-import { NewChatModal, AddUserModal } from "../components/Modal";
+import API from "../../utils/API";
+import UserContext from "../../utils/userContext";
+import Message from "../../components/Message";
+import { NewChatModal, AddUserModal } from "../../components/Modal";
 import moment from "moment";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
