@@ -5,6 +5,7 @@ import API from "../../utils/API";
 // Components
 import { NewChatModal, AddUserModal } from "../../components/Modal";
 import Chatroom from "../../components/Chatroom";
+import NewMessage from "../../components/NewMessage";
 
 
 function Chatrooms() {
@@ -20,11 +21,6 @@ function Chatrooms() {
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({ id: "", body: "", sender: "", room: "" })
   const [isEditingMsg, setIsEditingMsg] = useState(false);
-  const [newMessage, setNewMessage] = useState({
-    sender: user.username,
-    room: "",
-    body: ""
-  });
 
 
   /*  ###############################################################
@@ -34,13 +30,6 @@ function Chatrooms() {
   /* Chatroom Helpers
   ==================================== */
 
-  // function to get information for an individual chat room.  Called when chat room name is clicked
-  async function getChatLogs(id) {
-    const data = await API.getChatroom(id);
-    setCurrentChatroom(data.data);
-    // set the current room in your new message state!
-    setNewMessage({ ...newMessage, body: "", room: data.data.chatroom._id })
-  }
 
   // Callback from socket.io.  Updates current chatroom if the message is there, else logs that there is a new message elsewhere
   //  come back to this section for handling notifications
@@ -67,6 +56,14 @@ function Chatrooms() {
     clearEditMessage();
   }
 
+  // function to get information for an individual chat room.  Called when chat room name is clicked
+  async function getChatLogs(id) {
+    const data = await API.getChatroom(id);
+    setCurrentChatroom(data.data);
+    // set the current room in your new message state!
+    //setNewMessage({ ...newMessage, body: "", room: data.data.chatroom._id })
+  }
+
   // Update and print all avaliable chatrooms
   function updateChatRooms() {
     console.log("Updating the chatroom Data")
@@ -85,36 +82,6 @@ function Chatrooms() {
       })
       .catch(err => { console.error(err) });
   }
-
-  /* Message helpers Helpers
-  ==================================== */
-
-  // Function to handle users submitting new messages to a specific chatroom
-  async function handleMsgSubmit(event) {
-    event.preventDefault();
-    if (newMessage.sender && newMessage.room && newMessage.body) {
-      try {
-        if (!isEditingMsg) {
-          await API.sendPost(newMessage)
-        } else {
-          await API.editPost(newMessage);
-          setIsEditingMsg(false)
-        }
-        setNewMessage({ ...newMessage, body: "" });
-        refreshMessages(currentChatroom.chatroom._id)
-      }
-      catch (err) { console.log(err); }
-    }
-  };
-
-  // Function to handle users inputing new messages, and updating the state to reflect this.
-  function handleInputChange(event) {
-    const { value } = event.currentTarget;
-    setNewMessage({ ...newMessage, body: value })
-  };
-
-
-
 
   /* Edit/Delete Context Helpers
   =============================================*/
@@ -137,8 +104,8 @@ function Chatrooms() {
   }
 
   function updateEditMessage() {
-    //      Starts editing the text of the currently selected message
-    setNewMessage(editMsg);
+    //Starts editing the text of the currently selected message
+    //setNewMessage(editMsg);
     setIsEditingMsg(true);
     document.getElementById("message").focus()
   }
@@ -164,6 +131,11 @@ function Chatrooms() {
     })
   }, [])
 
+  // get and print all chatrooms once user context is loaded.
+  useEffect(() => {
+    updateChatRooms()
+  }, [user])
+
   // Update Chatrooms when socket.io callback changes this state
   useEffect(() => {
     if (clientRoom) {
@@ -177,13 +149,6 @@ function Chatrooms() {
       refreshMessages(clientMsg.room)
     }
   }, [clientMsg])
-
-  // set sender for new message form once user context is loaded.
-  useEffect(() => {
-    setNewMessage({ sender: user._id })
-    // also get and print all chatrooms
-    updateChatRooms()
-  }, [user])
 
   /*  ###############################################################
       Chatrooms Render Display 
@@ -220,24 +185,19 @@ function Chatrooms() {
       <Chatroom
         user={user}
         currentChatroom={currentChatroom}
-        getEditMessage={() => getEditMessage()}
+        getEditMessage={getEditMessage}
       />
 
       {/* Chatroom Message Submit form
       ================================= */}
-      {currentChatroom.chatroom ?
-        <form className="row flex flex-align-center">
-          <div className="input-field col flex-grow">
-            <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
-            <label htmlFor="message">{(!isEditingMsg ? "New Message" : "Edit Message")}</label>
-          </div>
-          <div className="col">
-            <button className="btn red accent" onClick={handleMsgSubmit}>Submit
-              </button>
-          </div>
-        </form>
-        : ""
-      }
+      <NewMessage
+        user={user}
+        currentChatroom={currentChatroom.chatroom._id}
+        isEditingMsg={isEditingMsg}
+        setIsEditingMsg={setIsEditingMsg}
+        refreshMessages={() => refreshMessages(currentChatroom.chatroom._id)}
+        editMsg={editMsg}
+      />
 
       {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality
       ==================================*/}
