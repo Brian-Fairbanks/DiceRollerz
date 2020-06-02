@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
 import UserContext from "../../utils/userContext";
-import Message from "../../components/Message";
 import { NewChatModal, AddUserModal } from "../../components/Modal";
 import moment from "moment";
+import Chatroom from "../../components/Chatroom";
 
-// Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
-import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
 
 //  invisibilify commence!
 
@@ -28,8 +26,6 @@ function Chatrooms(){
     body:""
   });
 
-  // sticky scrollbar settigns
-  const [sticky] = useSticky();
   
   // dateStampts
   var lastDate="";
@@ -223,28 +219,13 @@ function Chatrooms(){
         ""}
       </div>
 
-      <ScrollToBottom className="posts row m-auto overflow-scroll ">
-        {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
-          return (
-            <div>
-              {printDate(post.timestamp)}
-              <Message
-                members={currentChatroom.chatroom.members}
-                key={post._id}
-                deleted={post.deleted}
-                updated={post.updated}
-                body={post.body}
-                sender={post.sender}
-                yours={post.sender === user._id}
-                id = {post._id}
-                getMsg={getEditMessage}
-                time={post.timestamp}
-              />
-            </div>
-          )
-        }):"No Messages"}
-        {!sticky}     
-      </ScrollToBottom>
+      {/* Set up the chatroom component */}
+      <Chatroom 
+        user={user}
+        currentChatroom={currentChatroom}
+        getEditMessage = {() => getEditMessage()}
+        printDate = {() => printDate()}
+      />
 
       {currentChatroom.chatroom? 
         <form className="row flex flex-align-center">
