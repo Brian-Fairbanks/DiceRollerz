@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+.about-content{
+  font-size:22px;
+  margin-bottom:30px;
+}
+
+#about-card{
+  margin-top:50px;
+  margin-bottom:30px;
+}
+
+.drop-content{
+  display:inline;
+}
+
+.drop-wrap{
+  width:100px;
+  height:60px;
+  position: relative;
+  float:left;
+}
+
+.drop-cap{
+  position: absolute;
+  top:-40px;
+}
+
+.midieval{
+  font-family: 'MedievalSharp', cursive;
+}

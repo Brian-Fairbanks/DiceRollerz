@@ -18,7 +18,7 @@ import './App.css';
 //Page Dependencies
 import NavBar from './components/Navbar';
 import Footer from './components/Footer/Footer';
-import Landing from "./pages/landing"
+import Landing from "./pages/Landing"
 import SignUp from './pages/SignUp/signup';
 import Login from './pages/Login/LoginTest';
 import Chat from './pages/Chatrooms';
