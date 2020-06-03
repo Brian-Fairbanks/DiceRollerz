@@ -50,7 +50,7 @@ function Landing() {
           },
           {
             image: Creepy,
-            amount: 0.7,
+            amount: 0.4,
           },
         ]}
         style={{
