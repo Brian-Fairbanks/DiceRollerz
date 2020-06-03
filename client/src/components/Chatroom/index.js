@@ -34,7 +34,7 @@ function Chatroom(props){
     <ScrollToBottom className="posts row m-auto overflow-scroll ">
     {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
       return (
-        <div>
+        <div key={post._id+1}>
           {printDate(post.timestamp)}
           <Message
             members={currentChatroom.chatroom.members}
