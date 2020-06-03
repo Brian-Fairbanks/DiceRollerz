@@ -12,6 +12,7 @@ function Landing() {
     <div>
 
       <Row>
+        <div className="container">
         <Col size="s12 m6">
           <div className="card blue-grey darken-1 center-align">
             {/* <div className="card-image">
@@ -39,6 +40,7 @@ function Landing() {
             </div>
           </div>
         </Col>
+        </div>
       </Row>
 
       <ParallaxBanner
@@ -68,8 +70,12 @@ function Landing() {
               <img className="drop-cap" src={DropCap} alt="D"></img>
             </div>
             <p className="drop-content">
-              uring the Reign of the the Plague Lord, Covid XIX, 4 valiant developers began their independant quests to find the ultimate way to join their friends, and fill their desire, nay, their <b>need</b> to play Dungeons and Dragons.
-              After many a night of independent searching, they began to realize that nothing would sate their specific desires. And thus, they began to realize that there is only one way to have the perfect Online Tabletop Platform: To make it themselves.
+              uring the Reign of the the Plague Lord, Covid XIX, 4 valiant developers began their
+              independant quests to find the ultimate way to join their friends, and fill their
+              desire, nay, their <b>need</b> to play Dungeons and Dragons.
+              After many a night of independent searching, they began to realize that nothing 
+              would sate their specific desires. And so, they began to realize that there is 
+              only one way to have the perfect Online Tabletop Platform: To make it themselves.
             </p>
             <br />
             <br />
@@ -78,7 +84,11 @@ function Landing() {
             </p>
             <br />
             <p>
-              &nbsp;&nbsp;Brian Fairbanks: the Triton Cleric, Sergio Bracamontes: the Dragonborn warrior, Jonathan Andrews: the blank blank, and Jason Strouphaur: the blank blank, joined forces in an attempt to thwart Covid XIX, rejoin their respective parties, and find new friends along the way so they may once more spend their leisure time performing their epic deeds.
+              &nbsp;&nbsp;Brian Fairbanks: the Triton Cleric, Sergio Bracamontes: the Dragonborn 
+              warrior, Jonathan Andrews: the Kender Thief, and Jason Strouphaur: the human, 
+              joined forces in an attempt to thwart Covid XIX, rejoin their respective parties, 
+              and find new friends along the way so they may once more spend their leisure time 
+              performing their epic deeds.
             </p>
           </div>
         </div>
