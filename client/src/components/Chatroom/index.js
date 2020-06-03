@@ -17,15 +17,31 @@ function Chatroom(props){
   ================================ */
   var lastDate="";
 
+
   function printDate(timestamp){
     let date = moment(timestamp).format('MMMM Do YYYY')
     if(date === lastDate){
       return "";
     }
     lastDate=date;
+    //reset lastSender, so it shows properly on a new day
+    lastSender = "";
     return (<span key={date} className="date-stamp">{date}</span>);
   }
 
+  /* Username / TimeStamp Creation Logic
+  ================================ */
+  var lastSender = "";
+  var lastTime = "";
+  function printTime(timestamp, sender){
+    const simpleStamp = moment(timestamp).format('h:mm A');
+    if(lastSender!= sender || simpleStamp !== lastTime){
+      lastSender = sender;
+      lastTime = simpleStamp;
+      return (<div className="timestamp">{simpleStamp}</div>);
+    }
+    return (<div className="timestamp"></div>);
+  }
 
 
   /* Chatroom Render Display
@@ -34,9 +50,10 @@ function Chatroom(props){
     <ScrollToBottom className="posts row m-auto overflow-scroll ">
     {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
       return (
-        <div>
+        <div key={post._id+1}>
           {printDate(post.timestamp)}
           <Message
+            toGroup={lastSender==post.sender}
             members={currentChatroom.chatroom.members}
             key={post._id}
             deleted={post.deleted}
@@ -46,7 +63,8 @@ function Chatroom(props){
             yours={post.sender === user._id}
             id = {post._id}
             getMsg={getEditMessage}
-            time={post.timestamp}
+            time={printTime(post.timestamp, post.sender)}
+            
           />
         </div>
       )

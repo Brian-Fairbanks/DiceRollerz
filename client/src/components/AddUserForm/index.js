@@ -46,7 +46,7 @@ function AddUserForm({ chatRoom }){
                   x++;
 
                   return (
-                    <p>
+                    <p key={currentUser._id}>
                       {currentUser.username} 
                       <a id={currentUser._id} className="btn-small waves-effect red right" onClick={clickAddHandler} key={x}>
                         +

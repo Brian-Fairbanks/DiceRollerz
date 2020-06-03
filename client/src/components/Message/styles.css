@@ -1,0 +1,46 @@
+.user-name{
+  margin-top:16px;
+  margin-bottom:4px;
+  display:inline-block;
+  font-weight:bold;
+}
+
+.edit{
+  font-size:10px;
+  color:#bbb;
+}
+.message{
+  position:relative;
+}
+.timestamp{
+  position:absolute;
+  top:0px;
+  left:25px;
+  font-size:10px;
+  color:#bbb;
+  display:inline-block;
+}
+
+.grouped{
+  margin-top:-1px;
+}
+
+.fade{
+  opacity:.4;
+  height:41px; /*number based on stadnard full size, 21(size)+10(pt)+10(pb)*/
+}
+
+.avatarWrapper{
+  position:relative;
+}
+
+.avatar-glow{
+  box-shadow: 0px 0 5px 1px rgba(255,0,0,.5);
+}
+.avatar{
+  position:absolute;
+  right:10px;
+  top:-16px;
+  height:40px;
+  width:40px;
+}
