@@ -18,11 +18,13 @@ import './App.css';
 //Page Dependencies
 import NavBar from './components/Navbar';
 import Footer from './components/Footer/Footer';
-import Landing from "./pages/landing"
+import Landing from "./pages/Landing"
 import SignUp from './pages/SignUp/signup';
 import Login from './pages/Login/LoginTest';
 import Chat from './pages/Chatrooms';
 import Profile from './pages/profile';
+
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -96,6 +98,7 @@ function App () {
 
   return (
     <UserContext.Provider value={{ user, setUser, token, setToken}}>
+      <ParallaxProvider>
       {/* <div className='App'>
         <div className='red darken-4'> */}
       {/* <div className="App">
@@ -151,6 +154,7 @@ function App () {
               <Footer />
           </Switch>
         </BrowserRouter>
+      </ParallaxProvider>
     </UserContext.Provider>
   )
 }
