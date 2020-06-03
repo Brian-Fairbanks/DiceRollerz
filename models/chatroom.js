@@ -12,8 +12,8 @@ const chatroomSchema = new Schema({
         required: true 
       },
       role: {type:String},
-      image: {type: String,
-              default: profileImage}       
+      image: {type: String},
+      name: {type: String}       
       }
       
       
