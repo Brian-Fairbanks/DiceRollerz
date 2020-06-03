@@ -84,10 +84,6 @@ main {
   background: #b30000; 
 }
 
-.fade{
-  opacity:.4;
-}
-
 .flex{
   display:flex;
 }
