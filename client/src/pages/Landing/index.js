@@ -1,7 +1,8 @@
 import React from "react";
 import { Col, Row } from "../../components/Grid";
-import Creepy from "./eleni-afiontzi-uSvtnSWDGmw-unsplash.jpg"
-import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg"
+import { ParallaxBanner } from 'react-scroll-parallax';
+import Creepy from "./dungeonNull.png";
+import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg";
 import DropCap from "./DropCapDSmall.png";
 import { Link } from "react-router-dom"
 import './styles.css';
@@ -39,6 +40,25 @@ function Landing() {
           </div>
         </Col>
       </Row>
+
+      <ParallaxBanner
+        className="dungeon-banner"
+        layers={[
+          {
+            image: Dungeon,
+            amount: 0.2,
+          },
+          {
+            image: Creepy,
+            amount: 0.7,
+          },
+        ]}
+        style={{
+          height: '500px',
+        }}
+      >
+        <h1>Banner Children</h1>
+      </ParallaxBanner>
 
       <Row>
         <div className=" container card col s8 offset-s2 blue-grey darken-1" id="about-card">
