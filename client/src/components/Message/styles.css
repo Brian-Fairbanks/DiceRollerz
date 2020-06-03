@@ -1,0 +1,16 @@
+.user-name{
+  display:inline-block;
+  width:100px!important;
+  overflow:hidden;
+}
+
+.edit{
+  font-size:10px;
+  color:#bbb;
+}
+
+.timestamp{
+  font-size:10px;
+  color:#bbb;
+  display:inline-block;
+}
