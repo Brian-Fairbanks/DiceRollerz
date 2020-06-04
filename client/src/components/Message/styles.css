@@ -58,7 +58,17 @@
 .dice-container{
   display:flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content:center;
+}
+
+.dice-results{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+}
+
+.result{
+  padding:2px 8px;
 }
 
 .die{
