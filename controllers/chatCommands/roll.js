@@ -5,8 +5,8 @@ async function roll(args) {
   var dice = 20;
   var modifier = 0;
 
-  const error = `Oops, syntax for a dice roll is as follows
-  /roll [(# of dice) - optional] [d(# of sides)] [+/- (# modifier)]`
+  const error = `Oops, syntax for a dice roll is as follows<br/>
+  /roll <i style="opacity:.6">[# of dice]</i> d[# of sides] <i style="opacity:.6">+/-[# modifier]</i>`
 
   // set up potential arguments
   const a1 = getType(args[1])
@@ -21,7 +21,7 @@ async function roll(args) {
   // check if second arg is a dice or modifier
   if (a2 == "number") { dice = parseInt(args[2]) }
   else if (a2 == "dice") { dice = args[2].substring(1); }
-  else if (a2 == "empty" || a1 == "dice") { return rollLogic(number, dice, modifier) }
+  else if (a2 == "empty" && a1 == "dice") { return rollLogic(number, dice, modifier) }
   else { return error }
 
   // check if third arg is a modifier
