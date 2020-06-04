@@ -65,7 +65,6 @@ function Chatroom(props){
             getMsg={getEditMessage}
             time={printTime(post.timestamp, post.sender)}
             command={post.command?post.command:""}
-            
           />
         </div>
       )

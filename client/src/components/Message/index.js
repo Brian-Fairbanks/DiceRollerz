@@ -32,7 +32,7 @@ function Message({ members, body, deleted, updated, sender, yours, id, getMsg, t
             <div>
               {time} 
               {body} 
-              {command? <div dangerouslySetInnerHTML={createMarkup()}></div> : ""}
+              {command? <div className="command" dangerouslySetInnerHTML={createMarkup()}></div> : ""}
               {updated ? <span className="edit">(edited)</span> : ""}
             </div> }
         {/*yours? <i className="far fa-edit"></i> :""*/}
