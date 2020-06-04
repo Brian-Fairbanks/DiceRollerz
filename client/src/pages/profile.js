@@ -99,9 +99,10 @@ function Profile() {
       <div className="App">
         <div className="row">
           <div className="col s12">
-            <form className="container" onSubmit={submitHandler}>
+            <form className="container blue-grey darken-1" onSubmit={submitHandler}>
               
               <Avatar>
+                
                   <AvatarWPic
                       // imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
                       imagePath = {currentUser.image}
@@ -133,7 +134,7 @@ function Profile() {
                       key="0"
                   />
               </Avatar>
-                
+              
               <InputWIcon
                   id="user-name"
                   name="username"
