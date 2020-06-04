@@ -10,8 +10,8 @@ import { SubmitButton } from '../components/Button';
 
 function Profile() {
   const { user } = useContext(UserContext);
-  const [primeUser, setPrimeUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
-  const [currentUser, setCurrentUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: ""})
+  const [primeUser, setPrimeUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: "", image: ""})
+  const [currentUser, setCurrentUser] = useState({_id: "", username: "", firstName: "", lastName: "", email: "", status: "", tagLine: "", image:""})
 
   useEffect(() => {
     //      PrimeUser tracks the current state of the Database.
@@ -42,6 +42,9 @@ function Profile() {
         break;
       case "email":
         newUser.email = value;
+        break;
+      case "image":
+        newUser.image = value;
         break;
       case "description":
         // newUser.description = event.target.value;
@@ -78,6 +81,9 @@ function Profile() {
     if (currentUser.description !== primeUser.description) {
       userChanges.description = currentUser.description;
     }
+    if (currentUser.image !== primeUser.image){
+      userChanges.image = currentUser.image;
+    }
 
     if (userChanges) {
       userChanges._id = primeUser._id;
@@ -97,8 +103,9 @@ function Profile() {
               
               <Avatar>
                   <AvatarWPic
-                      imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
-                      altText="Red Dot"
+                      // imagePath="https://static01.nyt.com/images/2018/05/15/arts/01hal-voice1/merlin_135847308_098289a6-90ee-461b-88e2-20920469f96a-superJumbo.jpg?quality=90&auto=webp"
+                      imagePath = {currentUser.image}
+                      altText="User Avatar"
                       title={"~ " + currentUser.username + " ~"}
                       text={[
                         <InputNoLabel
@@ -109,7 +116,7 @@ function Profile() {
                           style={{ fontSize: "16px"}}
                           value={currentUser.tagLine}
                           onChange={changeHandler}
-                          inputClass={(currentUser.tagLine === primeUser.tagLine) ? "validate white-text" : "validate yellow-text"}
+                          inputClass={(currentUser.tagLine === primeUser.tagLine) ? "validate white-text" : "validate amber-text"}
                         />,
                         <InputNoLabel
                           id="user-status"
@@ -119,7 +126,7 @@ function Profile() {
                           style={{ fontSize: "16px" }}
                           value={currentUser.status}
                           onChange={changeHandler}
-                          inputClass={(currentUser.status === primeUser.status) ? "validate white-text" : "validate yellow-text"}
+                          inputClass={(currentUser.status === primeUser.status) ? "validate white-text" : "validate amber-text"}
                         />
                       ]}
                       href="#"
@@ -137,7 +144,7 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.username}
                   onChange={changeHandler}
-                  inputClass={(currentUser.username === primeUser.username) ? "validate white-text" : "validate yellow-text"}
+                  inputClass={(currentUser.username === primeUser.username) ? "validate white-text" : "validate amber-text"}
                   labelClass="active"
                 />
                 <InputWIcon
@@ -149,7 +156,7 @@ function Profile() {
                   type="text"
                   value={currentUser.firstName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate yellow-text"}
+                  inputClass={(currentUser.firstName === primeUser.firstName) ? "validate white-text" : "validate amber-text"}
                   labelClass="active"
                 />
                 <InputWIcon
@@ -161,7 +168,7 @@ function Profile() {
                   type="text"
                   value={currentUser.lastName}
                   onChange={changeHandler}
-                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate yellow-text"}
+                  inputClass={(currentUser.lastName === primeUser.lastName) ? "validate white-text" : "validate amber-text"}
                   labelClass="active"
                 />
                 <InputWIcon
@@ -174,7 +181,19 @@ function Profile() {
                   isRequired={true}
                   value={currentUser.email}
                   onChange={changeHandler}
-                  inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate yellow-text"}
+                  inputClass={(currentUser.email === primeUser.email) ? "validate white-text" : "validate amber-text"}
+                  labelClass="active"
+                />
+                <InputWIcon
+                  id="image"
+                  name="image"
+                  icon=""
+                  label="Image"
+                  placeholder="Image"
+                  type="text"
+                  value={currentUser.image}
+                  onChange={changeHandler}
+                  inputClass={(currentUser.image === primeUser.image) ? "validate white-text" : "validate amber-text"}
                   labelClass="active"
                 />
                 <TextareaWIcon
@@ -185,7 +204,7 @@ function Profile() {
                   value={currentUser.description}
                   isDisabled={true}
                   onChange={changeHandler}
-                  areaClass={(currentUser.description === primeUser.description) ? "validate white-text" : "validate yellow-text"}
+                  areaClass={(currentUser.description === primeUser.description) ? "validate white-text" : "validate amber-text"}
                 />
 
                 <SubmitButton 
