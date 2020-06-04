@@ -73,7 +73,7 @@ export function InputWIcon(propz) {
                 disabled={isDisabled}
                 required={isRequired}
             />
-            <label htmlFor={id} className={labelClass}>{label}</label>
+            <label style= {{color:"#ffc107"}} htmlFor={id} className={labelClass}>{label}</label>
         </div>
     );
 }
