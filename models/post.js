@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
   body: { type: String, required: true },
+  command:{type:String, default:""},
   sender: { 
     type: mongoose.Schema.Types.ObjectId,
     ref:"User",

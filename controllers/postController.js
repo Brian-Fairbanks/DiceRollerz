@@ -18,16 +18,16 @@ module.exports = {
   create: async function(req, res) {
     console.log("Creating Post")
     console.log(req.body);
-    req.body.body = await checkCommands(req.body.body);
+    req.body.command = await checkCommands(req.body.body);
     db.Post
       .create(req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   update: async function(req, res) {
-    req.body.body = await checkCommands(req.body.body);
+    req.body.command = await checkCommands(req.body.body);
     db.Post
-      .findOneAndUpdate({ _id: req.params.id }, { ...req.body,  updated:true})
+      .findOneAndUpdate({ _id: req.params.id }, { ...req.body, deleted:false, updated:true})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
@@ -40,7 +40,7 @@ module.exports = {
 async function checkCommands(msg){
   // return msg as it is
   if(msg[0] !== "/"){
-    return msg;
+    return "";
   }
   args = msg.split(" ");
 
@@ -48,15 +48,15 @@ async function checkCommands(msg){
 
   switch(command){
     case "roll":
-      return msg+` - ${await roll(args)}`;
+      return await roll(args);
       break
     default:
-      return msg+` - ${command} is not a valid /command`;
+      return ` - ${command} is not a valid /command`;
   }
 }
 
 // Roll Command
 async function roll(args){
-  return "Rolling"
+  return `<div class="test">Rolling</div>`
 }
 
