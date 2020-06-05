@@ -1,7 +1,8 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import VisibilitySensor from 'react-visibility-sensor';
 import moment from "moment";
-import Message from "../../components/Message";
+import Message from "../Message";
+import useDebounce from "../../utils/debounce";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
@@ -47,13 +48,28 @@ function Chatroom(props){
     return (<div className="timestamp"></div>);
   }
 
-  //Checking Visibility on most recent messages
-  function onChange (isVisible, id, timestamp, room) {
-      if (isVisible && (!recent || timestamp > recent.timestamp || room!== recent.room)){
-        console.log("Viewing ",id)
-        setRecent({message:id, timestamp:timestamp, room:room})
+
+  /* User Seen Messages
+  =========================================================*/
+
+  // Checking Visibility on most recent messages
+  function onChange (isVisible, id, timestamp, room, user) {
+      if (isVisible && (!recent.message || timestamp > recent.timestamp || room!= recent.room)){
+        setRecent({message:id, timestamp:timestamp, room:room, user:user})
       }
   }
+  
+  // send user last seen data to server
+  const debouncedRecent = useDebounce(recent, 1500);
+
+  useEffect(() => {
+    if (!debouncedRecent) {
+      return;
+    }
+    if (debouncedRecent) {
+      console.log("Sending Data Now - ", recent);
+    }
+  }, [debouncedRecent]);
 
   /* Chatroom Render Display
   ================================ */
@@ -63,7 +79,11 @@ function Chatroom(props){
       return (
         <div key={post._id+1}>
           {printDate(post.timestamp)}
-          <VisibilitySensor key={post._id} active={post.timestamp >= recent.timestamp} onChange={(isVisible) => onChange(isVisible, post._id, post.timestamp, post.room)}>
+          <VisibilitySensor 
+            key={post._id}
+            //active={post.timestamp >= recent.timestamp}
+            onChange={(isVisible) => onChange(isVisible, post._id, post.timestamp, post.room, user._id)}
+          >
             <Message
               toGroup={lastSender===post.sender}
               members={currentChatroom.chatroom.members}
