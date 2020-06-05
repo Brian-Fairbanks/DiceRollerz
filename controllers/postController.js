@@ -22,7 +22,12 @@ module.exports = {
     req.body.command = await checkCommands(req.body.body);
     db.Post
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      .then(async (dbModel) => {
+        // updated the most recent message in the chatroom document
+        //console.log(dbModel.room, "  -  ",dbModel._id)
+        await db.Chatroom.findOneAndUpdate({_id:dbModel.room}, {lastMessage:dbModel._id})
+        res.json(dbModel)
+      })
       .catch(err => res.status(422).json(err));
   },
   update: async function (req, res) {

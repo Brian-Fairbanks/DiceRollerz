@@ -29,6 +29,7 @@ module.exports = {
         _id:chatroom._id,
         gameMode:chatroom.gameMode,
         name: chatroom.name,
+        lastMessage:chatroom.lastMessage,
         members:userData}, posts})
     }catch (err){
       res.status(422).json(err)
@@ -46,7 +47,7 @@ module.exports = {
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => {res.json(dbModel)})
       .catch(err => res.status(422).json(err));
-  }
+  },
 };
 
 
