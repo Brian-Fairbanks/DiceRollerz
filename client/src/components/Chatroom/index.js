@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+import VisibilitySensor from 'react-visibility-sensor';
 import moment from "moment";
 import Message from "../../components/Message";
 
@@ -11,6 +12,9 @@ function Chatroom(props){
 
   // sticky scrollbar settigns
   const [sticky] = useSticky();
+
+  //Most Recent Message
+  const [recent, setRecent] = useState({message:"", timestamp:"", room:""})
 
   
   /* DateStamp Creation Logic
@@ -35,7 +39,7 @@ function Chatroom(props){
   var lastTime = "";
   function printTime(timestamp, sender){
     const simpleStamp = moment(timestamp).format('h:mm A');
-    if(lastSender!= sender || simpleStamp !== lastTime){
+    if(lastSender!== sender || simpleStamp !== lastTime){
       lastSender = sender;
       lastTime = simpleStamp;
       return (<div className="timestamp">{simpleStamp}</div>);
@@ -43,6 +47,13 @@ function Chatroom(props){
     return (<div className="timestamp"></div>);
   }
 
+  //Checking Visibility on most recent messages
+  function onChange (isVisible, id, timestamp, room) {
+      if (isVisible && (!recent || timestamp > recent.timestamp || room!== recent.room)){
+        console.log("Viewing ",id)
+        setRecent({message:id, timestamp:timestamp, room:room})
+      }
+  }
 
   /* Chatroom Render Display
   ================================ */
@@ -52,20 +63,22 @@ function Chatroom(props){
       return (
         <div key={post._id+1}>
           {printDate(post.timestamp)}
-          <Message
-            toGroup={lastSender==post.sender}
-            members={currentChatroom.chatroom.members}
-            key={post._id}
-            deleted={post.deleted}
-            updated={post.updated}
-            body={post.body}
-            sender={post.sender}
-            yours={post.sender === user._id}
-            id = {post._id}
-            getMsg={getEditMessage}
-            time={printTime(post.timestamp, post.sender)}
-            command={post.command?post.command:""}
-          />
+          <VisibilitySensor key={post._id} active={post.timestamp >= recent.timestamp} onChange={(isVisible) => onChange(isVisible, post._id, post.timestamp, post.room)}>
+            <Message
+              toGroup={lastSender===post.sender}
+              members={currentChatroom.chatroom.members}
+              key={post._id}
+              deleted={post.deleted}
+              updated={post.updated}
+              body={post.body}
+              sender={post.sender}
+              yours={post.sender === user._id}
+              id = {post._id}
+              getMsg={getEditMessage}
+              time={printTime(post.timestamp, post.sender)}
+              command={post.command?post.command:""}
+            />
+          </VisibilitySensor>
         </div>
       )
     }):"No Messages"}

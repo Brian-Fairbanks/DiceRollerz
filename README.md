@@ -72,6 +72,8 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 * "react-tap-event-plugin": "^3.0.3",
 * "socket.io": "^2.3.0",
 * "validator": "^13.0.0"
+* "react-scroll-parallax"
+* "react-visibility-sensor"
 
 #### Dev
 * "concurrently": "^4.1.2",
@@ -110,6 +112,7 @@ Members Contributing on this project:
     * Icons/Images
     * Styling
     * Code Formatting / Cleanup
+    * /Commands - /roll
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
