@@ -3,11 +3,17 @@ import moment from 'moment'
 import "./styles.css";
 
 
-function Message({ members, body, deleted, updated, sender, yours, id, getMsg, time, toGroup}) {
+function Message({ members, body, deleted, updated, sender, yours, id, getMsg, time, toGroup, command}) {
 
   const thisUser = members ? members.find(member => member.user === sender):"";
   const userImage = thisUser?thisUser.image : "";
   const userName = thisUser?thisUser.username : "";
+
+  //Create markup for command responses
+  function createMarkup() {
+    return {__html: command};
+  }
+
   return (
     <div className={"col s12 white-text"} onClick={() => getMsg(body, id, sender)}>
       <div className ="col s11 offset-s1 left-align valign-wrapper">
@@ -23,7 +29,12 @@ function Message({ members, body, deleted, updated, sender, yours, id, getMsg, t
       <div className={`message col s10 left-align ${toGroup?" grouped ":""}${yours ? "red" : "teal"} ${deleted ? "fade" : ""}`}>
         {
           deleted ? "":
-            <div>{time} {body} {updated ? <span className="edit">(edited)</span> : ""} </div> }
+            <div>
+              {time} 
+              {body} 
+              {command? <div className="command" dangerouslySetInnerHTML={createMarkup()}></div> : ""}
+              {updated ? <span className="edit">(edited)</span> : ""}
+            </div> }
         {/*yours? <i className="far fa-edit"></i> :""*/}
       </div>
     </div>
