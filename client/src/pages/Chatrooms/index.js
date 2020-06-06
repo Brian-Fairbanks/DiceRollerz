@@ -38,6 +38,7 @@ function Chatrooms() {
     if (id === currentChatroom.chatroom._id) {
       const data = await API.getChatroom(id);
       setCurrentChatroom(data.data);
+      updateChatRooms();
     }
     else {
       console.log("New message in " + id);

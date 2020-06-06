@@ -56,10 +56,19 @@ function Chatroom(props){
   /* User Seen Messages
   =========================================================*/
 
-  // Checking Visibility on most recent messages
-  function onChange (isVisible, id, timestamp, room, user) {
+  // dont bother checking against anything older than the last message the user saw
+  const [userLastMessage, setUserLastMessage] = useState("");
+
+  useEffect(()=>{
+    if(currentChatroom.chatroom._id)
+    setUserLastMessage(user.seenMessages.find(rooms => rooms.room === currentChatroom.chatroom._id).timeStamp)
+  },[currentChatroom])
+
+  // Checking if any messages in view are newer than the last one seen.
+  function onChange (isVisible, id, timestamp, room, userID) {
+    console.log(`${id} is ${isVisible?"visible":"hidden"}`)
       if (isVisible && (!recent.message || timestamp > recent.timestamp || room!= recent.room)){
-        setRecent({message:id, timestamp:timestamp, room:room, user:user})
+        setRecent({message:id, timestamp:timestamp, room:room, user:userID})
       }
   }
   
@@ -93,7 +102,7 @@ function Chatroom(props){
           {printDate(post.timestamp)}
           <VisibilitySensor 
             key={post._id}
-            //active={post.timestamp >= recent.timestamp}
+            active={post.timestamp > userLastMessage}
             onChange={(isVisible) => onChange(isVisible, post._id, post.timestamp, post.room, user._id)}
           >
             <Message
