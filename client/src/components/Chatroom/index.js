@@ -60,8 +60,11 @@ function Chatroom(props){
   const [userLastMessage, setUserLastMessage] = useState("");
 
   useEffect(()=>{
-    if(currentChatroom.chatroom._id)
-    setUserLastMessage(user.seenMessages.find(rooms => rooms.room === currentChatroom.chatroom._id).timeStamp)
+    if(currentChatroom.chatroom._id){
+      const userChatRoom = user.seenMessages.find(rooms => rooms.room === currentChatroom.chatroom._id)
+      const timeStamp = userChatRoom?userChatRoom.timeStamp:'1969-12-31T18:00:00.00Z';
+      setUserLastMessage(timeStamp)
+    }
   },[currentChatroom])
 
   // Checking if any messages in view are newer than the last one seen.
