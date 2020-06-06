@@ -184,7 +184,7 @@ function Chatrooms() {
         {/*Button to add new chat room
       ================================*/}
         <NewChatModal
-          onAddChatroom={updateChatRooms}
+          //onAddChatroom={updateChatRooms}
         />
         {currentChatroom.chatroom._id &&
           currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
@@ -218,7 +218,7 @@ function Chatrooms() {
       {editMsg.id ? (
         <div>
           <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
-          <button className="btn waves-effect waves-light red accent" onClick={() => { refreshMessages(currentChatroom.chatroom._id); deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
+          <button className="btn waves-effect waves-light red accent" onClick={() => { deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
           <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
       )

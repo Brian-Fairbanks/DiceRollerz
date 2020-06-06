@@ -44,7 +44,7 @@ function NewMessage(props) {
           setIsEditingMsg(false)
         }
         setNewMessage({ ...newMessage, body: "" });
-        refreshMessages(currentChatroom)
+        // refreshMessages(currentChatroom)
       }
       catch (err) { console.log(err); }
     }

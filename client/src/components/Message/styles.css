@@ -25,11 +25,14 @@
   margin-top:-1px;
 }
 
+/* Deleted Message*/
 .fade{
   opacity:.4;
   height:41px; /*number based on stadnard full size, 21(size)+10(pt)+10(pb)*/
 }
 
+/* Avatar Styling
+===============================================*/
 .avatarWrapper{
   position:relative;
 }
@@ -45,6 +48,8 @@
   width:40px;
 }
 
+/*  Command Styling
+===============================================*/
 .command{
   background: #607D8B;
   padding:2px 8px;
@@ -54,7 +59,8 @@
   border-bottom: 1px solid #809DaB;
 }
 
-/*  /roll formatting */
+/*  /roll formatting 
+===============================================*/
 .dice-container{
   display:flex;
   flex-wrap: wrap;
@@ -90,3 +96,25 @@
   box-shadow:0px 0px 10px rgba(0,255,0,.8)
 }
 
+/* Message Seen Styling
+===============================================*/
+.seen-member{
+  font-size:10px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  margin:1px 4px;
+}
+
+.seen-avatar{
+  width:12px;
+  height:12px;
+  border-radius:100px;
+  margin-right:2px;
+}
+
+.seen-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}

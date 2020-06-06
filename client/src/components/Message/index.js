@@ -36,6 +36,13 @@ function Message({ visible, members, body, deleted, updated, sender, yours, id, 
             </div> }
         {/*yours? <i className="far fa-edit"></i> :""*/}
       </div>
+      <div className="seen-container col offset-s1 s10">
+          {members.map(member => member.lastSeen==id?
+              (<div key={member._id} className="seen-member"><img className="seen-avatar" src={member.image}></img>{member.username}</div>)
+              :
+              ""
+          )}
+      </div>
     </div>
   )
 }

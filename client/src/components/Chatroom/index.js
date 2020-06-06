@@ -69,7 +69,6 @@ function Chatroom(props){
 
   // Checking if any messages in view are newer than the last one seen.
   function onChange (isVisible, id, timestamp, room, userID) {
-    console.log(`${id} is ${isVisible?"visible":"hidden"}`)
       if (isVisible && (!recent.message || timestamp > recent.timestamp || room!= recent.room)){
         setRecent({message:id, timestamp:timestamp, room:room, user:userID})
       }
@@ -90,7 +89,10 @@ function Chatroom(props){
         const userData = await API.getUser(user._id)
         //console.log(userData.data.seenMessages);
         setUser({...user, seenMessages:userData.data.seenMessages});
-        console.log("set User all done!")
+        // Let all other users know where you have seen
+        API.socketRoom("Set Message Seen");
+        API.socketMsg({room:recent.room, body:"Set Message Seen"});
+        console.log("set User all done!");
       })
     }
   }, [debouncedRecent]);
