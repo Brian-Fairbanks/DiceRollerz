@@ -6,6 +6,7 @@ import API from "../../utils/API";
 import { NewChatModal, AddUserModal } from "../../components/Modal";
 import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
+import "./styles.css";
 
 
 function Chatrooms() {
@@ -40,6 +41,7 @@ function Chatrooms() {
     }
     else {
       console.log("New message in " + id);
+      updateChatRooms();
     }
   }
 
@@ -161,7 +163,17 @@ function Chatrooms() {
       <br />
       {allChatrooms.map(room => {
         return (
-          <button key={room._id} onClick={() => { changeChatRoom(room._id) }} className="btn red accent" >{room.name}</button>
+          <button
+            key={room._id}
+            onClick={() => { changeChatRoom(room._id) }}
+            className={`btn red accent${
+              (!user.seenMessages.find(userRoom => userRoom.room === room._id)) || (user.seenMessages.find(userRoom => userRoom.room === room._id).message !== room.lastMessage)?
+              " notify"
+              : ""}`
+            }
+          >
+            {room.name}
+          </button>
         )
       })
       }
