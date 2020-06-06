@@ -26,6 +26,10 @@ export default {
     this.socketMsg(user);
     return data;
   },
+  seenMessage: async function(msgData){
+    const data = await axios.put("/api/user/seen/"+msgData.user, msgData);
+    return data;
+  },
   sendPost: async function(post){
     const data = await axios.post("/api/post", post);
     this.socketMsg(post);

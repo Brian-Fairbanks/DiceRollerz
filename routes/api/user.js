@@ -115,6 +115,9 @@ router.route("/signup")
   .post(validateSignUp)
   .get(validateSignUp);
 
+router.route("/seen/:id")
+  .put(userController.seenMessage)
+
   module.exports = router;
 
 

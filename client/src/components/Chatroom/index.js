@@ -6,6 +6,7 @@ import useDebounce from "../../utils/debounce";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
 import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
+import API from "../../utils/API";
 
 function Chatroom(props){
   // Deconstruct props.
@@ -68,6 +69,10 @@ function Chatroom(props){
     }
     if (debouncedRecent) {
       console.log("Sending Data Now - ", recent);
+      API.seenMessage(recent)
+      .then(data => {
+        console.log(data);
+      })
     }
   }, [debouncedRecent]);
 
