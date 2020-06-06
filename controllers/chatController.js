@@ -19,9 +19,11 @@ module.exports = {
       const userData = await Promise.all(chatroom.members.map( async function (member){
         const user = await db.User.findOne({_id:member.user});
         const useImage = member.image?member.image:user.image; 
-        const useName = member.name?member.name:user.username; 
+        const useName = member.name?member.name:user.username;
+        const userLastMessage = await user.seenMessages.find(rooms => rooms.room == req.params.id);
+        const useMessage = userLastMessage?userLastMessage.message:"";
         return(
-          {_id:member._id, user:member.user, role:member.role, username:useName, image:useImage}
+          {_id:member._id, user:member.user, role:member.role, username:useName, image:useImage, lastSeen:useMessage}
           );
       }))
       res.json({chatroom:{
