@@ -1,0 +1,10 @@
+.notify{
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f9762f+0,f9a245+50,fc8600+50,f75600+100 */
+  background: #f9762f; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f9762f 0%, #f9a245 50%, #fc8600 50%, #f75600 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  #f9762f 0%,#f9a245 50%,#fc8600 50%,#f75600 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  #f9762f 0%,#f9a245 50%,#fc8600 50%,#f75600 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9762f', endColorstr='#f75600',GradientType=0 ); /* IE6-9 */
+  
+  box-shadow:0 0 10px rgba(255, 128, 0, .5);
+}

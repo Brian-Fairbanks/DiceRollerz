@@ -72,6 +72,8 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 * "react-tap-event-plugin": "^3.0.3",
 * "socket.io": "^2.3.0",
 * "validator": "^13.0.0"
+* "react-scroll-parallax"
+* "react-visibility-sensor"
 
 #### Dev
 * "concurrently": "^4.1.2",
@@ -110,6 +112,12 @@ Members Contributing on this project:
     * Icons/Images
     * Styling
     * Code Formatting / Cleanup
+    * Avatar Setup
+        - Front end handling
+        - back end deciding - default or chatroom specific
+    * /Commands - /roll
+    * New Message Notifications
+
 
 * [Jonathan Andrews](https://github.com/ionathas78)
     * User Profile page
@@ -128,6 +136,7 @@ Members Contributing on this project:
     * Signup Validations, Front and Back End
     * API calls from front end
     * Message Avatar Settings
+    * Default Avatar Image Changing (from profile page)
 
 * [Jason Strouphauer](https://github.com/jdstroup10)
     * Login page

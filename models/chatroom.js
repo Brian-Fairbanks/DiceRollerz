@@ -13,11 +13,13 @@ const chatroomSchema = new Schema({
       role: {type:String},
       image: {type: String},
       name: {type: String}       
-      }
-      
-      
+    }
   ],
-  gameMode: {type: Boolean, default: false}
+  gameMode: {type: Boolean, default: false},
+  lastMessage: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Post"
+  }
 });
 
 const Chatroom = mongoose.model("Chatroom", chatroomSchema);

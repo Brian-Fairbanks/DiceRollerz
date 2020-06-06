@@ -6,6 +6,7 @@ import API from "../../utils/API";
 import { NewChatModal, AddUserModal } from "../../components/Modal";
 import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
+import "./styles.css";
 
 
 function Chatrooms() {
@@ -37,9 +38,11 @@ function Chatrooms() {
     if (id === currentChatroom.chatroom._id) {
       const data = await API.getChatroom(id);
       setCurrentChatroom(data.data);
+      updateChatRooms();
     }
     else {
       console.log("New message in " + id);
+      updateChatRooms();
     }
   }
 
@@ -132,6 +135,7 @@ function Chatrooms() {
   }, [])
 
   // get and print all chatrooms once user context is loaded.
+  // added benefit of being called once a users lastViewdMessages update
   useEffect(() => {
     updateChatRooms()
   }, [user])
@@ -160,7 +164,17 @@ function Chatrooms() {
       <br />
       {allChatrooms.map(room => {
         return (
-          <button key={room._id} onClick={() => { changeChatRoom(room._id) }} className="btn red accent" >{room.name}</button>
+          <button
+            key={room._id}
+            onClick={() => { changeChatRoom(room._id) }}
+            className={`btn red accent${
+              (!user.seenMessages.find(userRoom => userRoom.room === room._id)) || (user.seenMessages.find(userRoom => userRoom.room === room._id).message !== room.lastMessage)?
+              " notify"
+              : ""}`
+            }
+          >
+            {room.name}
+          </button>
         )
       })
       }
@@ -170,7 +184,7 @@ function Chatrooms() {
         {/*Button to add new chat room
       ================================*/}
         <NewChatModal
-          onAddChatroom={updateChatRooms}
+          //onAddChatroom={updateChatRooms}
         />
         {currentChatroom.chatroom._id &&
           currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
@@ -204,7 +218,7 @@ function Chatrooms() {
       {editMsg.id ? (
         <div>
           <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
-          <button className="btn waves-effect waves-light red accent" onClick={() => { refreshMessages(currentChatroom.chatroom._id); deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
+          <button className="btn waves-effect waves-light red accent" onClick={() => { deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
           <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
         </div>
       )

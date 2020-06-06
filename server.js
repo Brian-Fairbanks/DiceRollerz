@@ -48,14 +48,14 @@ io.on('connection', (socket) => {
   // chat message
   socket.on('chatMessage', (msg) => {
     console.log('message: ' + msg);
-    socket.broadcast.emit("newMessage", msg);
+    io.emit("newMessage", msg);
   });
 
 //  Chat Socket Listener goes here
 
   socket.on('chatroomEdit', (msg) => {
     console.log('room: ', msg);
-    socket.broadcast.emit("chatroomChanged", msg);
+    io.emit("chatroomChanged", msg);
   })
 });
 

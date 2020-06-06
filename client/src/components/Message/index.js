@@ -1,9 +1,8 @@
 import React from "react";
-import moment from 'moment'
 import "./styles.css";
 
 
-function Message({ members, body, deleted, updated, sender, yours, id, getMsg, time, toGroup, command}) {
+function Message({ visible, members, body, deleted, updated, sender, yours, id, getMsg, time, toGroup, command}) {
 
   const thisUser = members ? members.find(member => member.user === sender):"";
   const userImage = thisUser?thisUser.image : "";
@@ -15,7 +14,7 @@ function Message({ members, body, deleted, updated, sender, yours, id, getMsg, t
   }
 
   return (
-    <div className={"col s12 white-text"} onClick={() => getMsg(body, id, sender)}>
+    <div className={visible?"col s12 white-text fade":"col s12 white-text"} onClick={() => getMsg(body, id, sender)}>
       <div className ="col s11 offset-s1 left-align valign-wrapper">
         {toGroup?"":<div className="user-name"> {userName} </div>}
       </div>
@@ -36,6 +35,13 @@ function Message({ members, body, deleted, updated, sender, yours, id, getMsg, t
               {updated ? <span className="edit">(edited)</span> : ""}
             </div> }
         {/*yours? <i className="far fa-edit"></i> :""*/}
+      </div>
+      <div className="seen-container col offset-s1 s10">
+          {members.map(member => member.lastSeen==id?
+              (<div key={member._id} className="seen-member"><img className="seen-avatar" src={member.image}></img>{member.username}</div>)
+              :
+              ""
+          )}
       </div>
     </div>
   )

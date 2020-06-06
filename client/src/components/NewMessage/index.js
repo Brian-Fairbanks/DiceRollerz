@@ -19,7 +19,7 @@ function NewMessage(props) {
 
   // set sender for new message form once user context is loaded.
   useEffect(() => {
-    setNewMessage({ sender: user._id })
+    setNewMessage({...newMessage, sender: user._id })
   }, [user])
 
   useEffect( ()=>{
@@ -44,7 +44,7 @@ function NewMessage(props) {
           setIsEditingMsg(false)
         }
         setNewMessage({ ...newMessage, body: "" });
-        refreshMessages(currentChatroom)
+        // refreshMessages(currentChatroom)
       }
       catch (err) { console.log(err); }
     }

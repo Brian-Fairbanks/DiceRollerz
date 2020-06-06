@@ -40,7 +40,20 @@ const userSchema = new Schema({
       type: String
     },
     image: {type: String,
-      default: profileImage}   
+      default: profileImage},
+    seenMessages: [
+      {
+        room: { 
+          type: mongoose.Schema.Types.ObjectId,
+          ref:"Chatroom"
+        },
+        message: { 
+          type: mongoose.Schema.Types.ObjectId,
+          ref:"Message"
+        },
+        timeStamp: {type: Date}
+      }
+    ]
 });
 
 
