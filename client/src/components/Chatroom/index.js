@@ -1,7 +1,8 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import VisibilitySensor from 'react-visibility-sensor';
 import moment from "moment";
 import Message from "../Message";
+import userContext from "../../utils/userContext"
 import useDebounce from "../../utils/debounce";
 
 // Scroll to bottom NPM package, to set a sticky scroller and keep the messages at the most recent.
@@ -9,8 +10,10 @@ import ScrollToBottom, { useSticky } from 'react-scroll-to-bottom';
 import API from "../../utils/API";
 
 function Chatroom(props){
+  // Deconstruct UserContext
+  const {user, setUser} = useContext(userContext);
   // Deconstruct props.
-  const {currentChatroom, user, getEditMessage} = props;
+  const {currentChatroom, getEditMessage} = props;
 
   // sticky scrollbar settigns
   const [sticky] = useSticky();
@@ -61,17 +64,21 @@ function Chatroom(props){
   }
   
   // send user last seen data to server
-  const debouncedRecent = useDebounce(recent, 1500);
+  const debouncedRecent = useDebounce(recent, 100);
 
   useEffect(() => {
     if (!debouncedRecent) {
       return;
     }
     if (debouncedRecent) {
-      console.log("Sending Data Now - ", recent);
+      //console.log("Sending Data Now - ", recent);
       API.seenMessage(recent)
-      .then(data => {
+      .then(async (data) => {
         console.log(data);
+        const userData = await API.getUser(user._id)
+        //console.log(userData.data.seenMessages);
+        setUser({...user, seenMessages:userData.data.seenMessages});
+        console.log("set User all done!")
       })
     }
   }, [debouncedRecent]);

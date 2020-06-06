@@ -132,6 +132,7 @@ function Chatrooms() {
   }, [])
 
   // get and print all chatrooms once user context is loaded.
+  // added benefit of being called once a users lastViewdMessages update
   useEffect(() => {
     updateChatRooms()
   }, [user])
