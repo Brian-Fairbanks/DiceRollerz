@@ -1,8 +1,8 @@
 import React from "react";
 import { Col, Row } from "../../components/Grid";
 import { ParallaxBanner } from 'react-scroll-parallax';
-import Bars from "./dungeonNull.png";
-import Dungeon from "./prisha-eee-TeMuehXVXno-unsplash.jpg";
+import Bars from "./barsNoMan.png";
+import Dungeon from "./fire.gif";
 import Man from "./manNull.png";
 import DropCap from "./DropCapDSmall.png";
 import { Link } from "react-router-dom"
@@ -18,6 +18,7 @@ function Landing() {
           {
             image: Dungeon,
             amount: 0.3,
+            
           },
           {
             image: Bars,
