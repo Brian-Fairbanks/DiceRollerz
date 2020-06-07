@@ -29,3 +29,89 @@
 .midieval{
   font-family: 'MedievalSharp', cursive;
 }
+
+/*  Log/sign in cards
+=========================================*/
+.logging-card{
+  margin-top:10px;
+  box-shadow:10px 10px 15px #000;
+  border-radius:5px;
+  
+}
+
+.gold-border-raised{
+  border-style: solid;
+  border-width: 1px 2px 2px 1px;
+  border-color:  rgb(253, 226, 146)rgb(226, 170, 0) rgb(155, 116, 0) rgb(253, 226, 146);
+}
+.gold-border-dropped{
+  border-style: solid;
+  border-width: 2px 1px 1px 2px;
+  border-color:  rgb(155, 116, 0)  rgb(253, 226, 146) rgb(253, 226, 146)rgb(226, 170, 0);
+  padding:0px;
+  margin:0px;
+}
+
+.logging-card .card-content{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding:0px 8px;
+  margin:0px;
+}
+@media only screen and (min-width: 600px){
+  .logging-card .card-content{
+    height:160px;
+  }
+}
+
+.card-container{
+  margin:0!important;
+  width:100%;
+  justify-content: space-evenly;
+}
+
+.dark-trans{
+  background-color:rgba(40, 44, 52, 0.85)
+}
+
+
+/*  Paralax Effect
+=========================================*/
+.parallaxChildren {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  z-index:5;
+
+}
+
+.bannerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.bannerBg {
+  background: #000;
+}
+
+/*  Big Dice-Rollerz 
+=========================================*/
+.title{
+  margin-top:30px;
+  font-size:100px;
+  text-shadow:0px 0px 5px rgb(253, 226, 146);
+}
+
+@media only screen and (max-width: 600px){
+  .title{
+    font-size:15vw!important;
+  }
+}
