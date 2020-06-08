@@ -160,7 +160,7 @@ function Chatrooms() {
 
   return (
     <div className="chat-wrapper">
-      
+
       {/* Side Navbar 
       ==========================================*/}
       <div className="chat-nav center-align grey-text">
@@ -196,13 +196,13 @@ function Chatrooms() {
             ""}
         </div>
       </div>
-      
+
       {/* Chatroom Content 
       ==========================================*/}
       <div className="chat-content center-align grey-text">
-        
-        <div className="chatroom-title midieval">
-          {currentChatroom.chatroom.name?currentChatroom.chatroom.name:"No Chatroom Selected"}
+
+        <div className="chatroom-title midieval left-align white-text">
+          {currentChatroom.chatroom.name ? currentChatroom.chatroom.name : "No Chatroom Selected"}
         </div>
 
         {/* Set up the chatroom component 
@@ -211,17 +211,6 @@ function Chatrooms() {
           user={user}
           currentChatroom={currentChatroom}
           getEditMessage={getEditMessage}
-        />
-
-        {/* Chatroom Message Submit form
-      ================================= */}
-        <NewMessage
-          user={user}
-          currentChatroom={currentChatroom.chatroom._id}
-          isEditingMsg={isEditingMsg}
-          setIsEditingMsg={setIsEditingMsg}
-          refreshMessages={() => refreshMessages(currentChatroom.chatroom._id)}
-          editMsg={editMsg}
         />
 
         {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality
@@ -236,6 +225,17 @@ function Chatrooms() {
           :
           ""
         }
+
+        {/* Chatroom Message Submit form
+      ================================= */}
+        <NewMessage
+          user={user}
+          currentChatroom={currentChatroom.chatroom._id}
+          isEditingMsg={isEditingMsg}
+          setIsEditingMsg={setIsEditingMsg}
+          refreshMessages={() => refreshMessages(currentChatroom.chatroom._id)}
+          editMsg={editMsg}
+        />
       </div>
     </div>
   )

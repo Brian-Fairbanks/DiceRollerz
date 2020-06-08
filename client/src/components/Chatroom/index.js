@@ -100,7 +100,7 @@ function Chatroom(props){
   /* Chatroom Render Display
   ================================ */
   return (
-    <ScrollToBottom className="posts row m-auto overflow-scroll ">
+    <ScrollToBottom className="flex-scroll-container row m-auto overflow-scroll ">
     {"posts" in currentChatroom ?currentChatroom.posts.map(post => {
       return (
         <div key={post._id+1}>
