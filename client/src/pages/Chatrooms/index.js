@@ -8,8 +8,8 @@ import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
 import "./styles.css";
 
-
-function Chatrooms() {
+function Chatrooms(props) {
+  const { M } = props;
   // User Settings
   const { user } = useContext(UserContext);
 
@@ -163,7 +163,24 @@ function Chatrooms() {
 
       {/* Side Navbar 
       ==========================================*/}
-      <div className="chat-nav center-align grey-text">
+      {/* <nav role="navigation">
+        <div className="show-on-small" style={{ display: "none" }}>
+          <div className="sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
+        </div>
+
+        <ul id="chat-nav" className="sidenav chatnav blue-grey darken-3">
+          <li>testing</li>
+          <li>side</li>
+          <li>nav</li>
+        </ul>
+      </nav>
+      {document.addEventListener('DOMContentLoaded', function () {
+        let chatnav = document.querySelector('.sidenav.chatnav');
+        M.Sidenav.init(chatnav, {});
+      })} */}
+
+
+      <div className="chat-nav center-align grey-text grey-2">
         {allChatrooms.map(room => {
           return (
             <button
@@ -201,7 +218,7 @@ function Chatrooms() {
       ==========================================*/}
       <div className="chat-content center-align grey-text">
 
-        <div className="chatroom-title midieval left-align white-text">
+        <div className="chatroom-title grey-1 midieval left-align white-text">
           {currentChatroom.chatroom.name ? currentChatroom.chatroom.name : "No Chatroom Selected"}
         </div>
 

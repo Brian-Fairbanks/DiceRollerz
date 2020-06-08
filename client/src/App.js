@@ -28,7 +28,7 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  let sidenav = document.querySelector('.sidenav');
+  let sidenav = document.querySelector('.sidenav.fullnav');
   M.Sidenav.init(sidenav, {});
 })
 
@@ -137,7 +137,9 @@ function App () {
             <Route exact path='/chat'>
               <Authenticate/>
               <main>
-                <Chat />
+                <Chat 
+                  M={M}
+                />
               </main>
             </Route>
             <Route exact path='/profile'>

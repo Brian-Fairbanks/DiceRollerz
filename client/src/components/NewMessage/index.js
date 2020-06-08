@@ -61,7 +61,7 @@ function NewMessage(props) {
   return (
     <div>
       {currentChatroom ?
-        <form className="new-message row flex flex-align-center">
+        <form className="new-message row flex flex-align-center grey-1">
           <div className="input-field col flex-grow">
             <textarea id="message" value={newMessage.body} onChange={handleInputChange} className="materialize-textarea white-text" ></textarea>
             <label htmlFor="message">{(!isEditingMsg ? "New Message" : "Edit Message")}</label>
