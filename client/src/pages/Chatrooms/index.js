@@ -169,7 +169,7 @@ function Chatrooms() {
             <button
               key={room._id}
               onClick={() => { changeChatRoom(room._id) }}
-              className={`chatroom-button btn red accent${
+              className={`chatroom-button midieval btn red accent${
                 (!user.seenMessages.find(userRoom => userRoom.room === room._id)) || (user.seenMessages.find(userRoom => userRoom.room === room._id).message !== room.lastMessage) ?
                   " notify"
                   : ""}`
@@ -201,7 +201,7 @@ function Chatrooms() {
       ==========================================*/}
       <div className="chat-content center-align grey-text">
         
-        <div className="chatroom-title">
+        <div className="chatroom-title midieval">
           {currentChatroom.chatroom.name?currentChatroom.chatroom.name:"No Chatroom Selected"}
         </div>
 
