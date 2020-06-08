@@ -7,7 +7,6 @@ import Man from "./manNull.png";
 import DropCap from "./DropCapDSmall.png";
 import { Link } from "react-router-dom"
 import './styles.css';
-import './ParallaxBanner.css';
 
 function Landing() {
   return (
