@@ -8,7 +8,7 @@ function Authenticate(){
 
   useEffect( ()=>{
     if (token){
-      const auth = token==='NotSet'?false:true;
+      let auth = token==='NotValid'?false:true;
       setIsAuth(auth);
   }
   },[token])

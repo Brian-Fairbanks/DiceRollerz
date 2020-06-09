@@ -35,8 +35,7 @@ function Nav(props) {
         </div>
 
         <div className="chat-nav-rule m-auto" />
-
-        {allChatrooms.map(room => {
+        {user.seenMessages? allChatrooms.map(room => {
           return (
             <button
               key={room._id}
@@ -52,7 +51,7 @@ function Nav(props) {
               {room.name}
             </button>
           )
-        })
+        }):""
         }
       </div>
 
@@ -77,7 +76,7 @@ function Nav(props) {
 
           <div className="chat-nav-rule m-auto" />
 
-          {allChatrooms.map(room => {
+          {user.seenMessages? allChatrooms.map(room => {
             return (
               <button
                 key={room._id}
@@ -93,7 +92,7 @@ function Nav(props) {
                 {room.name}
               </button>
             )
-          })
+          }):""
           }
         </div>
       </div>
