@@ -176,8 +176,8 @@ function Chatrooms(props) {
       <div className="chat-content center-align grey-text">
 
         <div className="chatroom-title grey-1 midieval left-align white-text">
-          <div className="show-on-small">
-            <div className="sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
+          <div className="show-on-small" style={{ display: "none" }}>
+            <div className="mr5 sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
           </div>
           {currentChatroom.chatroom.name ? currentChatroom.chatroom.name : "No Chatroom Selected"}
         </div>
