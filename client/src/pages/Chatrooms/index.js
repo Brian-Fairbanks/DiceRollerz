@@ -3,13 +3,13 @@ import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 // Components
-import { NewChatModal, AddUserModal } from "../../components/Modal";
 import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
+import ChatNav from "../../components/ChatNav";
 import "./styles.css";
 
-
-function Chatrooms() {
+function Chatrooms(props) {
+  const { M } = props;
   // User Settings
   const { user } = useContext(UserContext);
 
@@ -159,73 +159,61 @@ function Chatrooms() {
   ################################################################### */
 
   return (
-    <div className="center-align grey-text">
-      <div>{currentChatroom.chatroom.name}</div>
-      <br />
-      {allChatrooms.map(room => {
-        return (
-          <button
-            key={room._id}
-            onClick={() => { changeChatRoom(room._id) }}
-            className={`btn red accent${
-              (!user.seenMessages.find(userRoom => userRoom.room === room._id)) || (user.seenMessages.find(userRoom => userRoom.room === room._id).message !== room.lastMessage)?
-              " notify"
-              : ""}`
-            }
-          >
-            {room.name}
-          </button>
-        )
-      })
-      }
+    <div className="chat-wrapper">
 
-      <div style={{ display: "flex", justifyContent: "center" }}>
-
-        {/*Button to add new chat room
-      ================================*/}
-        <NewChatModal
-          //onAddChatroom={updateChatRooms}
+      {/* Side Navbar 
+      ==========================================*/}
+      <ChatNav
+        M={M}
+        allChatrooms={allChatrooms}
+        user = {user}
+        changeChatRoom = {changeChatRoom}
+        currentChatroom = {currentChatroom}
         />
-        {currentChatroom.chatroom._id &&
-          currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
-          <AddUserModal
-            chatRoom={currentChatroom.chatroom}
-          /> :
-          ""}
-      </div>
 
-      {/* Set up the chatroom component 
-      =================================*/}
-      <Chatroom
-        user={user}
-        currentChatroom={currentChatroom}
-        getEditMessage={getEditMessage}
-      />
+      {/* Chatroom Content 
+      ==========================================*/}
+      <div className="chat-content center-align grey-text">
 
-      {/* Chatroom Message Submit form
-      ================================= */}
-      <NewMessage
-        user={user}
-        currentChatroom={currentChatroom.chatroom._id}
-        isEditingMsg={isEditingMsg}
-        setIsEditingMsg={setIsEditingMsg}
-        refreshMessages={() => refreshMessages(currentChatroom.chatroom._id)}
-        editMsg={editMsg}
-      />
-
-      {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality
-      ==================================*/}
-      {editMsg.id ? (
-        <div>
-          <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
-          <button className="btn waves-effect waves-light red accent" onClick={() => { deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
-          <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
+        <div className="chatroom-title grey-1 midieval left-align white-text">
+          <div className="show-on-small" style={{ display: "none" }}>
+            <div className="mr5 sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
+          </div>
+          {currentChatroom.chatroom.name ? currentChatroom.chatroom.name : "No Chatroom Selected"}
         </div>
-      )
-        :
-        ""
-      }
 
+        {/* Set up the chatroom component 
+      =================================*/}
+        <Chatroom
+          user={user}
+          currentChatroom={currentChatroom}
+          getEditMessage={getEditMessage}
+        />
+
+        {/* Context menu for updating a selected post.  This section should be moved, but here is the functionality
+      ==================================*/}
+        {editMsg.id ? (
+          <div>
+            <button className="btn waves-effect waves-light red accent" onClick={clearEditMessage}>Cancel</button>
+            <button className="btn waves-effect waves-light red accent" onClick={() => { deleteEditMessage() }} disabled={editMsg.sender !== user._id}>Delete</button>
+            <button className="btn waves-effect waves-light red accent" onClick={updateEditMessage} disabled={editMsg.sender !== user._id}>Edit</button>
+          </div>
+        )
+          :
+          ""
+        }
+
+        {/* Chatroom Message Submit form
+      ================================= */}
+        <NewMessage
+          user={user}
+          currentChatroom={currentChatroom.chatroom._id}
+          isEditingMsg={isEditingMsg}
+          setIsEditingMsg={setIsEditingMsg}
+          refreshMessages={() => refreshMessages(currentChatroom.chatroom._id)}
+          editMsg={editMsg}
+        />
+      </div>
     </div>
   )
 }
