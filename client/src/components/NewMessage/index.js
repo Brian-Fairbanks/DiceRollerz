@@ -23,7 +23,7 @@ function NewMessage(props) {
   }, [user])
 
   useEffect( ()=>{
-    console.log("setting room");
+    //console.log("setting room");
     setNewMessage({ ...newMessage, room: currentChatroom, body:""})
   } ,[currentChatroom])
 
@@ -33,13 +33,13 @@ function NewMessage(props) {
   // Function to handle users submitting new messages to a specific chatroom
   async function handleMsgSubmit(event) {
     event.preventDefault();
-    console.log(newMessage);
+    //console.log(newMessage);
     if (newMessage.sender && newMessage.room && newMessage.body) {
       try {
         if (!isEditingMsg) {
           await API.sendPost(newMessage)
         } else {
-          console.log(newMessage);
+          //console.log(newMessage);
           await API.editPost(newMessage);
           setIsEditingMsg(false)
         }

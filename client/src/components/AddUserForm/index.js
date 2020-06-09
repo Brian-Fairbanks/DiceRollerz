@@ -14,10 +14,10 @@ function AddUserForm({ chatRoom }){
       role: "Roller"
     }
     
-    console.log(chatRoom);
+    //console.log(chatRoom);
     chatRoom.members.push(newUser);
     API.addChatroomMember(chatRoom._id, newUser)
-      .then(data => console.log("Added member to chatroom " + chatRoom._id, data))
+      //.then(data => console.log("Added member to chatroom " + chatRoom._id, data))
       .catch(err => console.error(err))
   }
 
@@ -25,7 +25,7 @@ function AddUserForm({ chatRoom }){
     API.getUsers()
       .then(data => {
         if (!data.data) {
-          console.error("Error retrieving users!")
+          //console.error("Error retrieving users!")
           return;
         }
         let userArray = data.data;

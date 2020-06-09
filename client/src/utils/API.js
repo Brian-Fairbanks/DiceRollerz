@@ -37,7 +37,7 @@ export default {
   },
 
   editPost: async function(post){
-    console.log( "updating "+post.id);
+    //console.log( "updating "+post.id);
     const data = await axios.put("/api/post/"+post.id, {body: post.body});
     this.socketMsg(data.data);
     return data;
@@ -73,12 +73,12 @@ export default {
   },
 
   socketListen(cb){
-    console.log("Now listening for new messages");
+    //console.log("Now listening for new messages");
     socket.on("newMessage", (msg) => {cb(msg)});
   },
 
   socketRoomListen (cb){
-    console.log("Now listening for new chatrooms");
+    //console.log("Now listening for new chatrooms");
     socket.on("chatroomChanged", (msg) => {cb(msg)});
   },
 

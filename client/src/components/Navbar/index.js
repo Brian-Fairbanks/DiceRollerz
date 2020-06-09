@@ -13,7 +13,7 @@ function Nav(props) {
 
   document.addEventListener('DOMContentLoaded', function () {
     let sidenav = document.querySelector('.sidenav.fullnav');
-    console.log(sidenav);
+    //console.log(sidenav);
     M.Sidenav.init(sidenav, {});
   })
 
@@ -34,7 +34,7 @@ function Nav(props) {
   // ========================
 
   function logOut() {
-    console.log("Logging out!");
+    //console.log("Logging out!");
     localStorage.removeItem("jwtToken");
     setUser({
       _id: '',
