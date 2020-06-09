@@ -21,7 +21,7 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.user._id) {
-      console.log("Congrats!" + this.props.user.username )
+      //console.log("Congrats!" + this.props.user.username )
       this.setState( {isLoggedIn:true})
     }
   }

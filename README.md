@@ -74,6 +74,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 * "validator": "^13.0.0"
 * "react-scroll-parallax"
 * "react-visibility-sensor"
+* "UIFX"
 
 #### Dev
 * "concurrently": "^4.1.2",
@@ -117,6 +118,7 @@ Members Contributing on this project:
         - back end deciding - default or chatroom specific
     * /Commands - /roll
     * New Message Notifications
+    * Active Chatroom
 
 
 * [Jonathan Andrews](https://github.com/ionathas78)

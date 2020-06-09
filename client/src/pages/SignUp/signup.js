@@ -40,7 +40,7 @@ function SignUp() {
   const [isAuth, setIsAuth] = useState(false);
   useEffect(() => {
     if (token) {
-      console.log(token);
+      //console.log(token);
       const auth = token === 'NotSet' ? false : true;
       setIsAuth(auth);
     }
@@ -62,7 +62,7 @@ function SignUp() {
       API.signUpNewUser(
         userSubmission
       ).then(data => {
-        console.log(data)
+        //console.log(data)
         // if sign up is valid...
         if (data.status === 200) {
           setIsValid(true);

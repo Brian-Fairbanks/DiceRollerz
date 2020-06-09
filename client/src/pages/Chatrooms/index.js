@@ -7,6 +7,9 @@ import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
 import ChatNav from "../../components/ChatNav";
 import "./styles.css";
+// Notification sound
+import UIFx from "uifx";
+import notificationMP3 from './fireball.mp3';
 
 function Chatrooms(props) {
   const { M } = props;
@@ -22,6 +25,9 @@ function Chatrooms(props) {
   const [clientMsg, setClientMsg] = useState("")
   const [editMsg, setEditMsg] = useState({ id: "", body: "", sender: "", room: "" })
   const [isEditingMsg, setIsEditingMsg] = useState(false);
+
+  // Sound initialization
+  const notification = new UIFx(notificationMP3,{volume: 0.5});
 
 
   /*  ###############################################################
@@ -41,7 +47,7 @@ function Chatrooms(props) {
       updateChatRooms();
     }
     else {
-      console.log("New message in " + id);
+      //console.log("New message in " + id);
       updateChatRooms();
     }
   }
@@ -50,12 +56,12 @@ function Chatrooms(props) {
   function changeChatRoom(id) {
     let newRoom = allChatrooms.find(room => room._id === id);
     if (!newRoom) {
-      console.log("Couldn't switch to chatroom " + id);
+      //console.log("Couldn't switch to chatroom " + id);
       return;
     }
     getChatLogs(id);
     setCurrentChatroom({ chatroom: newRoom });
-    console.log("Switched to room: " + id);
+    //console.log("Switched to room: " + id);
     clearEditMessage();
   }
 
@@ -69,7 +75,7 @@ function Chatrooms(props) {
 
   // Update and print all avaliable chatrooms
   function updateChatRooms() {
-    console.log("Updating the chatroom Data")
+    //console.log("Updating the chatroom Data")
     API.getChatrooms()
       .then(data => {
         let myChatRooms = [];
@@ -122,13 +128,13 @@ function Chatrooms(props) {
   useEffect(() => {
     // set up new Message listener
     API.socketListen(function (msg) {
-      console.log(msg);
+      //console.log(msg);
       setClientMsg(msg);
     })
 
     // set up new Chatroom listener  
     API.socketRoomListen(function (msg) {
-      console.log(msg);
+      //console.log(msg);
       // updateChatRooms();
       setClientRoom(msg);
     })
@@ -150,7 +156,12 @@ function Chatrooms(props) {
   // Update Messages when socket.io callback changes this state
   useEffect(() => {
     if (clientMsg) {
+      //console.log(clientMsg);
       refreshMessages(clientMsg.room)
+      if(clientMsg.body!=="Set Message Seen"){
+        notification.play();
+      }
+
     }
   }, [clientMsg])
 

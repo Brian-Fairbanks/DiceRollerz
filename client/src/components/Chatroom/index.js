@@ -85,14 +85,14 @@ function Chatroom(props){
       //console.log("Sending Data Now - ", recent);
       API.seenMessage(recent)
       .then(async (data) => {
-        console.log(data);
+        //console.log(data);
         const userData = await API.getUser(user._id)
         //console.log(userData.data.seenMessages);
         setUser({...user, seenMessages:userData.data.seenMessages});
         // Let all other users know where you have seen
         API.socketRoom("Set Message Seen");
         API.socketMsg({room:recent.room, body:"Set Message Seen"});
-        console.log("set User all done!");
+        //console.log("set User all done!");
       })
     }
   }, [debouncedRecent]);
