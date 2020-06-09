@@ -21,7 +21,7 @@ function Nav(props) {
   const [validated, setValidated] = useState(false);
 
   useEffect(() => {
-    if (token && token !== "NotSet") {
+    if (token && token !== "NotSet" && token !== "NotValid") {
       setValidated(true);
     }
   }, [token])
@@ -40,7 +40,7 @@ function Nav(props) {
       userName: '',
       email: ''
     });
-    setToken("NotSet");
+    setToken("NotValid");
   }
 
 
