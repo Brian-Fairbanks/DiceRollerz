@@ -24,6 +24,9 @@ function Nav(props) {
     if (token && token !== "NotSet" && token !== "NotValid") {
       setValidated(true);
     }
+    else{
+      setValidated(false);
+    }
   }, [token])
 
 
