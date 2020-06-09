@@ -3,9 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 // Components
-import { NewChatModal, AddUserModal } from "../../components/Modal";
 import Chatroom from "../../components/Chatroom";
 import NewMessage from "../../components/NewMessage";
+import ChatNav from "../../components/ChatNav";
 import "./styles.css";
 
 function Chatrooms(props) {
@@ -163,62 +163,22 @@ function Chatrooms(props) {
 
       {/* Side Navbar 
       ==========================================*/}
-      {/* <nav role="navigation">
-        <div className="show-on-small" style={{ display: "none" }}>
-          <div className="sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
-        </div>
-
-        <ul id="chat-nav" className="sidenav chatnav blue-grey darken-3">
-          <li>testing</li>
-          <li>side</li>
-          <li>nav</li>
-        </ul>
-      </nav>
-      {document.addEventListener('DOMContentLoaded', function () {
-        let chatnav = document.querySelector('.sidenav.chatnav');
-        M.Sidenav.init(chatnav, {});
-      })} */}
-
-
-      <div className="chat-nav center-align grey-text grey-2">
-        {allChatrooms.map(room => {
-          return (
-            <button
-              key={room._id}
-              onClick={() => { changeChatRoom(room._id) }}
-              className={`chatroom-button midieval btn red accent${
-                (!user.seenMessages.find(userRoom => userRoom.room === room._id)) || (user.seenMessages.find(userRoom => userRoom.room === room._id).message !== room.lastMessage) ?
-                  " notify"
-                  : ""}`
-              }
-            >
-              {room.name}
-            </button>
-          )
-        })
-        }
-
-        <div style={{ display: "flex", justifyContent: "center" }}>
-
-          {/*Button to add new chat room
-          ================================*/}
-          <NewChatModal
-          //onAddChatroom={updateChatRooms}
-          />
-          {currentChatroom.chatroom._id &&
-            currentChatroom.chatroom.members.find(item => item.role === "DM").user === user._id ?
-            <AddUserModal
-              chatRoom={currentChatroom.chatroom}
-            /> :
-            ""}
-        </div>
-      </div>
+      <ChatNav
+        M={M}
+        allChatrooms={allChatrooms}
+        user = {user}
+        changeChatRoom = {changeChatRoom}
+        currentChatroom = {currentChatroom}
+        />
 
       {/* Chatroom Content 
       ==========================================*/}
       <div className="chat-content center-align grey-text">
 
         <div className="chatroom-title grey-1 midieval left-align white-text">
+          <div className="show-on-small">
+            <div className="sidenav-trigger cur-pointer" data-target="chat-nav"><i className="small material-icons">menu</i></div>
+          </div>
           {currentChatroom.chatroom.name ? currentChatroom.chatroom.name : "No Chatroom Selected"}
         </div>
 

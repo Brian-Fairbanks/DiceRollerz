@@ -27,10 +27,10 @@ import Profile from './pages/profile';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  let sidenav = document.querySelector('.sidenav.fullnav');
-  M.Sidenav.init(sidenav, {});
-})
+// document.addEventListener('DOMContentLoaded', function() {
+//   let sidenav = document.querySelector('.sidenav.fullnav');
+//   M.Sidenav.init(sidenav, {});
+// })
 
 // M.AutoInit();
 
@@ -108,7 +108,7 @@ function App () {
           <div>Hello, {user.userName}</div>
         </div> */}
         <BrowserRouter>
-          <NavBar />
+          <NavBar M={M} />
           <Switch>
             <Route exact path={"/"}>
               <main>

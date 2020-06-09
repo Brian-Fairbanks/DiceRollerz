@@ -5,7 +5,13 @@ import Logo from "./DRZ.png";
 import userContext from "../../utils/userContext";
 
 
-function Nav() {
+function Nav(props) {
+  const {M} = props;
+  document.addEventListener('DOMContentLoaded', function() {
+    let sidenav = document.querySelector('.sidenav.fullnav');
+    console.log(sidenav);
+    M.Sidenav.init(sidenav, {});
+  })
 
   // Log Out Functionality
   // ========================
@@ -52,11 +58,11 @@ function Nav() {
         <li><a onClick={() => { logOut() }} className="amber-text"><i className="small material-icons" style={{ color: "#ffc107" }}>phonelink_erase</i> Log Out</a></li>
       </ul>
 
-      <ul id="chat-nav" className="sidenav chatnav blue-grey darken-3">
+      {/* <ul id="chat-nav" className="sidenav chatnav blue-grey darken-3">
           <li>testing</li>
           <li>side</li>
           <li>nav</li>
-        </ul>
+        </ul> */}
     </nav>
   );
 }
