@@ -10,3 +10,18 @@ h1 {
   font-size: x-large;
 }
 
+.disabled-icon{
+  padding:0 32px;
+}
+
+.disabled{
+  align-items: center;
+  color:#977100!important;
+  text-shadow:-1px -1px 0px #333;
+}
+
+.disabled-nav-icon{
+  padding:0 15px;
+  color:#666;
+  text-shadow:-1px -1px 0px #333;
+}

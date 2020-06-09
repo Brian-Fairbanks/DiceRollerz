@@ -56,6 +56,9 @@ function App () {
     if (localStorage.jwtToken) {
       signIn();
     }
+    else{
+      setToken("NotValid")
+    }
   }, [token])
 
   async function signIn(){
@@ -79,7 +82,7 @@ function App () {
           userName: '',
           email: ''
         });
-        setToken("NotSet");
+        setToken("NotValid");
         // Redirect to login
         window.location.href = "./login";
       }
