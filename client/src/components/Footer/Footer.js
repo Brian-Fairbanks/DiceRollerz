@@ -11,9 +11,9 @@ export default function Footer () {
           <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
         </div> */}
         <div className="col-12 center-align">
-          <h5 className="white-text flex">Developers</h5>
-          <div id="credit-links" className="container">
-            <a className="grey-text text-lighten-3" href="https://github.com/Brian-Fairbanks">Brian</a>
+          <span className="white-text flex b midieval">Developers: </span>
+          <div id="credit-links" className="container midieval">
+            <a className="grey-text text-lighten-3" href="https://brian-fairbanks.github.io/Bootstrap-Portfolio/">Brian</a>
             <a className="grey-text text-lighten-3" href="https://github.com/jdstroup10">Jason</a>
             <a className="grey-text text-lighten-3" href="https://github.com/ionathas78">Jonathan</a>
             <a className="grey-text text-lighten-3" href="https://github.com/warsurge">Surge</a>
