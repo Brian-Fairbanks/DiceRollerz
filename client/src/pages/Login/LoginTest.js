@@ -27,7 +27,7 @@ class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.token !=="NotSet") {
+    if (nextProps.token !=="NotValid") {
       //console.log("Congrats!")
       this.setState( {isLoggedIn:true})
     }
