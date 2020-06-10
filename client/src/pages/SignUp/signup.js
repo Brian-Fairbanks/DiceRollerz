@@ -41,7 +41,7 @@ function SignUp() {
   useEffect(() => {
     if (token) {
       //console.log(token);
-      const auth = token === 'NotSet' ? false : true;
+      const auth = token === 'NotValid' ? false : true;
       setIsAuth(auth);
     }
   }, [token])
