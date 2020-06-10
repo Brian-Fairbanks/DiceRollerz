@@ -16,7 +16,7 @@ export default function Footer () {
             <a className="grey-text text-lighten-3" href="https://brian-fairbanks.github.io/Bootstrap-Portfolio/">Brian</a>
             <a className="grey-text text-lighten-3" href="https://github.com/jdstroup10">Jason</a>
             <a className="grey-text text-lighten-3" href="https://github.com/ionathas78">Jonathan</a>
-            <a className="grey-text text-lighten-3" href="https://github.com/warsurge">Surge</a>
+            <a className="grey-text text-lighten-3" href="https://warsurge.github.io/Portfolio/">Surge</a>
           </div>
         </div>
       </div>
