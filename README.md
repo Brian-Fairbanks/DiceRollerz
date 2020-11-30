@@ -9,6 +9,9 @@ Dice Rollerz is an online chat app that helps D&D enthusiasts communicate and or
 - Registered users can create create chat rooms and send/receive messages from other users.
 - In future builds, the chat app will incorperate game tools such as a dice roller to further aid users.
 
+- *Note* The database has been lost as of 11/10/2020, but a new database has been cereated through Mongo Atlas
+- I appologise for any inconvinience this may cause for users
+
 
 ## Table of Contents
 * [License](#license)
@@ -160,7 +163,10 @@ If you have any questions about this application, feel free to reach out to one 
 ## Demo
 Deployed to Heroku:
 * Staging: https://dice-rollerz-stg.herokuapp.com/
+    - *Note* MLabs has been removed as a database option through Heroku, so the staging database no longer works as of 11/10/2020
 * Production: https://dice-rollerz.herokuapp.com/
+    - *Note* The database has been lost as of 11/10/2020, but a new database has been cereated through Mongo Atlas
+    - I appologise for any inconviniences this may cause for current users.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
